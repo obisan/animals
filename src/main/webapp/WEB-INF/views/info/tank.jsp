@@ -83,8 +83,6 @@
             </td>
         </tr>
     </table>
-
-
     <div class="panel-group" id="accordion">
         <!-- 1 панель -->
         <div class="panel panel-default">
