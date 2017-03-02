@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <csrf disabled="true" />
+        <intercept-url pattern="/"                  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/index"             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/admin"             access="hasRole('ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/registration"      access="hasRole('ROLE_ADMIN')"/>-->
+
+        <intercept-url pattern="/classes"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/orders"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/families"          access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/genera"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/species"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/animalgs"          access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/tags"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/departments"       access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/employees"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/buildings"         access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/allowances"        access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/displacements"     access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/objects"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/quarantines"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/deceaseds"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/certificates"      access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/conditions"        access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/labels"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/tanks"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/drugs"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/medications"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/journalallowance"  access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+
+        <intercept-url pattern="/report"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+
+        <intercept-url pattern="/load"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/upload"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+
+        <form-login login-page="/login"
+                    default-target-url="/index"
+                    authentication-failure-url="/login?error"
+                    authentication-success-handler-ref="roleBasedAuthenticationSuccessHandler"
+                    username-parameter="username"
+                    password-parameter="password"/>
+
+        <logout logout-success-url="/login?logout"/>
+    </http>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="encoder" />
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="userDetailsServiceImpl" class="ru.ocean.animals.service.UserDetailsServiceImpl" />
+
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
+
+</beans:beans>

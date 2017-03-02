@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="ru.ocean.animals.model"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <qualifier value="suleimanov" />
+    </bean>
+
+    <tx:annotation-driven/>
+
+    <jpa:repositories base-package="ru.ocean.animals.dao"/>
+
+
+    <!--   Mine     -->
+    <bean id="hibernate4AnnotatedSessionFactory"
+                class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>ru.ocean.animals.model.Class</value>
+                <value>ru.ocean.animals.model.OrderN</value>
+                <value>ru.ocean.animals.model.Family</value>
+                <value>ru.ocean.animals.model.Genus</value>
+                <value>ru.ocean.animals.model.Specie</value>
+                <value>ru.ocean.animals.model.Tag</value>
+                <value>ru.ocean.animals.model.Department</value>
+                <value>ru.ocean.animals.model.Employee</value>
+                <value>ru.ocean.animals.model.Building</value>
+                <value>ru.ocean.animals.model.Tank</value>
+                <value>ru.ocean.animals.model.Displacement</value>
+                <value>ru.ocean.animals.model.Object</value>
+                <value>ru.ocean.animals.model.Quarantine</value>
+                <value>ru.ocean.animals.model.Deceased</value>
+                <value>ru.ocean.animals.model.Condition</value>
+                <value>ru.ocean.animals.model.Label</value>
+                <value>ru.ocean.animals.model.Certificate</value>
+                <value>ru.ocean.animals.model.Photo</value>
+                <value>ru.ocean.animals.model.Drug</value>
+                <value>ru.ocean.animals.model.Medication</value>
+                <value>ru.ocean.animals.model.Allowance</value>
+                <value>ru.ocean.animals.model.JournalAllowance</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id = "transactionManager2" class = "org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name = "sessionFactory" ref = "hibernate4AnnotatedSessionFactory" />
+        <qualifier value="dubinets" />
+    </bean>
+
+</beans>
