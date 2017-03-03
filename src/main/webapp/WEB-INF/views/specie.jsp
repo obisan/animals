@@ -146,6 +146,7 @@
                         <th width="120">Вид (рус.)</th>
                         <th width="80">Кровянные тельца</th>
                         <th width="80">Ядра</th>
+                        <th width="80">Метка</th>
                         <th width="120">Род</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
@@ -157,6 +158,7 @@
                             <td>${specie.specie_name_ru}</td>
                             <td>${specie.specie_rbc}</td>
                             <td>${specie.specie_nucleus}</td>
+                            <td>${specie.tag.tag_name}</td>
                             <td>${specie.genus.genus_name_lat}</td>
                             <td><a href="<c:url value='/specie/edit/${specie.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/specie/remove/${specie.id}' />" >Delete</a></td>

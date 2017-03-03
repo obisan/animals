@@ -25,7 +25,9 @@ public class ReportController {
             Model model) {
         model.addAttribute("listSpecies",       this.specieService.getSpecies());
 
-        if(deceasedCriteria.getDate_from() != null) {
+        if(     deceasedCriteria.getDate_from() != null ||
+                deceasedCriteria.getDate_to()   != null ||
+                deceasedCriteria.getSpecie_id() != null) {
             model.addAttribute("listDeceaseds",     this.deceasedService.findDeceased(deceasedCriteria));
         } else {
             model.addAttribute("listDeceaseds",     this.deceasedService.getDeceaseds());

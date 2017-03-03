@@ -63,8 +63,8 @@ public class DeceasedDaoImpl implements DeceasedDao {
     public List<Deceased> findDeceased(DeceasedCriteria deceasedCriteria) {
         Session session = sessionFactory.getCurrentSession();
 
-        String date_from = deceasedCriteria.getDate_from_db();
-        String date_to   = deceasedCriteria.getDate_to_db();
+        String date_from = deceasedCriteria.getDate_from_db()   != null ? deceasedCriteria.getDate_from_db()    : "2000-01-01 00:00:00";
+        String date_to   = deceasedCriteria.getDate_to_db()     != null ? deceasedCriteria.getDate_to_db()      : "2025-01-01 01:00:00";
         Long specie_id   = deceasedCriteria.getSpecie_id();
 
         return session.createSQLQuery(
