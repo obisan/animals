@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.ocean.animals.model.JournalAllowance;
+import ru.ocean.animals.model.JournalAllowanceExtended;
 import ru.ocean.animals.service.AllowanceService;
 import ru.ocean.animals.service.JournalAllowanceService;
 import ru.ocean.animals.service.ObjectService;
@@ -26,22 +26,19 @@ public class JournalAllowanceConroller {
 
     @RequestMapping(value = "/journalallowances", method = RequestMethod.GET)
     public String getJournalAllowances(Model model) {
-        model.addAttribute("journalallowance",      new JournalAllowance());
-        model.addAttribute("listJournalAllowances", this.journalAllowanceService.getJournalAllowances());
-        model.addAttribute("listAllowances",        this.allowanceService.getAllowances());
-        model.addAttribute("listObjects",           this.objectService.getObjectsAlive());
+        model.addAttribute("journalAllowanceExtended",      new JournalAllowanceExtended());
+        model.addAttribute("listJournalAllowances",         this.journalAllowanceService.getJournalAllowances());
+        model.addAttribute("listAllowances",                this.allowanceService.getAllowances());
+        model.addAttribute("listObjects",                   this.objectService.getObjectsAlive());
 
         return "journalallowance";
     }
 
     @RequestMapping(value = "/journalallowance/add")
     public String addJournalAllowance(
-            @ModelAttribute("journalallowance") JournalAllowance journalAllowance) {
-        if(journalAllowance.getId() == null) {
-            this.journalAllowanceService.addJournalAllowance(journalAllowance);
-        } else {
-            this.journalAllowanceService.updateJournalAllowance(journalAllowance);
-        }
+            @ModelAttribute("journalAllowanceExtended") JournalAllowanceExtended journalAllowanceExtended) {
+        this.journalAllowanceService.addJournalAllowanceGroup(journalAllowanceExtended);
+
         return "redirect:/journalallowances";
     }
 

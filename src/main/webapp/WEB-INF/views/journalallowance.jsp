@@ -25,69 +25,148 @@
         <tr>
             <td>
                 <c:url var="addAction" value="/journalallowance/add"></c:url>
-
-                <form:form action="${addAction}" commandName="journalallowance">
+                <form:form action="${addAction}" commandName="journalAllowanceExtended">
                     <table>
-                        <c:if test="${!empty journalallowance.allowance_id}">
-                            <tr>
-                                <td>
-                                    <form:label path="id">
-                                        <spring:message text="ID"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:input path="id" readonly="true" size="8"  disabled="true" />
-                                    <form:hidden path="id" />
-                                </td>
-                            </tr>
-                        </c:if>
                         <tr>
                             <td>
-                                <form:label path="object_id">
+                                <form:label path="object1_id">
                                     <spring:message text="Животное"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:select class="combobox" path="object_id">
+                                <form:select class="combobox" path="object1_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name   })</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
-                        </tr>
-                        <tr>
+
                             <td>
-                                <form:label path="allowance_id">
+                                <form:label path="allowance1_id">
                                     <spring:message text="Корм"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:select class="combobox" path="allowance_id">
+                                <form:select class="combobox" path="allowance1_id">
                                     <option></option>
                                     <c:forEach items="${listAllowances}" var="allowance">
                                         <form:option value="${allowance.id}">${allowance.allowance_name}</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
-                                <form:label path="weight">
+                                <form:label path="weight1">
                                     <spring:message text="Вес (г.)"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="weight" />
+                                <form:input path="weight1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="object2_id">
+                                    <option></option>
+                                    <c:forEach items="${listObjects}" var="object">
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="allowance2_id">
+                                    <option></option>
+                                    <c:forEach items="${listAllowances}" var="allowance">
+                                        <form:option value="${allowance.id}">${allowance.allowance_name}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:input path="weight2" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="object3_id">
+                                    <option></option>
+                                    <c:forEach items="${listObjects}" var="object">
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="allowance3_id">
+                                    <option></option>
+                                    <c:forEach items="${listAllowances}" var="allowance">
+                                        <form:option value="${allowance.id}">${allowance.allowance_name}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:input path="weight3" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="object4_id">
+                                    <option></option>
+                                    <c:forEach items="${listObjects}" var="object">
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="allowance4_id">
+                                    <option></option>
+                                    <c:forEach items="${listAllowances}" var="allowance">
+                                        <form:option value="${allowance.id}">${allowance.allowance_name}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:input path="weight4" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="object5_id">
+                                    <option></option>
+                                    <c:forEach items="${listObjects}" var="object">
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:select class="combobox" path="allowance5_id">
+                                    <option></option>
+                                    <c:forEach items="${listAllowances}" var="allowance">
+                                        <form:option value="${allowance.id}">${allowance.allowance_name}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td></td>
+                            <td>
+                                <form:input path="weight5" />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <c:if test="${!empty journalallowance.allowance_id}">
+                                <c:if test="${!empty object1_id}">
                                     <input type="submit"
                                            value="<spring:message text="Сохранить"/>" />
                                 </c:if>
-                                <c:if test="${empty journalallowance.allowance_id}">
+                                <c:if test="${empty object1_id}">
                                     <input type="submit"
                                            value="<spring:message text="Добавить"/>" />
                                 </c:if>

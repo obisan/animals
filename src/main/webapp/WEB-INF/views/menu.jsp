@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-combobox.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/mycss.css" />
 
     <script type="text/javascript" src="${contextPath}/resources/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/js/moment-with-locales.min.js"></script>

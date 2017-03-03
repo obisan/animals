@@ -132,14 +132,21 @@ public class Tank {
 
     public Set<Allowance> getAllowances() {
         Set<Allowance> allowances = new HashSet<>();
-
         for(Object object : objects) {
             for(JournalAllowance journalAllowance : object.getJournalAllowances()) {
                 allowances.add(journalAllowance.getAllowance());
             }
         }
-
         return allowances;
+    }
+
+    public Set<JournalAllowance> getJournalAllowances() {
+        Set<JournalAllowance> journalAllowances = new HashSet<>();
+        for(Object object : objects) {
+            journalAllowances.addAll(object.getJournalAllowances());
+        }
+
+        return journalAllowances;
     }
 
     @Override

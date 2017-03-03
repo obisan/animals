@@ -10,12 +10,6 @@
 <html>
 <head>
     <title>Танк</title>
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-        .tg .tg-4eph{background-color:#f9f9f9}
-    </style>
 </head>
 <body>
 
@@ -125,21 +119,21 @@
             <div id="collapseTwo" class="panel-collapse collapse">
                 <!-- Содержимое 2 панели -->
                 <div class="panel-body">
-                    <c:if test="${!empty tank.allowances}">
+                    <c:if test="${!empty tank.journalAllowances}">
                         <table class="tg" width="100%">
                             <tr>
                                 <th>ID</th>
                                 <th>Название корма</th>
-                                <th></th>
-                                <th></th>
+                                <th>Животное (количество)</th>
+                                <th>Вес корма (г.)</th>
                                 <th></th>
                             </tr>
-                            <c:forEach items="${tank.allowances}" var="allowance">
+                            <c:forEach items="${tank.journalAllowances}" var="journalAllowances">
                                 <tr>
-                                    <td>${allowance.id}</td>
-                                    <td>${allowance.allowance_name}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>${journalAllowances.id}</td>
+                                    <td>${journalAllowances.allowance.allowance_name}</td>
+                                    <td><a href="/object/info/${journalAllowances.object_id}" target="_blank">${journalAllowances.object.object_name}</a> (${journalAllowances.object.object_count})</td>
+                                    <td>${journalAllowances.weight}</td>
                                     <td></td>
                                 </tr>
                             </c:forEach>
