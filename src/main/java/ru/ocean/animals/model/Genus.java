@@ -92,7 +92,7 @@ public class Genus {
                 ", genus_name_ru='" + genus_name_ru + '\'' +
                 ", genus_name_lat='" + genus_name_lat + '\'' +
                 ", family_id=" + family_id +
-                ", family=" + family +
+                //", family=" + family +
                 '}';
     }
 }

@@ -115,8 +115,8 @@ public class Quarantine implements Cloneable {
                 "id=" + id +
                 ", quarantine_date_start=" + quarantine_date_start +
                 ", quarantine_period=" + quarantine_period +
-                ", id=" + id +
-                ", object=" + object +
+                ", object_id=" + object_id +
+                //", object=" + object +
                 '}';
     }
 }

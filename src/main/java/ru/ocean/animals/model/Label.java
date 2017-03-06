@@ -126,7 +126,7 @@ public class Label {
                 ", place_catching='" + place_catching + '\'' +
                 ", tool_catching='" + tool_catching + '\'' +
                 ", condition_id=" + condition_id +
-                ", condition=" + condition +
+                //", condition=" + condition +
                 '}';
     }
 }

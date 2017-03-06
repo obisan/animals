@@ -89,7 +89,7 @@ public class Certificate {
                 ", certificate_number='" + certificate_number + '\'' +
                 ", certificate_date=" + certificate_date +
                 ", object_id=" + object_id +
-                ", object=" + object +
+                //", object=" + object +
                 '}';
     }
 }

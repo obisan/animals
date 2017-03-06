@@ -101,7 +101,7 @@ public class Family {
                 ", family_name_ru='" + family_name_ru + '\'' +
                 ", family_name_lat='" + family_name_lat + '\'' +
                 ", order_id=" + order_id +
-                ", order=" + order +
+                //", order=" + order +
                 '}';
     }
 }
