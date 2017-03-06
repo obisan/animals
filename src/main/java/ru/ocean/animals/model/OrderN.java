@@ -100,7 +100,7 @@ public class OrderN {
                 ", order_name_ru='" + order_name_ru + '\'' +
                 ", order_name_lat='" + order_name_lat + '\'' +
                 ", class_id=" + class_id +
-                ", aClass=" + aClass +
+                //", aClass=" + aClass +
                 '}';
     }
 }

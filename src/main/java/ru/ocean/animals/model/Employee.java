@@ -134,7 +134,7 @@ public class Employee {
                 ", employee_middle_name='" + employee_middle_name + '\'' +
                 ", employee_title='" + employee_title + '\'' +
                 ", department_id=" + department_id +
-                ", department=" + department +
+                //", department=" + department +
                 '}';
     }
 }

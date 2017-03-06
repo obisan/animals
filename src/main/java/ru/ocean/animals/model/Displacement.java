@@ -147,8 +147,8 @@ public class Displacement {
                 ", date_departure=" + date_departure +
                 ", tank_id=" + tank_id +
                 ", object_id=" + object_id +
-                ", tank=" + tank +
-                ", object=" + object +
+                //", tank=" + tank +
+                //", object=" + object +
                 '}';
     }
 }
