@@ -84,6 +84,12 @@
                     </table>
                 </form:form>
             </td>
+            <td>
+                <c:if test="${!empty specie.photos}">
+                    <h4>Фото вида</h4>
+                    <img src="<c:url value="/image/${specie.id}" />" />
+                </c:if>
+            </td>
         </tr>
     </table>
 

@@ -15,6 +15,12 @@ public class Label {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "weight")
+    private Float   weight;
+
+    @Column(name = "length")
+    private Float   length;
+
     @Column(name = "place_catching")
     private String  place_catching;
 
@@ -42,6 +48,22 @@ public class Label {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public Float getLength() {
+        return length;
+    }
+
+    public void setLength(Float length) {
+        this.length = length;
     }
 
     public String getPlace_catching() {

@@ -31,7 +31,7 @@ public class JournalAllowanceConroller {
         model.addAttribute("listAllowances",                this.allowanceService.getAllowances());
         model.addAttribute("listObjects",                   this.objectService.getObjectsAlive());
 
-        return "journalallowance";
+        return "journalallowance2";
     }
 
     @RequestMapping(value = "/journalallowance/add")

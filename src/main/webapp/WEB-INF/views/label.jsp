@@ -68,6 +68,26 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="weight">
+                                        <spring:message text="Вес (исходный)"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="weight" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="length">
+                                        <spring:message text="Вес (исходный)"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="length" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="tool_catching">
                                         <spring:message text="Средство поимки"/>
                                     </form:label>
