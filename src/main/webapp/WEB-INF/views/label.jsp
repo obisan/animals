@@ -79,7 +79,7 @@
                             <tr>
                                 <td>
                                     <form:label path="length">
-                                        <spring:message text="Вес (исходный)"/>
+                                        <spring:message text="Длина (исходный)"/>
                                     </form:label>
                                 </td>
                                 <td>
