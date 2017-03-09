@@ -54,7 +54,10 @@
 
                                     <script type="text/javascript">
                                         $(function () {
-                                            $('#date_arrival').datetimepicker({language: 'ru'});
+                                            $('#date_arrival').datetimepicker({
+                                                language: 'ru',
+                                                format: "YYYY-MM-DD HH:mm:ss"
+                                            });
                                         });
                                     </script>
                                 </td>
@@ -75,7 +78,10 @@
 
                                     <script type="text/javascript">
                                         $(function () {
-                                            $('#date_departure').datetimepicker({language: 'ru'});
+                                            $('#date_departure').datetimepicker({
+                                                language: 'ru',
+                                                format: "YYYY-MM-DD HH:mm:ss"
+                                            });
                                         });
                                     </script>
                                 </td>

@@ -1,14 +1,15 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "Label")
 public class Label {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -83,19 +84,11 @@ public class Label {
     }
 
     public String getDate_catching() {
-        if(date_catching != null)
-            return sdf.format(date_catching);
-        else
-            return "";
+        return formatter.format2db(date_catching);
     }
 
     public void setDate_catching(String date_catching) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(date_catching).getTime());
-            this.date_catching = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.date_catching = formatter.parse(date_catching);
     }
 
     public Long getCondition_id() {
@@ -115,8 +108,7 @@ public class Label {
     }
 
     public String getLabelInfo() {
-        String s = place_catching + " / " + date_catching + " / " + tool_catching;
-        return s;
+        return place_catching + " / " + date_catching + " / " + tool_catching;
     }
 
     @Override
@@ -126,7 +118,6 @@ public class Label {
                 ", place_catching='" + place_catching + '\'' +
                 ", tool_catching='" + tool_catching + '\'' +
                 ", condition_id=" + condition_id +
-                //", condition=" + condition +
                 '}';
     }
 }

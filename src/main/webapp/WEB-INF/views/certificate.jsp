@@ -63,7 +63,10 @@
 
                                     <script type="text/javascript">
                                         $(function () {
-                                            $('#certificate_date').datetimepicker({language: 'ru'});
+                                            $('#certificate_date').datetimepicker({
+                                                language: 'ru',
+                                                format: "YYYY-MM-DD HH:mm:ss"
+                                            });
                                         });
                                     </script>
                                 </td>

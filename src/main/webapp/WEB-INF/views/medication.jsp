@@ -54,7 +54,10 @@
 
                                 <script type="text/javascript">
                                     $(function () {
-                                        $('#medication_start_date').datetimepicker({language: 'ru'});
+                                        $('#medication_start_date').datetimepicker({
+                                            language: 'ru',
+                                            format: "YYYY-MM-DD HH:mm:ss"
+                                        });
                                     });
                                 </script>
                             </td>
@@ -75,7 +78,10 @@
 
                                 <script type="text/javascript">
                                     $(function () {
-                                        $('#medication_end_date').datetimepicker({language: 'ru'});
+                                        $('#medication_end_date').datetimepicker({
+                                            language: 'ru',
+                                            format: "YYYY-MM-DD HH:mm:ss"
+                                        });
                                     });
                                 </script>
                             </td>

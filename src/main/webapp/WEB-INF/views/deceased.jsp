@@ -54,7 +54,10 @@
 
                                     <script type="text/javascript">
                                         $(function () {
-                                            $('#deceased_date').datetimepicker({language: 'ru'});
+                                            $('#deceased_date').datetimepicker({
+                                                language: 'ru',
+                                                format: "YYYY-MM-DD HH:mm:ss"
+                                            });
                                         });
                                     </script>
                                 </td>

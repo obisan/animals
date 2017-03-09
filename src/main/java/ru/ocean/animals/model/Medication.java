@@ -1,14 +1,15 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "Medication")
 public class Medication {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -66,35 +67,19 @@ public class Medication {
     }
 
     public String getMedication_start_date() {
-        if(medication_start_date != null)
-            return sdf.format(medication_start_date);
-        else
-            return "";
+        return formatter.format2db(medication_start_date);
     }
 
     public void setMedication_start_date(String medication_start_date) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(medication_start_date).getTime());
-            this.medication_start_date = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.medication_start_date = formatter.parse(medication_start_date);
     }
 
     public String getMedication_end_date() {
-        if(medication_end_date != null)
-            return sdf.format(medication_end_date);
-        else
-            return "";
+        return formatter.format2db(medication_end_date);
     }
 
     public void setMedication_end_date(String medication_end_date) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(medication_end_date).getTime());
-            this.medication_end_date = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.medication_end_date = formatter.parse(medication_end_date);
     }
 
     public String getMedication_reaction() {

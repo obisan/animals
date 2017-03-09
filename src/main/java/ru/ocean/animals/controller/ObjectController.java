@@ -85,6 +85,7 @@ public class ObjectController {
     @RequestMapping(value = "/object/info/{id}")
     public String infoObject(@PathVariable("id") long id, Model model) {
         model.addAttribute("object",            this.objectService.getObjectById(id));
+        model.addAttribute("objectQuarantines", this.objectService.getQuarantinesOfObject(id));
 
         return "info/object";
     }

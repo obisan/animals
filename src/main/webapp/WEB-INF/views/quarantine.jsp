@@ -53,7 +53,10 @@
 
                                     <script type="text/javascript">
                                         $(function () {
-                                            $('#quarantine_date_start').datetimepicker({language: 'ru'});
+                                            $('#quarantine_date_start').datetimepicker({
+                                                language: 'ru',
+                                                format: "YYYY-MM-DD hh:mm:ss"
+                                            });
                                         });
                                     </script>
                                 </td>

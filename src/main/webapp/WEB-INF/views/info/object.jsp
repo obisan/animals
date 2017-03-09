@@ -176,7 +176,7 @@
                                     <th>Окончание карантина</th>
                                     <th>Примечание</th>
                                 </tr>
-                                <c:forEach items="${object.quarantines}" var="quarantine">
+                                <c:forEach items="${objectQuarantines}" var="quarantine">
                                     <tr>
                                         <td>${quarantine.id}</td>
                                         <td>${quarantine.quarantine_date_start}</td>

@@ -1,14 +1,15 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "Certificate")
 public class Certificate {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -50,20 +51,11 @@ public class Certificate {
     }
 
     public String getCertificate_date() {
-        if(certificate_date != null) {
-            return sdf.format(certificate_date);
-        } else
-            return "";
+        return formatter.format2db(certificate_date);
     }
 
     public void setCertificate_date(String certificate_date) {
-        try {
-            long time = sdf.parse(certificate_date).getTime();
-            Timestamp timestamp = new Timestamp(time);
-            this.certificate_date = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.certificate_date = formatter.parse(certificate_date);
     }
 
     public Long getObject_id() {
@@ -89,7 +81,6 @@ public class Certificate {
                 ", certificate_number='" + certificate_number + '\'' +
                 ", certificate_date=" + certificate_date +
                 ", object_id=" + object_id +
-                //", object=" + object +
                 '}';
     }
 }

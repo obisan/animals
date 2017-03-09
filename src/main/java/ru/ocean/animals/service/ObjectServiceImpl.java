@@ -7,10 +7,15 @@ import ru.ocean.animals.dao.DeceasedDao;
 import ru.ocean.animals.dao.DisplacementDao;
 import ru.ocean.animals.dao.ObjectDao;
 import ru.ocean.animals.dao.QuarantineDao;
-import ru.ocean.animals.model.*;
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+import ru.ocean.animals.model.Deceased;
+import ru.ocean.animals.model.Displacement;
 import ru.ocean.animals.model.Object;
+import ru.ocean.animals.model.Quarantine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -28,6 +33,8 @@ public class ObjectServiceImpl implements ObjectService {
     @Autowired
     private DeceasedDao deceasedDao;
 
+    private DateFormatter formatter = DateFormatterImpl.getInstance();
+
     @Transactional("dubinets")
     public void addObject(Object object) {
         this.objectDao.addObject(object);
@@ -36,54 +43,6 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public void updateObject(Object object) {
         this.objectDao.updateObject(object);
-    }
-
-    @Transactional("dubinets")
-    public Object splitObject(long object_id, int count) {
-        Object object   = this.objectDao.getObjectById(object_id);
-
-        Object object2 = new Object();
-        object2.setObject_name(object.getObject_name());
-        object2.setObject_length(object.getObject_length());
-        object2.setObject_weight(object.getObject_weight());
-        object2.setObject_count(count);
-        object2.setSpecie_id(object.getSpecie_id());
-        object2.setEmployee_id(object.getEmployee_id());
-        object2.setLabel_id(object.getLabel_id());
-
-        this.objectDao.addObject(object2);
-
-        try {
-            for(Displacement displacement : object.getDisplacements()) {
-                Displacement displacement2 = displacement.clone();
-                displacement2.setObject_id(object2.getId());
-                displacementDao.addDisplacement(displacement);
-                object2.getDisplacements().add(displacement);
-            }
-
-            for(Quarantine quarantine : object.getQuarantines()) {
-                Quarantine quarantine2 = quarantine.clone();
-                quarantine2.setObject_id(object2.getId());
-                quarantineDao.addQuarantine(quarantine2);
-                object2.getQuarantines().add(quarantine2);
-            }
-
-            for(Deceased deceased : object.getDeceaseds()) {
-                Deceased deceased2 = deceased.clone();
-                deceased2.setObject_id(object2.getId());
-                deceasedDao.addDeceased(deceased);
-                object2.getDeceaseds().add(deceased2);
-            }
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        this.objectDao.updateObject(object2);
-
-        object.decrease(count);
-        this.objectDao.updateObject(object);
-
-        return object2;
     }
 
     @Transactional("dubinets")
@@ -138,6 +97,55 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public List<Object> getObjectsFilteredBySpecieId(long specie_id) {
         return this.objectDao.getObjectsFilteredBySpecieId(specie_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Quarantine> getQuarantinesOfObject(long id) {
+        List<Quarantine> quarantines = new ArrayList<>();
+
+        Object object = this.objectDao.getObjectById(id);
+        quarantines.addAll(object.getQuarantines());
+        while (true) {
+            if(object.getParent_id() == null) break;
+            object = this.objectDao.getObjectById(object.getParent_id());
+            quarantines.addAll(object.getQuarantines());
+        }
+
+        Collections.sort(quarantines, (o1, o2) -> formatter.parse(o1.getQuarantine_date_start()).before(formatter.parse(o2.getQuarantine_date_start())) ? -1 : 1);
+
+        return quarantines;
+    }
+
+    @Transactional("dubinets")
+    public List<Deceased> getDeceasedsOfObject(long id) {
+        List<Deceased> deceaseds = new ArrayList<>();
+
+        Object object = this.objectDao.getObjectById(id);
+        while (true) {
+            if(object.getParent_id() == null) break;
+            object = this.objectDao.getObjectById(object.getParent_id());
+            deceaseds.addAll(object.getDeceaseds());
+        }
+
+        Collections.sort(deceaseds, (o1, o2) -> formatter.parse(o1.getDeceased_date()).before(formatter.parse(o2.getDeceased_date())) ? -1 : 1);
+
+        return deceaseds;
+    }
+
+    @Transactional("dubinets")
+    public List<Displacement> getDisplacementsOfObject(long id) {
+        List<Displacement> displacements = new ArrayList<>();
+
+        Object object = this.objectDao.getObjectById(id);
+        while (true) {
+            if(object.getParent_id() == null) break;
+            object = this.objectDao.getObjectById(object.getParent_id());
+            displacements.addAll(object.getDisplacements());
+        }
+
+        Collections.sort(displacements, (o1, o2) -> formatter.parse(o1.getDate_arrival()).before(formatter.parse(o2.getDate_arrival())) ? -1 : 1);
+
+        return displacements;
     }
 
     @Transactional("dubinets")

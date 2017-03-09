@@ -1,16 +1,17 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
 @Table(name = "Quarantine")
 public class Quarantine implements Cloneable {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -54,19 +55,11 @@ public class Quarantine implements Cloneable {
     }
 
     public String getQuarantine_date_start() {
-        if(quarantine_date_start != null) {
-            return sdf.format(quarantine_date_start);
-        }
-        return "";
+        return formatter.format2db(quarantine_date_start);
     }
 
     public void setQuarantine_date_start(String quarantine_date_start) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(quarantine_date_start).getTime());
-            this.quarantine_date_start = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.quarantine_date_start = formatter.parse(quarantine_date_start);
     }
 
     public Integer getQuarantine_period() {
@@ -81,7 +74,7 @@ public class Quarantine implements Cloneable {
         Calendar c = Calendar.getInstance();
         c.setTime(new Date(quarantine_date_start.getTime()));
         c.add(Calendar.DATE, this.quarantine_period);
-        return sdf.format(c.getTime());
+        return formatter.format2db(new Timestamp(c.getTime().getTime()));
     }
 
     public String getQuarantine_note() {

@@ -40,7 +40,10 @@
 
                         <script type="text/javascript">
                             $(function () {
-                                $('#date_from').datetimepicker({language: 'ru'});
+                                $('#date_from').datetimepicker({
+                                    language: 'ru',
+                                    format: "YYYY-MM-DD hh:mm:ss"
+                                });
                             });
                         </script>
                     </td>
@@ -61,7 +64,10 @@
 
                         <script type="text/javascript">
                             $(function () {
-                                $('#date_to').datetimepicker({language: 'ru'});
+                                $('#date_to').datetimepicker({
+                                    language: 'ru',
+                                    format: "YYYY-MM-DD hh:mm:ss"
+                                });
                             });
                         </script>
                     </td>

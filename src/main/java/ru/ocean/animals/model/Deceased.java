@@ -1,14 +1,15 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "Deceased")
 public class Deceased {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -65,19 +66,11 @@ public class Deceased {
     }
 
     public String getDeceased_date() {
-        if(deceased_date != null) {
-            return sdf.format(deceased_date);
-        } else
-            return "";
+        return formatter.format2db(deceased_date);
     }
 
     public void setDeceased_date(String deceased_date) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(deceased_date).getTime());
-            this.deceased_date = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.deceased_date = formatter.parse(deceased_date);
     }
 
     public String getDeceased_note() {

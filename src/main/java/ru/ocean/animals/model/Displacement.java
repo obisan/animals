@@ -1,14 +1,15 @@
 package ru.ocean.animals.model;
 
+import ru.ocean.animals.formatter.DateFormatter;
+import ru.ocean.animals.formatter.DateFormatterImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "Displacement")
 public class Displacement {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    private static DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Id
     @Column(name = "id")
@@ -61,36 +62,19 @@ public class Displacement {
     }
 
     public String getDate_arrival() {
-        if(date_arrival != null)
-            return sdf.format(date_arrival);
-        else
-            return "";
+        return formatter.format2db(date_arrival);
     }
 
     public void setDate_arrival(String date_arrival) {
-        try {
-            Timestamp timestamp = new Timestamp(sdf.parse(date_arrival).getTime());
-            this.date_arrival = timestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.date_arrival = formatter.parse(date_arrival);
     }
 
     public String getDate_departure() {
-        if(date_departure != null)
-            return sdf.format(date_departure);
-        else
-            return "";
+        return formatter.format2db(date_departure);
     }
 
     public void setDate_departure(String date_departure) {
-        try {
-            this.date_departure = new Timestamp(
-                    sdf.parse(date_departure).getTime()
-            );
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.date_departure = formatter.parse(date_departure);
     }
 
     public int getDisplacement_count() {
@@ -147,8 +131,6 @@ public class Displacement {
                 ", date_departure=" + date_departure +
                 ", tank_id=" + tank_id +
                 ", object_id=" + object_id +
-                //", tank=" + tank +
-                //", object=" + object +
                 '}';
     }
 }
