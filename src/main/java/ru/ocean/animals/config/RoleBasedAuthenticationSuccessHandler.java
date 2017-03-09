@@ -19,10 +19,13 @@ public class RoleBasedAuthenticationSuccessHandler implements AuthenticationSucc
 
     static {
         Map<String, String> map = new HashMap<>();
-        map.put("ROLE_ADMIN",   "/admin");
-        map.put("ROLE_USER",    "/index");
-        map.put("ROLE_KORM",    "/index");
-        map.put("ROLE_IHTI",    "/index");
+        map.put("ROLE_ADMIN",       "/index");
+        map.put("ROLE_USER",        "/index");
+        map.put("ROLE_KORM",        "/index");
+        map.put("ROLE_IHTI",        "/index");
+        map.put("ROLE_DIRECTOR",    "/index");
+        map.put("ROLE_BIOLOGY",     "/index");
+
         roleUrlMap = Collections.unmodifiableMap(map);
     }
 

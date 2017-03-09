@@ -9,6 +9,8 @@
 
     <http auto-config="true">
         <csrf disabled="true" />
+        <access-denied-handler ref="my403"/>
+
         <intercept-url pattern="/"                  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
         <intercept-url pattern="/index"             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
         <intercept-url pattern="/admin"             access="hasRole('ROLE_ADMIN')"/>
@@ -62,6 +64,10 @@
 
     <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
+
+    <beans:bean id="my403" class="ru.ocean.animals.web.handler.MyAccessDeniedHandler">
+        <beans:property name="errorPage" value="403" />
     </beans:bean>
 
 </beans:beans>

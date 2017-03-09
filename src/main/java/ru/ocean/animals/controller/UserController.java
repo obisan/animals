@@ -12,6 +12,8 @@ import ru.ocean.animals.service.SecurityService;
 import ru.ocean.animals.service.UserService;
 import ru.ocean.animals.validator.UserValidator;
 
+import java.security.Principal;
+
 @Controller
 public class UserController {
 
@@ -58,6 +60,19 @@ public class UserController {
         }
 
         return "login";
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied(Model model, Principal user) {
+        if (user != null) {
+            model.addAttribute("msg", "Здравствуйте " + user.getName()
+                    + ", у вас нет разрешения на доступ к этой странице!");
+        } else {
+            model.addAttribute("msg",
+                    "У вас нет разрешения на доступ к этой странице!");
+        }
+
+        return "403";
     }
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
