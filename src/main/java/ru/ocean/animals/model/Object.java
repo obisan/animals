@@ -36,6 +36,9 @@ public class Object {
     @Column(name = "tank_id")
     private Long tank_id;
 
+    @Column(name = "parent_id")
+    private Long parent_id;
+
     @ManyToOne
     @JoinColumn(
             name = "specie_id",
@@ -71,6 +74,15 @@ public class Object {
             updatable = false
     )
     private Tank tank;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "parent_id",
+            foreignKey = @ForeignKey(name = "FK_Object_Parent"),
+            insertable = false,
+            updatable = false
+    )
+    private Object parent;
 
     @OneToMany(
             targetEntity = Displacement.class,
@@ -196,6 +208,14 @@ public class Object {
         this.tank_id = tank_id;
     }
 
+    public Long getParent_id() {
+        return parent_id;
+    }
+
+    public void setParent_id(Long parent_id) {
+        this.parent_id = parent_id;
+    }
+
     public Specie getSpecie() {
         return specie;
     }
@@ -226,6 +246,14 @@ public class Object {
 
     public void setTank(Tank tank) {
         this.tank = tank;
+    }
+
+    public Object getParent() {
+        return parent;
+    }
+
+    public void setParent(Object parent) {
+        this.parent = parent;
     }
 
     public Set<Displacement> getDisplacements() {
@@ -269,6 +297,20 @@ public class Object {
     }
 
     @Override
+    public Object clone() throws CloneNotSupportedException {
+        Object object = new Object();
+        object.setObject_name(      this.object_name);
+        object.setObject_length(    this.object_length);
+        object.setObject_count(     this.object_count);
+        object.setObject_weight(    this.object_weight);
+        object.setSpecie_id(        this.specie_id);
+        object.setEmployee_id(      this.employee_id);
+        object.setLabel_id(         this.label_id);
+        object.setTank_id(          this.tank_id);
+        return object;
+    }
+
+    @Override
     public String toString() {
         return "Object{" +
                 "id=" + id +
@@ -280,6 +322,7 @@ public class Object {
                 ", employee_id=" + employee_id +
                 ", label_id=" + label_id +
                 ", tank_id=" + tank_id +
+                ", parent_id= " + parent_id +
                 '}';
     }
 }

@@ -161,7 +161,7 @@
                                 <td>${displacement.date_arrival}</td>
                                 <td>${displacement.date_departure}</td>
                                 <td>${displacement.displacement_count}</td>
-                                <td>${displacement.tank.tank_name}</td>
+                                <td><a href="<c:url value="/tank/info/${displacement.tank_id}"/>" target="_blank">${displacement.tank.tank_name}</a></td>
                                 <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
                                 <td><a href="<c:url value='/displacement/edit/${displacement.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/displacement/remove/${displacement.id}' />" >Delete</a></td>

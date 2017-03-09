@@ -35,7 +35,7 @@ public class ObjectController {
         model.addAttribute("listObjects",   this.objectService.getObjectsAlive());
 
         if(specie == null) {
-            model.addAttribute("listObjects",   this.objectService.getObjectsAlive());
+            model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParents());
         }
         else {
             model.addAttribute("listObjects",   this.objectService.getObjectsFilteredBySpecieId(Long.parseLong(specie)));

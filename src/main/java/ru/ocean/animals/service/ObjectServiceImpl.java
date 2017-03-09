@@ -10,6 +10,7 @@ import ru.ocean.animals.dao.QuarantineDao;
 import ru.ocean.animals.model.*;
 import ru.ocean.animals.model.Object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -86,6 +87,35 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
     @Transactional("dubinets")
+    public List<Object> splitObject2(Object parent, int count, long tank_target) {
+        Object child1 = null;
+        Object child2 = null;
+
+        List<Object> objects = new ArrayList<>();
+        try {
+            child1 = parent.clone();
+            child2 = parent.clone();
+
+            child1.setObject_count(parent.getObject_count() - count);
+            child1.setParent_id(parent.getId());
+
+            child2.setObject_count(count);
+            child2.setTank_id(tank_target);
+            child2.setParent_id(parent.getId());
+
+            this.objectDao.addObject(child1);
+            this.objectDao.addObject(child2);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        objects.add(child1);
+        objects.add(child2);
+
+        return objects;
+    }
+
+    @Transactional("dubinets")
     public Object getObjectById(long id) {
         return this.objectDao.getObjectById(id);
     }
@@ -93,6 +123,11 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public List<Object> getObjectsAlive() {
         return this.objectDao.getObjectsAlive();
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParents() {
+        return this.objectDao.getObjectsAliveWithoutParents();
     }
 
     @Transactional("dubinets")

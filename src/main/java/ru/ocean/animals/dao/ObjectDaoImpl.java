@@ -49,6 +49,17 @@ public class ObjectDaoImpl implements ObjectDao {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParents() {
+        Session session = sessionFactory.getCurrentSession();
+
+        List objects = session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParents()")
+                .addEntity(Object.class).list();
+
+        return objects;
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Object> getObjectsWithDeads() {
         Session session = sessionFactory.getCurrentSession();
 

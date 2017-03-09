@@ -8,6 +8,7 @@ public interface ObjectDao {
     void                updateObject(Object object);
     Object              getObjectById(long id);
     List<Object>        getObjectsAlive();
+    List<Object>        getObjectsAliveWithoutParents();
     List<Object>        getObjectsWithDeads();
     List<Object>        getObjectsFilteredBySpecieId(long specie_id);
     void                removeObject(long id);

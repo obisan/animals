@@ -37,14 +37,14 @@ public class DisplacementController {
 
     @RequestMapping(value = "/displacement/add", method = RequestMethod.POST)
     public String addDisplacement(@ModelAttribute("displacement") Displacement displacement) {
-        Object object = this.objectService.getObjectById(displacement.getObject_id());
-        if(displacement.getDisplacement_count() < object.getObject_count()) {
-            Object object2 = this.objectService.splitObject(object.getId(), displacement.getDisplacement_count());
-            object2.setTank_id(displacement.getTank_id());
-            this.objectService.updateObject(object2);
-        } else {
-            object.setTank_id(displacement.getTank_id());
-            this.objectService.updateObject(object);
+        Object parent = this.objectService
+                .getObjectById(displacement.getObject_id());
+
+        int     count       = displacement.getDisplacement_count();
+        long    tank_target = displacement.getTank_id();
+
+        if(displacement.getDisplacement_count() < parent.getObject_count()) {
+            this.objectService.splitObject2(parent, count, tank_target);
         }
 
         if(displacement.getId() == null) {
