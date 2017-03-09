@@ -18,6 +18,18 @@ public class Tank {
     @Column(name = "tank_volume")
     private String tank_volume;
 
+    @Column(name = "tank_temperature")
+    private Float tank_temperature;
+
+    @Column(name = "tank_ph")
+    private Float tank_ph;
+
+    @Column(name = "tank_orp")
+    private Float tank_orp;
+
+    @Column(name = "tank_salineness")
+    private Float tank_salineness;
+
     @Column(name = "employee_id")
     private Long employee_id;
 
@@ -80,6 +92,38 @@ public class Tank {
 
     public void setTank_volume(String tank_volume) {
         this.tank_volume = tank_volume;
+    }
+
+    public Float getTank_temperature() {
+        return tank_temperature;
+    }
+
+    public void setTank_temperature(Float tank_temperature) {
+        this.tank_temperature = tank_temperature;
+    }
+
+    public Float getTank_ph() {
+        return tank_ph;
+    }
+
+    public void setTank_ph(Float tank_ph) {
+        this.tank_ph = tank_ph;
+    }
+
+    public Float getTank_orp() {
+        return tank_orp;
+    }
+
+    public void setTank_orp(Float tank_orp) {
+        this.tank_orp = tank_orp;
+    }
+
+    public Float getTank_salineness() {
+        return tank_salineness;
+    }
+
+    public void setTank_salineness(Float tank_salineness) {
+        this.tank_salineness = tank_salineness;
     }
 
     public Long getEmployee_id() {

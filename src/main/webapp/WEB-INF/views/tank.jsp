@@ -58,6 +58,46 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="tank_temperature">
+                                        <spring:message text="Температура танка"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="tank_temperature" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="tank_ph">
+                                        <spring:message text="Кислотность (ph) воды"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="tank_ph" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="tank_orp">
+                                        <spring:message text="ОВП (ORP)"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="tank_orp" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="tank_salineness">
+                                        <spring:message text="Соленость"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="tank_salineness" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="employee_id">
                                         <spring:message text="Сотрудник"/>
                                     </form:label>
@@ -124,7 +164,7 @@
                                 <td>${tank.id}</td>
                                 <td><a href="<c:url value="/tank/info/${tank.id}" />" target="_blank" >${tank.tank_name}</a> </td>
                                 <td>${tank.tank_volume}</td>
-                                <td>${tank.employee.fullShortName}</td>
+                                <td><a href="<c:url value="/employee/info/${tank.employee.id}"/>" target="_blank">${tank.employee.fullShortName}</a></td>
                                 <td>${tank.building.building_name}</td>
                                 <td><a href="<c:url value='/tank/edit/${tank.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/tank/remove/${tank.id}' />" >Delete</a></td>

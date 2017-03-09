@@ -94,12 +94,14 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Животное</th>
+                                <th>Количество</th>
                                 <th>Вид</th>
                             </tr>
                             <c:forEach items="${tank.objects}" var="object">
                                 <tr>
                                     <td>${object.id}</td>
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>
+                                    <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
                                 </tr>
                             </c:forEach>
