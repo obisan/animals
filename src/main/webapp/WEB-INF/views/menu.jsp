@@ -54,7 +54,7 @@
                                 <li><a href="${contextPath}/displacements"  >Журнал перемещений</a></li>
                                 <li><a href="${contextPath}/medications"    >Журнал лечений</a></li>
                                 <li><a href="${contextPath}/quarantines"    >Журнал карантинов</a></li>
-                                <li><a href="${contextPath}/deceaseds"      >Журнал отходов</a></li>
+                                <li><a href="${contextPath}/deceaseds"      >Журнал убытий</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

@@ -124,7 +124,7 @@
                             <td>${certificate.id}</td>
                             <td>${certificate.certificate_number}</td>
                             <td>${certificate.certificate_date}</td>
-                            <td>${certificate.object.object_name}</td>
+                            <td><a href="<c:url value="/object/info/${certificate.object.id}" />" target="_blank">${certificate.object.object_name}</a></td>
                             <td><a href="<c:url value='/certificate/edit/${certificate.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/certificate/remove/${certificate.id}' />" >Delete</a></td>
                         </tr>

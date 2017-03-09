@@ -41,7 +41,7 @@
                             <tr>
                                 <td>
                                     <form:label path="deceased_date">
-                                        <spring:message text="Дата гибели"/>
+                                        <spring:message text="Дата убытия"/>
                                     </form:label>
                                 </td>
                                 <td>
@@ -126,7 +126,7 @@
                     <tr>
                         <th width="80">ID</th>
                         <th width="120">Дата отхода</th>
-                        <th width="120">Количество погибших животных</th>
+                        <th width="180">Количество убывших</th>
                         <th width="120">Примечание</th>
                         <th width="120">Животное</th>
                         <th width="120">Танк</th>

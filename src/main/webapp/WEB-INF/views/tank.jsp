@@ -59,7 +59,7 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_temperature">
-                                        <spring:message text="Температура танка"/>
+                                        <spring:message text="Температура"/>
                                     </form:label>
                                 </td>
                                 <td>
@@ -154,6 +154,10 @@
                             <th width="80">ID</th>
                             <th width="120">Наименование танка</th>
                             <th width="120">Объем танка</th>
+                            <th width="120">Температура</th>
+                            <th width="120">Кислотность (ph)</th>
+                            <th width="120">ОВП (ORP)</th>
+                            <th width="120">Соленость</th>
                             <th width="120">Сотрудник</th>
                             <th width="120">Строение</th>
                             <th width="60">Edit</th>
@@ -164,6 +168,10 @@
                                 <td>${tank.id}</td>
                                 <td><a href="<c:url value="/tank/info/${tank.id}" />" target="_blank" >${tank.tank_name}</a> </td>
                                 <td>${tank.tank_volume}</td>
+                                <td>${tank.tank_temperature}</td>
+                                <td>${tank.tank_ph}</td>
+                                <td>${tank.tank_orp}</td>
+                                <td>${tank.tank_salineness}</td>
                                 <td><a href="<c:url value="/employee/info/${tank.employee.id}"/>" target="_blank">${tank.employee.fullShortName}</a></td>
                                 <td>${tank.building.building_name}</td>
                                 <td><a href="<c:url value='/tank/edit/${tank.id}' />" >Edit</a></td>
