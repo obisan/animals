@@ -56,4 +56,11 @@ public class EmployeeController {
         return "employee";
     }
 
+    @RequestMapping(value = "/employee/info/{id}")
+    public String infoEmployee(@PathVariable("id") long id, Model model) {
+        model.addAttribute("employee",      this.employeeService.getEmployeeById(id));
+
+        return "info/employee";
+    }
+
 }
