@@ -5,6 +5,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<jsp:useBean id="specie" scope="request" type="ru.ocean.animals.model.Specie"/>
 
 <html>
 <head>
@@ -110,12 +111,14 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Животное</th>
+                                <th>Количество</th>
                                 <th>Танк</th>
                             </tr>
                             <c:forEach items="${specie.objects}" var="object">
                                 <tr>
                                     <td>${object.id}</td>
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>
+                                    <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank" >${object.tank.tank_name}</a></td>
                                 </tr>
                             </c:forEach>

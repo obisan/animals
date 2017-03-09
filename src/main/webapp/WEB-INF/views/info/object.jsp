@@ -99,7 +99,8 @@
                                     </form:label>
                                 </td>
                                 <td>
-                                    <spring:message text="${object.employee.fullShortNameAndDepartment}" />
+                                    <a href="<c:url value="/employee/info/${object.employee.id}"/>" target="_blank">${object.employee.fullShortName}</a>
+                                    <a href="<c:url value="/department/info/${object.employee.department.id}"/>" target="_blank">(${object.employee.department.department_name})</a>
                                 </td>
                             </tr>
                             <tr>
@@ -196,7 +197,7 @@
                 <!-- Заголовок 3 панели -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Список гибелей</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Список убытий</a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">

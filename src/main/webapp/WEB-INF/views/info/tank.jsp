@@ -149,7 +149,7 @@
             <!-- Заголовок 3 панели -->
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Список отходов</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Список убытий</a>
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">

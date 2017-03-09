@@ -26,6 +26,19 @@
                         <li><a href="${contextPath}/index">Главная</a></li>
                         <li class="dropdown">
                             <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Журналы
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="${contextPath}/objects"        >Журнал животных</a></li>
+                                <li><a href="${contextPath}/displacements"  >Журнал перемещений</a></li>
+                                <li><a href="${contextPath}/medications"    >Журнал лечений</a></li>
+                                <li><a href="${contextPath}/quarantines"    >Журнал карантинов</a></li>
+                                <li><a href="${contextPath}/deceaseds"      >Журнал убытий</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Справочники
                                 <span class="caret" />
                             </a>
@@ -42,19 +55,6 @@
                                 <li><a href="${contextPath}/certificates">Список сертификатов</a></li>
                                 <li class="divider"></li>
                                 <li><a href="${contextPath}/drugs"      >Список лекарств</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Журналы
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="${contextPath}/objects"        >Журнал животных</a></li>
-                                <li><a href="${contextPath}/displacements"  >Журнал перемещений</a></li>
-                                <li><a href="${contextPath}/medications"    >Журнал лечений</a></li>
-                                <li><a href="${contextPath}/quarantines"    >Журнал карантинов</a></li>
-                                <li><a href="${contextPath}/deceaseds"      >Журнал убытий</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
