@@ -15,8 +15,8 @@
 
     <title>Log in with your account</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
 
     <script src="${contextPath}/resources/js/html5shiv.min.js"></script>
     <script src="${contextPath}/resources/js/respond.min.js"></script>

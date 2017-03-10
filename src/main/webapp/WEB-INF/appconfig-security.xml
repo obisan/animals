@@ -70,4 +70,9 @@
         <beans:property name="errorPage" value="403" />
     </beans:bean>
 
+    <!-- -->
+    <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <beans:property name="defaultLocale" value="ru" />
+    </beans:bean>
+
 </beans:beans>

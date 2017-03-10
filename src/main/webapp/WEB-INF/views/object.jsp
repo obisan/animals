@@ -9,9 +9,12 @@
 <html>
 <head>
     <title>Животное</title>
+
+    <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css" />
+
 </head>
 <body>
-
     <jsp:include page="menu.jsp" />
 
     <div class="container">
@@ -89,6 +92,9 @@
                                         </c:forEach>
                                     </form:select>
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="specie_id" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -104,6 +110,9 @@
                                         </c:forEach>
                                     </form:select>
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_id" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -118,6 +127,9 @@
                                             <form:option value="${tank.id}">${tank.tank_name}</form:option>
                                         </c:forEach>
                                     </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="tank_id" />
                                 </td>
                             </tr>
                             <tr>
