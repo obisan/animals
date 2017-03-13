@@ -3,6 +3,7 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Quarantine;
 import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.QuarantineService;
+import ru.ocean.animals.validator.QuarantineValidator;
 
 @Controller
 public class QuarantineController {
@@ -19,6 +21,9 @@ public class QuarantineController {
 
     @Autowired
     private ObjectService       objectService;
+
+    @Autowired
+    private QuarantineValidator quarantineValidator;
 
     @RequestMapping(value = "/quarantines", method = RequestMethod.GET)
     public String getQuarantines(Model model) {
@@ -30,7 +35,16 @@ public class QuarantineController {
     }
 
     @RequestMapping(value = "/quarantine/add", method = RequestMethod.POST)
-    public String addQuarantine(@ModelAttribute("quarantine") Quarantine quarantine){
+    public String addQuarantine(@ModelAttribute("quarantine") Quarantine quarantine, BindingResult bindingResult, Model model){
+        quarantineValidator.validate(quarantine, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listQuarantines",   this.quarantineService.getQuarantines());
+            model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+
+            return "quarantine";
+        }
+
         if(quarantine.getId() == null) {
             this.quarantineService.addQuarantine(quarantine);
         } else {

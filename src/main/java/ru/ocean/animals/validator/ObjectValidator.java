@@ -22,6 +22,14 @@ public class ObjectValidator implements Validator {
     public void validate(java.lang.Object o, Errors errors) {
         Object object = (Object) o;
 
+        if(object.getObject_name() == null) {
+            errors.rejectValue("object_name", "Null.value");
+        }
+
+        if(object.getObject_count() == null) {
+            errors.rejectValue("object_count", "Null.value");
+        }
+
         if(object.getSpecie_id() == null) {
             errors.rejectValue( "specie_id", "Null.value");
         }
@@ -33,6 +41,5 @@ public class ObjectValidator implements Validator {
         if(object.getTank_id() == null) {
             errors.rejectValue("tank_id", "Null.value");
         }
-
     }
 }

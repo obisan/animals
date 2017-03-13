@@ -61,6 +61,9 @@
                                         });
                                     </script>
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="deceased_date" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -96,6 +99,9 @@
                                             <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
                                         </c:forEach>
                                     </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_id" />
                                 </td>
                             </tr>
                             <tr>

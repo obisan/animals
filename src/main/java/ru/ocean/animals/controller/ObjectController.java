@@ -60,14 +60,14 @@ public class ObjectController {
     public String addObject(@ModelAttribute("object") Object object, BindingResult bindingResult, Model model) {
         objectValidator.validate(object, bindingResult);
 
-        model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listEmployees", this.employeeService.getEmployees());
-        model.addAttribute("listLabels",    this.labelService.getLabels());
-        model.addAttribute("listTags",      this.tagService.getTags());
-        model.addAttribute("listSpecies",   this.specieService.getSpecies());
-        model.addAttribute("listTanks",     this.tankService.getTanks());
-
         if(bindingResult.hasErrors()) {
+            model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParents());
+            model.addAttribute("listEmployees", this.employeeService.getEmployees());
+            model.addAttribute("listLabels",    this.labelService.getLabels());
+            model.addAttribute("listTags",      this.tagService.getTags());
+            model.addAttribute("listSpecies",   this.specieService.getSpecies());
+            model.addAttribute("listTanks",     this.tankService.getTanks());
+
             return "object";
         }
 

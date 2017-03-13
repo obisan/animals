@@ -61,6 +61,9 @@
                                     });
                                 </script>
                             </td>
+                            <td>
+                                <form:errors cssClass="error" path="medication_start_date" />
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -140,6 +143,9 @@
                                     </c:forEach>
                                 </form:select>
                             </td>
+                            <td>
+                                <form:errors cssClass="error" path="object_id" />
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -154,6 +160,9 @@
                                         <form:option value="${idrug.id}">${idrug.drug_name}</form:option>
                                     </c:forEach>
                                 </form:select>
+                            </td>
+                            <td>
+                                <form:errors cssClass="error" path="drug_id" />
                             </td>
                         </tr>
                         <tr>

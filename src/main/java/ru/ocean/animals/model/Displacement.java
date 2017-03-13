@@ -23,7 +23,7 @@ public class Displacement {
     private Timestamp date_departure;
 
     @Column(name = "displacement_count")
-    private int displacement_count;
+    private Integer displacement_count;
 
     @Column(name = "tank_id")
     private Long tank_id;
@@ -49,10 +49,6 @@ public class Displacement {
     )
     private Object object;
 
-    public Displacement() {
-        this.displacement_count = 1;
-    }
-
     public Long getId() {
         return id;
     }
@@ -77,11 +73,11 @@ public class Displacement {
         this.date_departure = formatter.parse(date_departure);
     }
 
-    public int getDisplacement_count() {
+    public Integer getDisplacement_count() {
         return displacement_count;
     }
 
-    public void setDisplacement_count(int displacement_count) {
+    public void setDisplacement_count(Integer displacement_count) {
         this.displacement_count = displacement_count;
     }
 

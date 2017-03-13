@@ -15,11 +15,11 @@ public class Object {
     @Column(name = "object_name")
     private String  object_name;
 
+    @Column(name = "object_count")
+    private Integer object_count;
+
     @Column(name = "object_length")
     private float object_length;
-
-    @Column(name = "object_count")
-    private int object_count;
 
     @Column(name = "object_weight")
     private float object_weight;
@@ -160,11 +160,11 @@ public class Object {
         this.object_length = object_length;
     }
 
-    public int getObject_count() {
+    public Integer getObject_count() {
         return object_count;
     }
 
-    public void setObject_count(int object_count) {
+    public void setObject_count(Integer object_count) {
         this.object_count = object_count;
     }
 

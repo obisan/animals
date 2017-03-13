@@ -47,6 +47,9 @@
                                 <td>
                                     <form:input path="object_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -56,6 +59,9 @@
                                 </td>
                                 <td>
                                     <form:input path="object_count"  />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_count" />
                                 </td>
                             </tr>
                             <tr>

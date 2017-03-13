@@ -3,6 +3,7 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Deceased;
 import ru.ocean.animals.service.DeceasedService;
 import ru.ocean.animals.service.ObjectService;
+import ru.ocean.animals.validator.DeceasedValidator;
 
 @Controller
 public class DeceasedController {
@@ -19,6 +21,9 @@ public class DeceasedController {
 
     @Autowired
     private ObjectService       objectService;
+
+    @Autowired
+    private DeceasedValidator   deceasedValidator;
 
     @RequestMapping(value = "/deceaseds",   method = RequestMethod.GET)
     public String getDeceaseds(Model model) {
@@ -30,7 +35,16 @@ public class DeceasedController {
     }
 
     @RequestMapping(value = "/deceased/add", method = RequestMethod.POST)
-    public String addDeceased(@ModelAttribute("deceased") Deceased deceased) {
+    public String addDeceased(@ModelAttribute("deceased") Deceased deceased, BindingResult bindingResult, Model model) {
+        deceasedValidator.validate(deceased, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listDeceaseds",     this.deceasedService.getDeceaseds());
+            model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+
+            return "deceased";
+        }
+
         if(deceased.getId() == null) {
             this.deceasedService.addDeceased(deceased);
         } else {

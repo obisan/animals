@@ -3,6 +3,7 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import ru.ocean.animals.model.Object;
 import ru.ocean.animals.service.DisplacementService;
 import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.TankService;
+import ru.ocean.animals.validator.DisplacementValidator;
 
 @Controller
 public class DisplacementController {
@@ -25,6 +27,9 @@ public class DisplacementController {
     @Autowired
     private TankService             tankService;
 
+    @Autowired
+    private DisplacementValidator   displacementValidator;
+
     @RequestMapping(value = "/displacements", method = RequestMethod.GET)
     public String getDisplacements(Model model) {
         model.addAttribute("displacement",          new Displacement());
@@ -36,7 +41,17 @@ public class DisplacementController {
     }
 
     @RequestMapping(value = "/displacement/add", method = RequestMethod.POST)
-    public String addDisplacement(@ModelAttribute("displacement") Displacement displacement) {
+    public String addDisplacement(@ModelAttribute("displacement") Displacement displacement , BindingResult bindingResult, Model model) {
+        displacementValidator.validate(displacement, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
+            model.addAttribute("listObjects",           this.objectService.getObjectsAlive());
+            model.addAttribute("listTanks",             this.tankService.getTanks());
+
+            return "displacement";
+        }
+
         Object parent = this.objectService
                 .getObjectById(displacement.getObject_id());
 

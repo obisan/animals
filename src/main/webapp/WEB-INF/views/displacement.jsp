@@ -61,6 +61,9 @@
                                         });
                                     </script>
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="date_arrival" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -88,12 +91,33 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="object_id">
+                                        <spring:message text="Животное"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="object_id">
+                                        <option></option>
+                                        <c:forEach items="${listObjects}" var="object">
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="displacement_count">
                                         <spring:message text="Количество"/>
                                     </form:label>
                                 </td>
                                 <td>
                                     <form:input path="displacement_count" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="displacement_count" />
                                 </td>
                             </tr>
                             <tr>
@@ -110,20 +134,8 @@
                                         </c:forEach>
                                     </form:select>
                                 </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <form:label path="object_id">
-                                        <spring:message text="Животное"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="object_id">
-                                        <option></option>
-                                        <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
-                                        </c:forEach>
-                                    </form:select>
+                                    <form:errors cssClass="error" path="tank_id" />
                                 </td>
                             </tr>
                             <tr>
