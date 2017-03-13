@@ -148,7 +148,7 @@
                     <c:forEach items="${listSpecies}" var="specie">
                         <tr>
                             <td>${specie.id}</td>
-                            <td>${specie.specie_name_lat}</td>
+                            <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.specie_author_bracket}</td>
                             <td>${specie.specie_name_ru}</td>
                             <td>${specie.specie_rbc}</td>
                             <td>${specie.specie_nucleus}</td>

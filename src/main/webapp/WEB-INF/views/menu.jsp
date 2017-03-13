@@ -43,11 +43,13 @@
                                 <span class="caret" />
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="${contextPath}/classes"    >Список классов</a></li>
-                                <li><a href="${contextPath}/orders"     >Список отрядов</a></li>
-                                <li><a href="${contextPath}/families"   >Список семейств</a></li>
-                                <li><a href="${contextPath}/genera"     >Список родов</a></li>
+                                <!-- <li><a href="${contextPath}/classes"    >Список классов</a></li> -->
+                                <!-- <li><a href="${contextPath}/orders"     >Список отрядов</a></li> -->
+                                <!-- <li><a href="${contextPath}/families"   >Список семейств</a></li> -->
+                                <!-- <li><a href="${contextPath}/genera"     >Список родов</a></li> -->
                                 <li><a href="${contextPath}/species"    >Список видов</a></li>
+                                <li class="divider"></li>
+                                <li><a href="${contextPath}/tanks"      >Список танков</a></li>
                                 <li class="divider"></li>
                                 <li><a href="${contextPath}/tags"       >Список меток</a></li>
                                 <li class="divider"></li>
@@ -75,7 +77,6 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="${contextPath}/tanks"              >Список танков</a></li>
                                 <li><a href="${contextPath}/allowances"         >Список кормов</a></li>
                                 <li><a href="${contextPath}/journalallowances"  >Назначение кормов</a></li>
                             </ul>

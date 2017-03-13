@@ -111,6 +111,12 @@ public class Specie {
         return specie_author;
     }
 
+    public String getSpecie_author_bracket() {
+        if(specie_author != null)
+            return specie_author;
+        return null;
+    }
+
     public void setSpecie_author(String specie_author) {
         this.specie_author = specie_author;
     }
