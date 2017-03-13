@@ -58,6 +58,16 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="specie_author">
+                                        <spring:message text="Автор, год"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="specie_author" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="specie_rbc">
                                         <spring:message text="Кровянные тельца"/>
                                     </form:label>
@@ -87,21 +97,6 @@
                                         <option></option>
                                         <c:forEach items="${listTags}" var="tag">
                                             <form:option value="${tag.id}">${tag.tag_name}</form:option>
-                                        </c:forEach>
-                                    </form:select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <form:label path="genus_id">
-                                        <spring:message text="Род"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="genus_id">
-                                        <option></option>
-                                        <c:forEach items="${listGenera}" var="igenus">
-                                            <form:option value="${igenus.id}">${igenus.genusFullName}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -144,7 +139,6 @@
                         <th width="80">ID</th>
                         <th width="120">Вид (лат.)</th>
                         <th width="120">Вид (рус.)</th>
-                        <th width="120">Род</th>
                         <th width="80">Кровянные тельца</th>
                         <th width="80">Ядра</th>
                         <th width="80">Метка</th>
@@ -156,7 +150,6 @@
                             <td>${specie.id}</td>
                             <td>${specie.specie_name_lat}</td>
                             <td>${specie.specie_name_ru}</td>
-                            <td>${specie.genus.genus_name_lat}</td>
                             <td>${specie.specie_rbc}</td>
                             <td>${specie.specie_nucleus}</td>
                             <td>${specie.tag.tag_name}</td>

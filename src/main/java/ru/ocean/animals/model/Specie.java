@@ -24,20 +24,11 @@ public class Specie {
     @Column(name = "specie_nucleus")
     private float specie_nucleus;
 
-    @Column(name = "genus_id")
-    private Long genus_id;
+    @Column(name = "specie_author")
+    private String specie_author;
 
     @Column(name = "tag_id")
     private Long tag_id;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "genus_id",
-            foreignKey = @ForeignKey(name = "FK_Specie_Genus"),
-            insertable = false,
-            updatable = false
-    )
-    private Genus genus;
 
     @ManyToOne
     @JoinColumn(
@@ -116,12 +107,12 @@ public class Specie {
         this.specie_nucleus = specie_nucleus;
     }
 
-    public Long getGenus_id() {
-        return genus_id;
+    public String getSpecie_author() {
+        return specie_author;
     }
 
-    public void setGenus_id(Long genus_id) {
-        this.genus_id = genus_id;
+    public void setSpecie_author(String specie_author) {
+        this.specie_author = specie_author;
     }
 
     public Long getTag_id() {
@@ -130,14 +121,6 @@ public class Specie {
 
     public void setTag_id(Long tag_id) {
         this.tag_id = tag_id;
-    }
-
-    public Genus getGenus() {
-        return genus;
-    }
-
-    public void setGenus(Genus genus) {
-        this.genus = genus;
     }
 
     public Tag getTag() {
@@ -172,7 +155,8 @@ public class Specie {
                 ", specie_name_lat='" + specie_name_lat + '\'' +
                 ", specie_rbc=" + specie_rbc +
                 ", specie_nucleus=" + specie_nucleus +
-                ", genus_id=" + genus_id +
+                ", specie_author='" + specie_author + '\'' +
+                ", tag_id=" + tag_id +
                 '}';
     }
 }

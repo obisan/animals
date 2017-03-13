@@ -1,8 +1,6 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Genus")
@@ -28,14 +26,6 @@ public class Genus {
             insertable = false,
             updatable = false)
     private Family family;
-
-    @OneToMany(
-            targetEntity = Specie.class,
-            mappedBy = "genus",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private Set<Specie> species = new HashSet<>();
 
     public String getGenusFullName() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -92,7 +82,6 @@ public class Genus {
                 ", genus_name_ru='" + genus_name_ru + '\'' +
                 ", genus_name_lat='" + genus_name_lat + '\'' +
                 ", family_id=" + family_id +
-                //", family=" + family +
                 '}';
     }
 }
