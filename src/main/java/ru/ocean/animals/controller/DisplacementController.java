@@ -34,7 +34,7 @@ public class DisplacementController {
     public String getDisplacements(Model model) {
         model.addAttribute("displacement",          new Displacement());
         model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
-        model.addAttribute("listObjects",           this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "displacement";
@@ -46,7 +46,7 @@ public class DisplacementController {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
-            model.addAttribute("listObjects",           this.objectService.getObjectsAlive());
+            model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
             model.addAttribute("listTanks",             this.tankService.getTanks());
 
             return "displacement";
@@ -82,7 +82,7 @@ public class DisplacementController {
     public String editDisplacement(@PathVariable("id") long id, Model model) {
         model.addAttribute("displacement",          this.displacementService.getDisplacementById(id));
         model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
-        model.addAttribute("listObjects",           this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "displacement";

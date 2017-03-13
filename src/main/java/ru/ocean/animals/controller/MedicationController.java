@@ -33,7 +33,7 @@ public class MedicationController {
     public String getMedications(Model model) {
         model.addAttribute("medication",        new Medication());
         model.addAttribute("listMedications",   this.medicationService.getMedications());
-        model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",         this.drugService.getDrugs());
 
         return "medication";
@@ -45,7 +45,7 @@ public class MedicationController {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listMedications",   this.medicationService.getMedications());
-            model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+            model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
             model.addAttribute("listDrugs",         this.drugService.getDrugs());
 
             return "medication";
@@ -71,7 +71,7 @@ public class MedicationController {
     public String editMedication(@PathVariable("id") long id, Model model) {
         model.addAttribute("medication",        this.medicationService.getMedicationById(id));
         model.addAttribute("listMedications",   this.medicationService.getMedications());
-        model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",         this.drugService.getDrugs());
 
         return "medication";

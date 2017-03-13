@@ -29,7 +29,7 @@ public class QuarantineController {
     public String getQuarantines(Model model) {
         model.addAttribute("quarantine",        new Quarantine());
         model.addAttribute("listQuarantines",   this.quarantineService.getQuarantines());
-        model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
 
         return "quarantine";
     }
@@ -40,7 +40,7 @@ public class QuarantineController {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listQuarantines",   this.quarantineService.getQuarantines());
-            model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+            model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
 
             return "quarantine";
         }
@@ -65,7 +65,7 @@ public class QuarantineController {
     public String editQuarantine(@PathVariable("id") long id, Model model) {
         model.addAttribute("quarantine",        this.quarantineService.getQuarantineById(id));
         model.addAttribute("listQuarantines",   this.quarantineService.getQuarantines());
-        model.addAttribute("listObjects",       this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
 
         return "quarantine";
     }

@@ -90,7 +90,7 @@ public class ObjectController {
     @RequestMapping(value = "/object/edit/{id}")
     public String editObject(@PathVariable("id") long id, Model model) {
         model.addAttribute("object",        this.objectService.getObjectById(id));
-        model.addAttribute("listObjects",   this.objectService.getObjectsAlive());
+        model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listEmployees", this.employeeService.getEmployees());
         model.addAttribute("listLabels",    this.labelService.getLabels());
         model.addAttribute("listTags",      this.tagService.getTags());
