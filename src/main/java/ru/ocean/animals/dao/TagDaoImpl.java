@@ -37,6 +37,20 @@ public class TagDaoImpl implements TagDao {
         return tag;
     }
 
+    @Override
+    public Tag getTagBySysString(String str) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Long id = Long.parseLong(str.substring(
+                str.indexOf("=") + 1,
+                str.indexOf(",")
+        ));
+        Tag tag = (Tag) session.load(Tag.class, id);
+        logger.info("Tag successfully loaded. Tag details: " + tag);
+
+        return tag;
+    }
+
     @SuppressWarnings("unchecked")
     public List<Tag> getTags() {
         Session session = sessionFactory.getCurrentSession();

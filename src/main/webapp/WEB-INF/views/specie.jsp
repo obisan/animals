@@ -88,17 +88,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="tag_id">
-                                        <spring:message text="Метка"/>
+                                    <form:label path="tags">
+                                        <spring:message text="Метки" />
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="tag_id">
-                                        <option></option>
-                                        <c:forEach items="${listTags}" var="tag">
-                                            <form:option value="${tag.id}">${tag.tag_name}</form:option>
-                                        </c:forEach>
-                                    </form:select>
+                                    <c:forEach items="${listTags}" var="tag"><form:checkbox path="tags2" value="${tag}" label="${tag.tag_name}" />  </c:forEach>
                                 </td>
                             </tr>
                             <tr>
@@ -152,7 +147,7 @@
                             <td>${specie.specie_name_ru}</td>
                             <td>${specie.specie_rbc}</td>
                             <td>${specie.specie_nucleus}</td>
-                            <td>${specie.tag.tag_name}</td>
+                            <td><c:forEach items="${specie.tags}" var="tag">${tag.tag_name} </c:forEach></td>
                             <td><a href="<c:url value='/specie/edit/${specie.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/specie/remove/${specie.id}' />" >Delete</a></td>
                         </tr>

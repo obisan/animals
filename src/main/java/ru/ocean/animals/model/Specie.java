@@ -1,12 +1,16 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "Specie")
 public class Specie {
+    private static final long serialVersionUID = 5754104541168320730L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,18 +31,6 @@ public class Specie {
     @Column(name = "specie_author")
     private String specie_author;
 
-    @Column(name = "tag_id")
-    private Long tag_id;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "tag_id",
-            foreignKey = @ForeignKey(name = "FK_Specie_Tag"),
-            insertable = false,
-            updatable = false
-    )
-    private Tag tag;
-
     @OneToMany(
             targetEntity = Object.class,
             mappedBy = "specie",
@@ -54,6 +46,25 @@ public class Specie {
             fetch = FetchType.LAZY
     )
     private Set<Photo> photos = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "specie_tags",
+            joinColumns = @JoinColumn(name = "specie_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
+
+    @Transient
+    private List<String> tags2 = new ArrayList<>();
+
+    public List<String> getTags2() {
+        return tags2;
+    }
+
+    public void setTags2(List<String> tags2) {
+        this.tags2 = tags2;
+    }
 
     public String getSpecieFullName() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -121,22 +132,6 @@ public class Specie {
         this.specie_author = specie_author;
     }
 
-    public Long getTag_id() {
-        return tag_id;
-    }
-
-    public void setTag_id(Long tag_id) {
-        this.tag_id = tag_id;
-    }
-
-    public Tag getTag() {
-        return tag;
-    }
-
-    public void setTag(Tag tag) {
-        this.tag = tag;
-    }
-
     public Set<Object> getObjects() {
         return objects;
     }
@@ -153,6 +148,14 @@ public class Specie {
         this.photos = photos;
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return "Specie{" +
@@ -162,7 +165,6 @@ public class Specie {
                 ", specie_rbc=" + specie_rbc +
                 ", specie_nucleus=" + specie_nucleus +
                 ", specie_author='" + specie_author + '\'' +
-                ", tag_id=" + tag_id +
                 '}';
     }
 }

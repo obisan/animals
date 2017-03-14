@@ -1,12 +1,14 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "Tag")
-public class Tag {
+public class Tag implements Serializable {
+    private static final long serialVersionUID = 5754104541168320730L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,13 +17,8 @@ public class Tag {
     @Column(name = "tag_name")
     private String tag_name;
 
-    @OneToMany(
-            targetEntity = Specie.class,
-            mappedBy = "tag",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private Set<Tag> tags = new HashSet<>();
+    @ManyToMany(mappedBy = "tags")
+    private Set<Specie> species;
 
     public Long getId() {
         return id;
@@ -37,6 +34,14 @@ public class Tag {
 
     public void setTag_name(String tag_name) {
         this.tag_name = tag_name;
+    }
+
+    public Set<Specie> getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Set<Specie> species) {
+        this.species = species;
     }
 
     @Override

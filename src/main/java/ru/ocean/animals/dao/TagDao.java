@@ -8,6 +8,7 @@ public interface TagDao {
     void        addTag(Tag tag);
     void        updateTag(Tag tag);
     Tag         getTagById(long id);
+    Tag         getTagBySysString(String str);
     List<Tag>   getTags();
     void        removeTag(long id);
 }
