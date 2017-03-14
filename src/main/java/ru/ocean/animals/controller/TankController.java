@@ -11,10 +11,14 @@ import ru.ocean.animals.model.Allowance;
 import ru.ocean.animals.model.Tank;
 import ru.ocean.animals.service.BuildingService;
 import ru.ocean.animals.service.EmployeeService;
+import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.TankService;
 
 @Controller
 public class TankController {
+
+    @Autowired
+    private ObjectService       objectService;
 
     @Autowired
     private TankService         tankService;
@@ -65,7 +69,8 @@ public class TankController {
 
     @RequestMapping(value = "/tank/info/{id}")
     public String infoTank(@PathVariable("id") long id, Model model) {
-        model.addAttribute("tank",      this.tankService.getTankById(id));
+        model.addAttribute("tank",              this.tankService.getTankById(id));
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParentsByTank(id));
         model.addAttribute("allowance", new Allowance());
 
         return "info/tank";

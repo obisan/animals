@@ -89,7 +89,7 @@
             <div id="collapseOne" class="panel-collapse collapse">
                 <!-- Содержимое 1 панели -->
                 <div class="panel-body">
-                    <c:if test="${!empty tank.objects}">
+                    <c:if test="${!empty listObjects}">
                         <table class="table">
                             <tr>
                                 <th>ID</th>
@@ -97,7 +97,7 @@
                                 <th>Количество</th>
                                 <th>Вид</th>
                             </tr>
-                            <c:forEach items="${tank.objects}" var="object">
+                            <c:forEach items="${listObjects}" var="object">
                                 <tr>
                                     <td>${object.id}</td>
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>

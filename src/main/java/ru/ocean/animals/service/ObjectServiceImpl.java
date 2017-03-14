@@ -3,10 +3,7 @@ package ru.ocean.animals.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ocean.animals.dao.DeceasedDao;
-import ru.ocean.animals.dao.DisplacementDao;
 import ru.ocean.animals.dao.ObjectDao;
-import ru.ocean.animals.dao.QuarantineDao;
 import ru.ocean.animals.formatter.DateFormatter;
 import ru.ocean.animals.formatter.DateFormatterImpl;
 import ru.ocean.animals.model.Deceased;
@@ -23,15 +20,6 @@ public class ObjectServiceImpl implements ObjectService {
 
     @Autowired
     private ObjectDao objectDao;
-
-    @Autowired
-    private DisplacementDao displacementDao;
-
-    @Autowired
-    private QuarantineDao quarantineDao;
-
-    @Autowired
-    private DeceasedDao deceasedDao;
 
     private DateFormatter formatter = DateFormatterImpl.getInstance();
 
@@ -87,6 +75,26 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public List<Object> getObjectsAliveWithoutParents() {
         return this.objectDao.getObjectsAliveWithoutParents();
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsBySpecie(specie_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByTank(long tank_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByTank(tank_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByEmployee(long employee_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByEmployee(employee_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByDepartment(long department_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByDepartment(department_id);
     }
 
     @Transactional("dubinets")

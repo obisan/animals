@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.ocean.animals.model.Photo;
 import ru.ocean.animals.model.Specie;
 import ru.ocean.animals.service.GenusService;
+import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.SpecieService;
 import ru.ocean.animals.service.TagService;
 
@@ -19,6 +20,9 @@ import java.io.IOException;
 
 @Controller
 public class SpecieController {
+
+    @Autowired
+    private ObjectService   objectService;
 
     @Autowired
     private SpecieService   specieService;
@@ -84,7 +88,8 @@ public class SpecieController {
 
     @RequestMapping(value = "/specie/info/{id}")
     public String infoSpecie(@PathVariable("id") long id, Model model) {
-        model.addAttribute("specie", this.specieService.getSpecieById(id));
+        model.addAttribute("specie",        this.specieService.getSpecieById(id));
+        model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParentsBySpecie(id));
 
         return "/info/specie";
     }

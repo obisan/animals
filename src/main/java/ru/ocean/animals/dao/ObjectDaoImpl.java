@@ -52,11 +52,51 @@ public class ObjectDaoImpl implements ObjectDao {
     public List<Object> getObjectsAliveWithoutParents() {
         Session session = sessionFactory.getCurrentSession();
 
-        List objects = session.createSQLQuery(
+        return session.createSQLQuery(
                 "CALL getObjectsAliveWithoutParents()")
-                .addEntity(Object.class).list();
+                .addEntity(Object.class)
+                .list();
+    }
 
-        return objects;
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsBySpecie(:specie_id)")
+                .addEntity(Object.class)
+                .setParameter("specie_id", specie_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByTank(long tank_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByTank(:tank_id)")
+                .addEntity(Object.class)
+                .setParameter("tank_id", tank_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByEmployee(long employee_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByEmployee(:employee_id)")
+                .addEntity(Object.class)
+                .setParameter("employee_id", employee_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByDepartment(long department_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByDepartment(:department_id)")
+                .addEntity(Object.class)
+                .setParameter("department_id", department_id)
+                .list();
     }
 
     @SuppressWarnings("unchecked")
@@ -74,12 +114,11 @@ public class ObjectDaoImpl implements ObjectDao {
     public List<Object> getObjectsFilteredBySpecieId(long specie_id) {
         Session session = sessionFactory.getCurrentSession();
 
-        List<Object> objects = session.createSQLQuery(
+        return (List<Object>) session.createSQLQuery(
                 "CALL getObjectsFilteredBySpecieId(:specie_id)")
                 .addEntity(Object.class)
-                .setParameter("specie_id", specie_id).list();
-
-        return objects;
+                .setParameter("specie_id", specie_id)
+                .list();
     }
 
     public void removeObject(long id) {

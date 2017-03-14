@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Employee;
 import ru.ocean.animals.service.DepartmentService;
 import ru.ocean.animals.service.EmployeeService;
+import ru.ocean.animals.service.ObjectService;
 
 @Controller
 public class EmployeeController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private ObjectService       objectService;
 
     @Autowired
-    private DepartmentService departmentService;
+    private EmployeeService     employeeService;
+
+    @Autowired
+    private DepartmentService   departmentService;
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String getEmployees(Model model) {
@@ -59,6 +63,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employee/info/{id}")
     public String infoEmployee(@PathVariable("id") long id, Model model) {
         model.addAttribute("employee",      this.employeeService.getEmployeeById(id));
+        model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParentsByEmployee(id));
 
         return "info/employee";
     }
