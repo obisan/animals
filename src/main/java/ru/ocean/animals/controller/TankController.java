@@ -71,7 +71,7 @@ public class TankController {
     public String infoTank(@PathVariable("id") long id, Model model) {
         model.addAttribute("tank",              this.tankService.getTankById(id));
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParentsByTank(id));
-        model.addAttribute("allowance", new Allowance());
+        model.addAttribute("allowance",         new Allowance());
 
         return "info/tank";
     }

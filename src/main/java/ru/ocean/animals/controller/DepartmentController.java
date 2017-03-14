@@ -57,7 +57,7 @@ public class DepartmentController {
     @RequestMapping(value = "/department/info/{id}")
     public String infoDepartment(@PathVariable("id") long id, Model model) {
         model.addAttribute("department",        this.departmentService.getDepartmentById(id));
-        model.addAttribute("listDepartments",   this.objectService.getObjectsAliveWithoutParentsByDepartment(id));
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParentsByDepartment(id));
 
         return "info/department";
     }
