@@ -45,6 +45,9 @@
                                 <td>
                                     <form:input path="specie_name_lat" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="specie_name_lat" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -54,6 +57,9 @@
                                 </td>
                                 <td>
                                     <form:input path="specie_name_ru" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="specie_name_ru" />
                                 </td>
                             </tr>
                             <tr>
