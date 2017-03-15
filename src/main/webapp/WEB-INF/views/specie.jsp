@@ -124,13 +124,7 @@
 
                                         var all = document.getElementsByClassName("tagbox")
                                         for (var i=0; i < all.length; i++) {
-                                            if (all[i].type == 'checkbox')
-                                            {
-                                                <!--
-                                                if(data.tags.indexOf(all[i].value) != -1) {
-                                                    all[i].checked = true;
-                                                }
-                                                -->
+                                            if (all[i].type == 'checkbox') {
                                                 for(var j=0; j < data.tags.length; j++) {
                                                     if(data.tags[j].id == all[i].value) {
                                                         all[i].checked = true;
@@ -188,13 +182,14 @@
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listSpecies}" var="specie">
+                        <c:set var="count" value="0" scope="page" />
                         <tr>
                             <td>${specie.id}</td>
                             <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.specie_author_bracket}</td>
                             <td>${specie.specie_name_ru}</td>
                             <td>${specie.specie_rbc}</td>
                             <td>${specie.specie_nucleus}</td>
-                            <td><c:forEach items="${specie.tags}" var="tag">${tag.tag_name} </c:forEach></td>
+                            <td><c:forEach items="${specie.tags}" var="tag"><c:set var="count" value="${count + 1}" scope="page" />${tag.tag_name}   <c:if test="${count%4 == 0}"><br /></c:if></c:forEach></td>
                             <td><a href="<c:url value='/specie/edit/${specie.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/specie/remove/${specie.id}' />" >Delete</a></td>
                         </tr>
