@@ -94,12 +94,21 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="tags">
+                                    <form:label path="tags2">
                                         <spring:message text="Метки" />
                                     </form:label>
                                 </td>
                                 <td>
-                                    <c:forEach items="${listTags}" var="tag"><form:checkbox path="tags2" value="${tag}" label="${tag.tag_name}" />  </c:forEach>
+                                    <c:if test="${empty specie.specie_name_lat}">
+                                        <c:forEach items="${listTags}" var="tag">
+                                            <form:checkbox path="tags2" value="${tag.id}" label="${tag.tag_name}" />
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${!empty specie.specie_name_lat}">
+                                        <c:forEach items="${listTags}" var="tag">
+                                            <form:checkbox path="tags2" value="${tag.id}" label="${tag.tag_name}" />
+                                        </c:forEach>
+                                    </c:if>
                                 </td>
                             </tr>
                             <tr>

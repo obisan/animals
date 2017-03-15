@@ -81,6 +81,7 @@ public class SpecieController {
         model.addAttribute("specie",        this.specieService.getSpecieById(id));
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
         model.addAttribute("listGenera",    this.genusService.getGenuses());
+        //model.addAttribute("listTags",      this.specieService.getSpecieById(id).getTags2());
         model.addAttribute("listTags",      this.tagService.getTags());
 
         return "specie";

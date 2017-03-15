@@ -41,10 +41,7 @@ public class TagDaoImpl implements TagDao {
     public Tag getTagBySysString(String str) {
         Session session = sessionFactory.getCurrentSession();
 
-        Long id = Long.parseLong(str.substring(
-                str.indexOf("=") + 1,
-                str.indexOf(",")
-        ));
+        Long id = Long.parseLong(str);
         Tag tag = (Tag) session.load(Tag.class, id);
         logger.info("Tag successfully loaded. Tag details: " + tag);
 
