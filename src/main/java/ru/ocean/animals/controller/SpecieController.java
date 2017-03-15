@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ocean.animals.model.Photo;
 import ru.ocean.animals.model.Specie;
-import ru.ocean.animals.service.GenusService;
 import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.SpecieService;
 import ru.ocean.animals.service.TagService;
@@ -28,16 +27,12 @@ public class SpecieController {
     private SpecieService   specieService;
 
     @Autowired
-    private GenusService    genusService;
-
-    @Autowired
     private TagService      tagService;
 
     @RequestMapping(value = "/species", method = RequestMethod.GET)
     public String getSpecie(Model model) {
         model.addAttribute("specie",        new Specie());
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
-        model.addAttribute("listGenera",    this.genusService.getGenuses());
         model.addAttribute("listTags",      this.tagService.getTags());
 
         return "specie";
@@ -80,7 +75,6 @@ public class SpecieController {
     public String editSpecie(@PathVariable("id") long id, Model model) {
         model.addAttribute("specie",        this.specieService.getSpecieById(id));
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
-        model.addAttribute("listGenera",    this.genusService.getGenuses());
         //model.addAttribute("listTags",      this.specieService.getSpecieById(id).getTags2());
         model.addAttribute("listTags",      this.tagService.getTags());
 
