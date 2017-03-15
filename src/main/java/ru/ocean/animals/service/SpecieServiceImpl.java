@@ -35,8 +35,10 @@ public class SpecieServiceImpl implements SpecieService {
     @Transactional("dubinets")
     public void updateSpecie(Specie specie) {
         Set<Tag> tags = new HashSet<>();
-        for(String str : specie.getTags2()) {
-            tags.add(tagDao.getTagBySysString(str));
+
+        if(specie.getTags2() != null) {
+            for(String str : specie.getTags2())
+                tags.add(tagDao.getTagBySysString(str));
         }
         specie.setTags(tags);
 

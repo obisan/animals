@@ -59,12 +59,10 @@ public class Specie {
     private List<String> tags2 = new ArrayList<>();
 
     public List<String> getTags2() {
-        //tags2.add("get2");
         return tags2;
     }
 
     public void setTags2(List<String> tags2) {
-        //tags2.add("set2");
         this.tags2 = tags2;
     }
 
