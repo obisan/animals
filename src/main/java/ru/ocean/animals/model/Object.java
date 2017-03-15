@@ -19,10 +19,10 @@ public class Object {
     private Integer object_count;
 
     @Column(name = "object_length")
-    private float object_length;
+    private Float object_length;
 
     @Column(name = "object_weight")
-    private float object_weight;
+    private Float object_weight;
 
     @Column(name = "specie_id")
     private Long specie_id;
@@ -152,14 +152,6 @@ public class Object {
         this.object_name = object_name;
     }
 
-    public float getObject_length() {
-        return object_length;
-    }
-
-    public void setObject_length(float object_length) {
-        this.object_length = object_length;
-    }
-
     public Integer getObject_count() {
         return object_count;
     }
@@ -168,11 +160,19 @@ public class Object {
         this.object_count = object_count;
     }
 
-    public float getObject_weight() {
+    public Float getObject_length() {
+        return object_length;
+    }
+
+    public void setObject_length(Float object_length) {
+        this.object_length = object_length;
+    }
+
+    public Float getObject_weight() {
         return object_weight;
     }
 
-    public void setObject_weight(float object_weight) {
+    public void setObject_weight(Float object_weight) {
         this.object_weight = object_weight;
     }
 

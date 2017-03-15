@@ -22,11 +22,11 @@ public class SpecieValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Specie specie = (Specie) o;
 
-        if(specie.getSpecie_name_lat() == null) {
+        if(specie.getSpecie_name_lat().equals("")) {
             errors.rejectValue("specie_name_lat", "Null.value");
         }
 
-        if(specie.getSpecie_name_ru() == null) {
+        if(specie.getSpecie_name_ru().equals("")) {
             errors.rejectValue("specie_name_ru", "Null.value");
         }
 

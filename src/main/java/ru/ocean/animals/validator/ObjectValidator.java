@@ -22,7 +22,7 @@ public class ObjectValidator implements Validator {
     public void validate(java.lang.Object o, Errors errors) {
         Object object = (Object) o;
 
-        if(object.getObject_name() == null) {
+        if(object.getObject_name().equals("")) {
             errors.rejectValue("object_name", "Null.value");
         }
 

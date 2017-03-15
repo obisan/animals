@@ -101,14 +101,46 @@
                                 <td>
                                     <c:if test="${empty specie.specie_name_lat}">
                                         <c:forEach items="${listTags}" var="tag">
-                                            <form:checkbox path="tags2" value="${tag.id}" label="${tag.tag_name}" />
+                                            <form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" />
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${!empty specie.specie_name_lat}">
                                         <c:forEach items="${listTags}" var="tag">
-                                            <form:checkbox path="tags2" value="${tag.id}" label="${tag.tag_name}" />
+                                            <form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" />
                                         </c:forEach>
                                     </c:if>
+
+                                    <script type="text/javascript">
+                                        var tagArr = [], tagObj;
+                                        <c:forEach items="${listCheckedTags}" var="tag">
+                                            tagObj = { id: '${tag.id}' };
+                                            tagArr.push(tagObj);
+                                        </c:forEach>
+
+                                        //Populate the corresponding javascript object.
+                                        var data = {
+                                            tags: tagArr
+                                        };
+
+                                        var all = document.getElementsByClassName("tagbox")
+                                        for (var i=0; i < all.length; i++) {
+                                            if (all[i].type == 'checkbox')
+                                            {
+                                                <!--
+                                                if(data.tags.indexOf(all[i].value) != -1) {
+                                                    all[i].checked = true;
+                                                }
+                                                -->
+                                                for(var j=0; j < data.tags.length; j++) {
+                                                    if(data.tags[j].id == all[i].value) {
+                                                        all[i].checked = true;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    </script>
                                 </td>
                             </tr>
                             <tr>
