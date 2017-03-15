@@ -23,10 +23,10 @@ public class Specie {
     private String specie_name_lat;
 
     @Column(name = "specie_rbc")
-    private float specie_rbc;
+    private Float specie_rbc;
 
     @Column(name = "specie_nucleus")
-    private float specie_nucleus;
+    private Float specie_nucleus;
 
     @Column(name = "specie_author")
     private String specie_author;
@@ -98,20 +98,16 @@ public class Specie {
         this.specie_name_lat = specie_name_lat;
     }
 
-    public float getSpecie_rbc() {
+    public Float getSpecie_rbc() {
         return specie_rbc;
     }
 
-    public void setSpecie_rbc(float specie_rbc) {
+    public void setSpecie_rbc(Float specie_rbc) {
         this.specie_rbc = specie_rbc;
     }
 
-    public float getSpecie_nucleus() {
+    public Float getSpecie_nucleus() {
         return specie_nucleus;
-    }
-
-    public void setSpecie_nucleus(float specie_nucleus) {
-        this.specie_nucleus = specie_nucleus;
     }
 
     public void setSpecie_nucleus(Float specie_nucleus) {
