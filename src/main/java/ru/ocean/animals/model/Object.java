@@ -124,10 +124,6 @@ public class Object {
     )
     private Set<JournalAllowance> journalAllowances = new HashSet<>();
 
-    public Object() {
-        this.object_count = 1;
-    }
-
     public void increase(int n) {
         this.object_count += n;
     }

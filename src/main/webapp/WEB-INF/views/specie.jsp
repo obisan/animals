@@ -99,17 +99,15 @@
                                     </form:label>
                                 </td>
                                 <td>
-                                    <c:if test="${empty specie.specie_name_lat}">
+                                    <table>
+                                        <c:set var="count2" value="0" scope="page" />
                                         <c:forEach items="${listTags}" var="tag">
-                                            <form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" />
+                                            <c:if test="${count2%4 == 0}"><tr title="ss"></c:if>
+                                            <c:set var="count2" value="${count2 + 1}" scope="page" />
+                                            <td><form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" /></td>
+                                            <c:if test="${count2%4 == 0}"></tr></c:if>
                                         </c:forEach>
-                                    </c:if>
-                                    <c:if test="${!empty specie.specie_name_lat}">
-                                        <c:forEach items="${listTags}" var="tag">
-                                            <form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" />
-                                        </c:forEach>
-                                    </c:if>
-
+                                    </table>
                                     <script type="text/javascript">
                                         var tagArr = [], tagObj;
                                         <c:forEach items="${listCheckedTags}" var="tag">
