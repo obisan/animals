@@ -9,14 +9,14 @@
 
 <html>
 <head>
-    <title>Сертификаты</title>
+    <title>Список сертификатов</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить сертификат</h4>
+        <h4>Список сертификатов</h4>
         <table>
             <tr>
                 <td>
@@ -108,7 +108,6 @@
     <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список сертификатов</h4>
             <c:if test="${!empty listCertificates}">
                 <table class="table">
                     <tr>

@@ -8,14 +8,14 @@
 
 <html>
 <head>
-    <title>Сотрудники</title>
+    <title>Список сотрудников</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить сотрудника</h4>
+        <h4>Список сотрудников</h4>
         <table>
             <tr>
                 <td>
@@ -112,7 +112,6 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h4>Список департаментов</h4>
                 <c:if test="${!empty listEmployees}">
                     <table width="90%" align="center" class="tg">
                         <tr>

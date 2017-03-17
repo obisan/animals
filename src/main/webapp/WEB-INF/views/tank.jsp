@@ -8,14 +8,14 @@
 
 <html>
 <head>
-    <title>Танк</title>
+    <title>Список танков</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить танк</h4>
+        <h4>Список танков</h4>
         <table>
             <tr>
                 <td>
@@ -147,7 +147,6 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h3>Список танков</h3>
                 <c:if test="${!empty listTanks}">
                     <table class="table">
                         <tr>

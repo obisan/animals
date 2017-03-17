@@ -8,14 +8,14 @@
 
 <html>
 <head>
-    <title>Вид</title>
+    <title>Список видов</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить вид</h4>
+        <h4>Список видов</h4>
         <table>
             <tr>
                 <td>
@@ -165,8 +165,6 @@
     <table width="70%" align="center">
     <tr>
         <td>
-            <h4>Список видов</h4>
-
             <c:if test="${!empty listSpecies}">
                 <table class="tg">
                     <tr>

@@ -14,7 +14,7 @@
 <jsp:include page="menu.jsp" />
 
 <div class="container">
-    <h4>Назначить корм</h4>
+    <h4>Назначить основной рацион</h4>
     <table>
         <tr>
             <td>
@@ -176,8 +176,6 @@
 <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список назначений</h4>
-
             <c:if test="${!empty listJournalAllowances}">
                 <table class="table">
                     <tr>

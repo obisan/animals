@@ -30,9 +30,9 @@ public class MedicationValidator implements Validator {
             errors.rejectValue("object_id", "Null.value");
         }
 
-        if(medication.getDrug_id() == null) {
-            errors.rejectValue("drug_id", "Null.value");
-        }
+//        if(medication.getDrug_id() == null) {
+//            errors.rejectValue("drug_id", "Null.value");
+//        }
 
     }
 }

@@ -17,7 +17,7 @@
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить перемещение</h4>
+        <h4>Журнал перемещений</h4>
         <table>
             <tr>
                 <td>
@@ -38,6 +38,37 @@
                                     </td>
                                 </tr>
                             </c:if>
+                            <tr>
+                                <td>
+                                    <form:label path="object_id">
+                                        <spring:message text="Животное"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="object_id">
+                                        <option></option>
+                                        <c:forEach items="${listObjects}" var="object">
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="displacement_count">
+                                        <spring:message text="Количество"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="displacement_count" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="displacement_count" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <form:label path="date_arrival">
@@ -91,37 +122,6 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object_id">
-                                        <spring:message text="Животное"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="object_id">
-                                        <option></option>
-                                        <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
-                                        </c:forEach>
-                                    </form:select>
-                                </td>
-                                <td>
-                                    <form:errors cssClass="error" path="object_id" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <form:label path="displacement_count">
-                                        <spring:message text="Количество"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:input path="displacement_count" />
-                                </td>
-                                <td>
-                                    <form:errors cssClass="error" path="displacement_count" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <form:label path="tank_id">
                                         <spring:message text="Танк"/>
                                     </form:label>
@@ -160,7 +160,6 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h4>Список перемещений</h4>
                 <c:if test="${!empty listDisplacements}">
                     <table class="table">
                         <tr>

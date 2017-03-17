@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <title>Животное</title>
+    <title>Журнал животных</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css" />
@@ -18,7 +18,7 @@
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить животное</h4>
+        <h4>Журнал животных</h4>
         <table class="table">
             <tr>
                 <td>
@@ -190,7 +190,6 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h4>Список животных</h4>
                 <c:if test="${!empty listObjects}">
                     <table class="table">
                         <tr>

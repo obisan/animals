@@ -17,7 +17,7 @@
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить запись об отходах</h4>
+        <h4>Журнал отходов</h4>
         <table>
             <tr>
                 <td>
@@ -38,6 +38,24 @@
                                     </td>
                                 </tr>
                             </c:if>
+                            <tr>
+                                <td>
+                                    <form:label path="object_id">
+                                        <spring:message text="Животное"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="object_id">
+                                        <option></option>
+                                        <c:forEach items="${listObjects}" var="object">
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_id" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <form:label path="deceased_date">
@@ -87,24 +105,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <form:label path="object_id">
-                                        <spring:message text="Животное"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="object_id">
-                                        <option></option>
-                                        <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
-                                        </c:forEach>
-                                    </form:select>
-                                </td>
-                                <td>
-                                    <form:errors cssClass="error" path="object_id" />
-                                </td>
-                            </tr>
-                            <tr>
                                 <td colspan="2">
                                     <c:if test="${!empty deceased.deceased_date}">
                                         <input type="submit"
@@ -126,7 +126,6 @@
     <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список отходов</h4>
             <c:if test="${!empty listDeceaseds}">
                 <table class="table">
                     <tr>

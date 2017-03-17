@@ -17,7 +17,7 @@
 <jsp:include page="menu.jsp" />
 
 <div class="container">
-    <h4>Добавить лекарство</h4>
+    <h4>Список лекарств</h4>
     <table>
         <tr>
             <td>
@@ -70,7 +70,6 @@
 <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список лекарств</h4>
             <c:if test="${!empty listDrugs}">
                 <table class="table">
                     <tr>

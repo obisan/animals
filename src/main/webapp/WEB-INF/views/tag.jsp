@@ -10,14 +10,14 @@
 
 <html>
 <head>
-    <title>Метки</title>
+    <title>Список меток</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-    <h4>Добавить метку</h4>
+    <h4>Список меток</h4>
 
     <c:url var="addAction" value="/tag/add" ></c:url>
 
@@ -65,7 +65,6 @@
     <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h3>Список меток</h3>
             <c:if test="${!empty listTags}">
                 <table class="table">
                     <tr>
