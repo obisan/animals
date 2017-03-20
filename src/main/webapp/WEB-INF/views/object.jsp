@@ -171,7 +171,8 @@
 
                 <td>
                     <h4>Фильтрация по виду</h4>
-                    <form action="/objects">
+                    <c:url var="searchAction" value="/objects"></c:url>
+                    <form action="${searchAction}">
                         <select class="combobox" name="specie">
                             <option></option>
                             <c:forEach items="${listSpecies}" var="ispecie">

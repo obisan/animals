@@ -49,6 +49,26 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <form:label path="drug_measuring">
+                                    <spring:message text="Дозировка"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_measuring" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="drug_dim">
+                                    <spring:message text="Размерность"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_dim" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2">
                                 <c:if test="${!empty drug.drug_name}">
                                     <input type="submit"
@@ -75,6 +95,7 @@
                     <tr>
                         <th width="80">ID</th>
                         <th width="120">Лекарство</th>
+                        <th width="120">Дозировка</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
@@ -82,6 +103,7 @@
                         <tr>
                             <td>${drug.id}</td>
                             <td>${drug.drug_name}</td>
+                            <td>${drug.drug_measuring} ${drug.drug_dim}</td>
                             <td><a href="<c:url value='/drug/edit/${drug.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/drug/remove/${drug.drug_name}' />" >Delete</a></td>
                         </tr>
