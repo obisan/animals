@@ -1,6 +1,8 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Drug")
@@ -18,6 +20,14 @@ public class Drug {
 
     @Column(name = "drug_dim")
     private String drug_dim;
+
+    @OneToMany(
+            targetEntity    = MedicationDrugs.class,
+            mappedBy        = "drug",
+            cascade         = CascadeType.ALL,
+            fetch           = FetchType.LAZY
+    )
+    private Set<MedicationDrugs> medicationDrugss = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -49,6 +59,14 @@ public class Drug {
 
     public void setDrug_dim(String drug_dim) {
         this.drug_dim = drug_dim;
+    }
+
+    public Set<MedicationDrugs> getMedicationDrugss() {
+        return medicationDrugss;
+    }
+
+    public void setMedicationDrugss(Set<MedicationDrugs> medicationDrugss) {
+        this.medicationDrugss = medicationDrugss;
     }
 
     @Override

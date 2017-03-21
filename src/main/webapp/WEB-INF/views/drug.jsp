@@ -105,7 +105,7 @@
                             <td>${drug.drug_name}</td>
                             <td>${drug.drug_measuring} ${drug.drug_dim}</td>
                             <td><a href="<c:url value='/drug/edit/${drug.id}' />" >Edit</a></td>
-                            <td><a href="<c:url value='/drug/remove/${drug.drug_name}' />" >Delete</a></td>
+                            <td><a href="<c:url value='/drug/remove/${drug.id}' />" >Delete</a></td>
                         </tr>
                     </c:forEach>
                 </table>

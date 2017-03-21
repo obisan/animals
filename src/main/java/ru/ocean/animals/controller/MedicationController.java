@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.ocean.animals.model.Medication;
+import ru.ocean.animals.model.Drug;
+import ru.ocean.animals.model.MedicationExtended;
 import ru.ocean.animals.service.DrugService;
 import ru.ocean.animals.service.MedicationService;
 import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.validator.MedicationValidator;
+
+import java.util.ArrayList;
 
 @Controller
 public class MedicationController {
@@ -31,7 +34,11 @@ public class MedicationController {
 
     @RequestMapping(value = "/medications", method = RequestMethod.GET)
     public String getMedications(Model model) {
-        model.addAttribute("medication",        new Medication());
+        model.addAttribute("medication",        new MedicationExtended());
+        model.addAttribute("drug1",             new Drug());
+        model.addAttribute("drug2",             new Drug());
+        model.addAttribute("drug3",             new Drug());
+        model.addAttribute("drug4",             new Drug());
         model.addAttribute("listMedications",   this.medicationService.getMedications());
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",         this.drugService.getDrugs());
@@ -40,8 +47,8 @@ public class MedicationController {
     }
 
     @RequestMapping(value = "/medication/add", method = RequestMethod.POST)
-    public String addMedication(@ModelAttribute("medication") Medication medication, BindingResult bindingResult, Model model) {
-        medicationValidator.validate(medication, bindingResult);
+    public String addMedication(@ModelAttribute("medication") MedicationExtended medication, BindingResult bindingResult, Model model) {
+        //medicationValidator.validate(medication, bindingResult);
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listMedications",   this.medicationService.getMedications());
@@ -51,10 +58,18 @@ public class MedicationController {
             return "medication";
         }
 
-        if(medication.getId() == null) {
-            this.medicationService.addMedication(medication);
+        ArrayList<Drug> drugs = new ArrayList<>();
+        drugs.add(medication.getDrug1());
+        drugs.add(medication.getDrug2());
+        drugs.add(medication.getDrug3());
+        drugs.add(medication.getDrug4());
+
+        if(medication.getMedication().getId() == null) {
+            this.medicationService.addMedication(medication.getMedication(), drugs);
         } else {
-            this.medicationService.updateMedication(medication);
+            this.medicationService.removeMedication(medication.getMedication().getId());
+            medication.getMedication().setId(null);
+            this.medicationService.addMedication(medication.getMedication(), drugs);
         }
 
         return "redirect:/medications";
@@ -69,7 +84,7 @@ public class MedicationController {
 
     @RequestMapping(value = "/medication/edit/{id}")
     public String editMedication(@PathVariable("id") long id, Model model) {
-        model.addAttribute("medication",        this.medicationService.getMedicationById(id));
+        model.addAttribute("medication",        this.medicationService.getMedicationExtendedById(id));
         model.addAttribute("listMedications",   this.medicationService.getMedications());
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",         this.drugService.getDrugs());
