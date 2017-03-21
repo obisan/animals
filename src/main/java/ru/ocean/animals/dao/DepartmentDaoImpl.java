@@ -40,11 +40,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     public List<Department> getDepartments() {
         Session session = sessionFactory.getCurrentSession();
 
-        List<Department> departments = session.createQuery("from Department ORDER BY department_name ASC").list();
-        for(Department department : departments) {
-            logger.info("Department successfully loaded. Department details: " + department);
-        }
-        return departments;
+        return (List<Department>) session.createQuery("from Department ORDER BY department_name ASC").list();
     }
 
     public void removeDepartment(long id) {

@@ -40,12 +40,7 @@ public class LabelDaoImpl implements LabelDao{
     @SuppressWarnings("unchecked")
     public List<Label> getLabels() {
         Session session = sessionFactory.getCurrentSession();
-
-        List<Label> labels = session.createQuery("from Label").list();
-        for (Label label : labels) {
-            logger.info("Label successfully loaded. Label details: " + label);
-        }
-        return labels;
+        return (List<Label>) session.createQuery("from Label").list();
     }
 
     public void removeLabel(Long id) {

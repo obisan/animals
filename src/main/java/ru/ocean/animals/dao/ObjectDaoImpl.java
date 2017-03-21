@@ -42,9 +42,7 @@ public class ObjectDaoImpl implements ObjectDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Object> objects = session.createQuery("from Object where object_count > 0").list();
-        for(Object object : objects) {
-            logger.info("Object successfully loaded. Object details: " + object);
-        }
+        logger.info("Object list alive successfully loaded. Object details: " + objects);
         return objects;
     }
 
@@ -104,9 +102,7 @@ public class ObjectDaoImpl implements ObjectDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Object> objects = session.createQuery("from Object").list();
-        for(Object object : objects) {
-            logger.info("Object successfully loaded. Object details: " + object);
-        }
+        logger.info("Object list with deads successfully loaded. Object details: " + objects);
         return objects;
     }
 

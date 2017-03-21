@@ -42,9 +42,7 @@ public class TankDaoImpl implements TankDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Tank> tanks = session.createQuery("from Tank").list();
-        for (Tank tank : tanks) {
-            logger.info("Tank successfully loaded. Tank details: " + tank);
-        }
+        logger.info("Tank list successfully loaded. Tank details: " + tanks);
         return tanks;
     }
 

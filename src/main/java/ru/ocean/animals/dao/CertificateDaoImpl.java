@@ -43,9 +43,7 @@ public class CertificateDaoImpl implements CertificateDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Certificate> certificates = session.createQuery("from Certificate").list();
-        for(Certificate certificate : certificates) {
-            logger.info("Certificate successfully loaded. Certificate details: " + certificate);
-        }
+        logger.info("Certificate list successfully loaded. Certificate details: " + certificates);
         return certificates;
     }
 

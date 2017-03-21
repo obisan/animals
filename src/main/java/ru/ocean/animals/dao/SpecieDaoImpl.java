@@ -43,10 +43,7 @@ public class SpecieDaoImpl implements SpecieDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Specie> species = session.createQuery("from Specie").list();
-
-        for(Specie specie : species) {
-            logger.info("Specie successfully loaded. Specie details: " + specie);
-        }
+        logger.info("Specie list successfully loaded. Specie details: " + species);
         return species;
     }
 

@@ -43,9 +43,7 @@ public class DeceasedDaoImpl implements DeceasedDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Deceased> deceaseds = session.createQuery("from Deceased").list();
-        for(Deceased deceased : deceaseds) {
-            logger.info("Deceased successfully loaded. Deceased details: " + deceased);
-        }
+        logger.info("Deceased list successfully loaded. Deceased details: " + deceaseds);
         return deceaseds;
     }
 

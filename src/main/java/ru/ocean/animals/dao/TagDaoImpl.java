@@ -53,9 +53,7 @@ public class TagDaoImpl implements TagDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Tag> tags = session.createQuery("from Tag").list();
-        for (Tag tag : tags) {
-            logger.info("Tag successfully loaded. Tag details: " + tag);
-        }
+        logger.info("Tag list successfully loaded. Tag details: " + tags);
         return tags;
     }
 
