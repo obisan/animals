@@ -20,7 +20,7 @@ public class DisplacementDaoImpl implements DisplacementDao {
     public void addDisplacement(Displacement displacement) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(displacement);
-        logger.info("Displacement successfully added. Genus details: " + displacement);
+        logger.info("Displacement successfully added. Displacement details: " + displacement);
     }
 
     public void updateDisplacement(Displacement displacement) {

@@ -119,13 +119,6 @@ public class Specie {
     }
 
     public String getSpecie_author_bracket() {
-//        if(!specie_author.equals("")) {
-//            StringBuilder stringBuilder = new StringBuilder();
-//            stringBuilder.append("(");
-//            stringBuilder.append(specie_author);
-//            stringBuilder.append(")");
-//            return stringBuilder.toString();
-//        }
         if(specie_author != null) {
             return specie_author;
         }
