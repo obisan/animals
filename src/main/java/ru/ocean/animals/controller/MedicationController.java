@@ -48,7 +48,7 @@ public class MedicationController {
 
     @RequestMapping(value = "/medication/add", method = RequestMethod.POST)
     public String addMedication(@ModelAttribute("medication") MedicationExtended medication, BindingResult bindingResult, Model model) {
-        //medicationValidator.validate(medication, bindingResult);
+        medicationValidator.validate(medication, bindingResult);
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listMedications",   this.medicationService.getMedications());

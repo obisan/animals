@@ -238,7 +238,7 @@ Table
                             <td>${medication.medication_diagnostic}</td>
                             <td>${medication.medication_bath}</td>
                             <td>${medication.medication_note}</td>
-                            <td><c:forEach items="${medication.medicationDrugss}" var="med_drug" >${med_drug.drug.drug_name} </c:forEach></td>
+                            <td><c:forEach items="${medication.medicationDrugss}" var="med_drug" >${med_drug.drug.drug_name} ${med_drug.drug_dim} <br></c:forEach></td>
                             <td><a href="<c:url value='/medication/edit/${medication.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/medication/remove/${medication.id}' />" >Delete</a></td>
                         </tr>

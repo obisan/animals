@@ -39,8 +39,6 @@ public class MedicationServiceImpl implements MedicationService {
 
     @Transactional("dubinets")
     public void updateMedication(Medication medication, List<Drug> drugs) {
-
-
         for(Drug drug : drugs) {
             if(drug.getId() != null) {
                 MedicationDrugs medicationDrugs = new MedicationDrugs();
