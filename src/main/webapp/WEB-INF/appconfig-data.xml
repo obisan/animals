@@ -49,10 +49,6 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>ru.ocean.animals.model.Class</value>
-                <value>ru.ocean.animals.model.OrderN</value>
-                <value>ru.ocean.animals.model.Family</value>
-                <value>ru.ocean.animals.model.Genus</value>
                 <value>ru.ocean.animals.model.Specie</value>
                 <value>ru.ocean.animals.model.Tag</value>
                 <value>ru.ocean.animals.model.Department</value>
