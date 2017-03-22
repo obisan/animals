@@ -69,6 +69,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <form:label path="drug_annotation">
+                                    <spring:message text="Аннотация"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_annotation"/>
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2">
                                 <c:if test="${!empty drug.drug_name}">
                                     <input type="submit"
@@ -96,6 +106,7 @@
                         <th width="80">ID</th>
                         <th width="120">Лекарство</th>
                         <th width="120">Дозировка</th>
+                        <th width="120">Аннотация</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
@@ -104,6 +115,7 @@
                             <td>${drug.id}</td>
                             <td>${drug.drug_name}</td>
                             <td>${drug.drug_measuring} ${drug.drug_dim}</td>
+                            <td>${drug.drug_annotation}</td>
                             <td><a href="<c:url value='/drug/edit/${drug.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/drug/remove/${drug.id}' />" >Delete</a></td>
                         </tr>

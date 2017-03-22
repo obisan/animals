@@ -33,6 +33,7 @@
                                 <li><a href="${contextPath}/objects"        >Журнал животных</a></li>
                                 <li><a href="${contextPath}/displacements"  >Журнал перемещений</a></li>
                                 <li><a href="${contextPath}/medications"    >Журнал лечений</a></li>
+                                <li><a href="${contextPath}/vitaminizations" >Журнал витаминов</a></li>
                                 <li><a href="${contextPath}/quarantines"    >Журнал карантинов</a></li>
                                 <li><a href="${contextPath}/deceaseds"      >Журнал убытий</a></li>
                             </ul>
@@ -43,10 +44,6 @@
                                 <span class="caret" />
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a href="${contextPath}/classes"    >Список классов</a></li> -->
-                                <!-- <li><a href="${contextPath}/orders"     >Список отрядов</a></li> -->
-                                <!-- <li><a href="${contextPath}/families"   >Список семейств</a></li> -->
-                                <!-- <li><a href="${contextPath}/genera"     >Список родов</a></li> -->
                                 <li><a href="${contextPath}/species"    >Список видов</a></li>
                                 <li class="divider"></li>
                                 <li><a href="${contextPath}/tanks"      >Список танков</a></li>

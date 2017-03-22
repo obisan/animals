@@ -21,6 +21,9 @@ public class Drug {
     @Column(name = "drug_dim")
     private String drug_dim;
 
+    @Column(name = "drug_annotation")
+    private String drug_annotation;
+
     @OneToMany(
             targetEntity    = MedicationDrugs.class,
             mappedBy        = "drug",
@@ -28,6 +31,9 @@ public class Drug {
             fetch           = FetchType.LAZY
     )
     private Set<MedicationDrugs> medicationDrugss = new HashSet<>();
+
+    @ManyToMany(mappedBy = "drugs")
+    private Set<Vitaminization> vitaminizations;
 
     public Long getId() {
         return id;
@@ -59,6 +65,14 @@ public class Drug {
 
     public void setDrug_dim(String drug_dim) {
         this.drug_dim = drug_dim;
+    }
+
+    public String getDrug_annotation() {
+        return drug_annotation;
+    }
+
+    public void setDrug_annotation(String drug_annotation) {
+        this.drug_annotation = drug_annotation;
     }
 
     public Set<MedicationDrugs> getMedicationDrugss() {
