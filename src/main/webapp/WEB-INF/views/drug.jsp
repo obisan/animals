@@ -103,19 +103,20 @@
             <c:if test="${!empty listDrugs}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Лекарство</th>
                         <th width="120">Дозировка</th>
-                        <th width="120">Аннотация</th>
+                        <td width="60%">Аннотация</td>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listDrugs}" var="drug">
                         <tr>
-                            <td>${drug.id}</td>
                             <td>${drug.drug_name}</td>
                             <td>${drug.drug_measuring} ${drug.drug_dim}</td>
-                            <td>${drug.drug_annotation}</td>
+                            <td>
+                                <button data-toggle="collapse" data-target="#drug_annotation${drug.id}">Развернуть</button>
+                                <div id="drug_annotation${drug.id}" class="collapse">${drug.drug_annotation}</div>
+                            </td>
                             <td><a href="<c:url value='/drug/edit/${drug.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/drug/remove/${drug.id}' />" >Delete</a></td>
                         </tr>
