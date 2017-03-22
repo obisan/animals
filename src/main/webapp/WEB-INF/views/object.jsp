@@ -140,6 +140,21 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="aquarium_id">
+                                        <spring:message text="Аквариум"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="aquarium_id">
+                                        <option></option>
+                                        <c:forEach items="${listAquariums}" var="aquarium">
+                                            <form:option value="${aquarium.id}">${aquarium.aquarium_name}</form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="label_id">
                                         <spring:message text="Этикетка"/>
                                     </form:label>

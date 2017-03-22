@@ -32,6 +32,9 @@ public class ObjectController {
     private TankService         tankService;
 
     @Autowired
+    private AquariumService     aquariumService;
+
+    @Autowired
     private ObjectValidator     objectValidator;
 
     @RequestMapping(value = "/objects")
@@ -51,6 +54,7 @@ public class ObjectController {
         model.addAttribute("listTags",      this.tagService.getTags());
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
         model.addAttribute("listTanks",     this.tankService.getTanks());
+        model.addAttribute("listAquariums", this.aquariumService.getAquariums());
         model.addAttribute("specie",        new Specie());
 
         return "object";
@@ -67,6 +71,7 @@ public class ObjectController {
             model.addAttribute("listTags",      this.tagService.getTags());
             model.addAttribute("listSpecies",   this.specieService.getSpecies());
             model.addAttribute("listTanks",     this.tankService.getTanks());
+            model.addAttribute("listAquariums", this.aquariumService.getAquariums());
 
             return "object";
         }
@@ -96,6 +101,7 @@ public class ObjectController {
         model.addAttribute("listTags",      this.tagService.getTags());
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
         model.addAttribute("listTanks",     this.tankService.getTanks());
+        model.addAttribute("listAquariums", this.aquariumService.getAquariums());
 
         return "object";
     }

@@ -55,6 +55,7 @@
                 <value>ru.ocean.animals.model.Employee</value>
                 <value>ru.ocean.animals.model.Building</value>
                 <value>ru.ocean.animals.model.Tank</value>
+                <value>ru.ocean.animals.model.Aquarium</value>
                 <value>ru.ocean.animals.model.Displacement</value>
                 <value>ru.ocean.animals.model.Object</value>
                 <value>ru.ocean.animals.model.Quarantine</value>

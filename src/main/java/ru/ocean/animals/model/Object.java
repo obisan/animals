@@ -39,6 +39,9 @@ public class Object {
     @Column(name = "parent_id")
     private Long parent_id;
 
+    @Column(name = "aquarium_id")
+    private Long aquarium_id;
+
     @ManyToOne
     @JoinColumn(
             name = "specie_id",
@@ -210,6 +213,14 @@ public class Object {
 
     public void setParent_id(Long parent_id) {
         this.parent_id = parent_id;
+    }
+
+    public Long getAquarium_id() {
+        return aquarium_id;
+    }
+
+    public void setAquarium_id(Long aquarium_id) {
+        this.aquarium_id = aquarium_id;
     }
 
     public Specie getSpecie() {
