@@ -3,6 +3,7 @@ package ru.ocean.animals.model;
 public class VitaminizationExtended {
 
     private Vitaminization vitaminization;
+    private Tank tank;
     private Drug drug1;
     private Drug drug2;
     private Drug drug3;
@@ -20,6 +21,14 @@ public class VitaminizationExtended {
 
     public void setVitaminization(Vitaminization vitaminization) {
         this.vitaminization = vitaminization;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
+
+    public void setTank(Tank tank) {
+        this.tank = tank;
     }
 
     public Drug getDrug1() {

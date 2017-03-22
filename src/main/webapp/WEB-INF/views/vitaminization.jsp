@@ -50,8 +50,18 @@
                                     </c:forEach>
                                 </form:select>
                             </td>
+                            <td align="right">
+                                <form:label path="tank.id">
+                                    <spring:message text="Танк"/>
+                                </form:label>
+                            </td>
                             <td>
-                                <form:errors cssClass="error" path="vitaminization.object_id" />
+                                <form:select class="combobox" path="tank.id">
+                                    <option></option>
+                                    <c:forEach items="${listTanks}" var="tank">
+                                        <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                    </c:forEach>
+                                </form:select>
                             </td>
                         </tr>
                         <tr>

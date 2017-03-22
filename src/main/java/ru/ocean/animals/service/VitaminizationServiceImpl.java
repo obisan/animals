@@ -4,14 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ocean.animals.dao.DrugDao;
+import ru.ocean.animals.dao.TankDao;
 import ru.ocean.animals.dao.VitaminizationDao;
-import ru.ocean.animals.model.Drug;
-import ru.ocean.animals.model.Vitaminization;
-import ru.ocean.animals.model.VitaminizationExtended;
+import ru.ocean.animals.model.*;
+import ru.ocean.animals.model.Object;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class VitaminizationServiceImpl implements VitaminizationService {
@@ -22,23 +20,54 @@ public class VitaminizationServiceImpl implements VitaminizationService {
     @Autowired
     private DrugDao drugDao;
 
+    @Autowired
+    private TankDao tankDao;
+
     @Transactional("dubinets")
-    public void addVitaminization(Vitaminization vitaminization, List<Drug> drugs) {
-        Set<Drug> drugSet = new HashSet<>();
+    public void addVitaminization(VitaminizationExtended vitaminization_ext) {
+        Set<Drug> drugs = new HashSet<>();
+        drugs.add(vitaminization_ext.getDrug1()); drugs.add(vitaminization_ext.getDrug2());
+        drugs.add(vitaminization_ext.getDrug3()); drugs.add(vitaminization_ext.getDrug4());
+        drugs.add(vitaminization_ext.getDrug5()); drugs.add(vitaminization_ext.getDrug6());
+        drugs.add(vitaminization_ext.getDrug7()); drugs.add(vitaminization_ext.getDrug8());
+        drugs.add(vitaminization_ext.getDrug9()); drugs.add(vitaminization_ext.getDrug10());
 
-        for(Drug drug : drugs) {
-            if(drug.getId() != null) {
-                drugSet.add(drugDao.getDrugById(drug.getId()));
+        if(vitaminization_ext.getTank().getId() != null) {
+            Tank tank = tankDao.getTankById(vitaminization_ext.getTank().getId());
+
+            Set<Object> objects = tank.getObjects();
+            for(Object object : objects) {
+                Vitaminization vitaminization = new Vitaminization();
+                vitaminization.setVitaminization_date(vitaminization_ext.getVitaminization().getVitaminization_date());
+                vitaminization.setObject_id(object.getId());
+
+                Set<Drug> drugs_loaded = new HashSet<>();
+                for(Drug drug : drugs) {
+                    if(drug.getId() != null) {
+                        drugs_loaded.add(drugDao.getDrugById(drug.getId()));
+                    }
+                }
+                vitaminization.setDrugs(drugs_loaded);
+                this.vitaminizationDao.addVitaminization(vitaminization);
+
             }
+
+        } else {
+            Set<Drug> drugs_loaded = new HashSet<>();
+            for(Drug drug : drugs) {
+                if(drug.getId() != null) {
+                    drugs_loaded.add(drugDao.getDrugById(drug.getId()));
+                }
+            }
+
+            vitaminization_ext.getVitaminization().setDrugs(drugs_loaded);
+
+            this.vitaminizationDao.addVitaminization(vitaminization_ext.getVitaminization());
         }
-
-        vitaminization.setDrugs(drugSet);
-
-        this.vitaminizationDao.addVitaminization(vitaminization);
     }
 
     @Transactional("dubinets")
-    public void updateVitaminization(Vitaminization vitaminization, List<Drug> drugs) {
+    public void updateVitaminization(VitaminizationExtended vitaminization) {
         //this.vitaminizationDao.updateVitaminization(vitaminization);
     }
 

@@ -11,9 +11,8 @@ import ru.ocean.animals.model.Drug;
 import ru.ocean.animals.model.VitaminizationExtended;
 import ru.ocean.animals.service.DrugService;
 import ru.ocean.animals.service.ObjectService;
+import ru.ocean.animals.service.TankService;
 import ru.ocean.animals.service.VitaminizationService;
-
-import java.util.ArrayList;
 
 @Controller
 public class VitaminizationController {
@@ -26,6 +25,9 @@ public class VitaminizationController {
 
     @Autowired
     private ObjectService           objectService;
+
+    @Autowired
+    private TankService             tankService;
 
     @RequestMapping(value = "/vitaminizations", method = RequestMethod.GET)
     public String getVitaminizations(Model model) {
@@ -44,26 +46,15 @@ public class VitaminizationController {
         model.addAttribute("listVitaminizations",   this.vitaminizationService.getVitaminizations());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",             this.drugService.getDrugs());
+        model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "vitaminization";
     }
 
     @RequestMapping(value = "/vitaminization/add", method = RequestMethod.POST)
     public String addVitaminization(@ModelAttribute("vitaminization") VitaminizationExtended vitaminization) {
-        ArrayList<Drug> drugs = new ArrayList<>();
-        drugs.add(vitaminization.getDrug1());
-        drugs.add(vitaminization.getDrug2());
-        drugs.add(vitaminization.getDrug3());
-        drugs.add(vitaminization.getDrug4());
-        drugs.add(vitaminization.getDrug5());
-        drugs.add(vitaminization.getDrug6());
-        drugs.add(vitaminization.getDrug7());
-        drugs.add(vitaminization.getDrug8());
-        drugs.add(vitaminization.getDrug9());
-        drugs.add(vitaminization.getDrug10());
-
         if(vitaminization.getVitaminization().getId() == null) {
-            this.vitaminizationService.addVitaminization(vitaminization.getVitaminization(), drugs);
+            this.vitaminizationService.addVitaminization(vitaminization);
         } else {
 
         }
@@ -84,6 +75,7 @@ public class VitaminizationController {
         model.addAttribute("listVitaminizations",   this.vitaminizationService.getVitaminizations());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",             this.drugService.getDrugs());
+        model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "vitaminization";
     }
