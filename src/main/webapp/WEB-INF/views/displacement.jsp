@@ -163,7 +163,6 @@
                 <c:if test="${!empty listDisplacements}">
                     <table class="table">
                         <tr>
-                            <th width="80">ID</th>
                             <th width="120">Дата перевода (прибытие)</th>
                             <th width="120">Дата перевода (отбытие)</th>
                             <th width="120">Количество</th>
@@ -174,7 +173,6 @@
                         </tr>
                         <c:forEach items="${listDisplacements}" var="displacement">
                             <tr>
-                                <td>${displacement.id}</td>
                                 <td>${displacement.date_arrival}</td>
                                 <td>${displacement.date_departure}</td>
                                 <td>${displacement.displacement_count}</td>

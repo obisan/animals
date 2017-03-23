@@ -68,14 +68,12 @@
             <c:if test="${!empty listTags}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Метка</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listTags}" var="tag">
                         <tr>
-                            <td>${tag.id}</td>
                             <td>${tag.tag_name}</td>
                             <td><a href="<c:url value='/tag/edit/${tag.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/tag/remove/${tag.id}' />" >Delete</a></td>

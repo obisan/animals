@@ -207,7 +207,6 @@ Table
             <c:if test="${!empty listVitaminizations}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Животное</th>
                         <th width="120">Дата витаминизации</th>
                         <th width="120">Витамины</th>
@@ -216,7 +215,6 @@ Table
                     </tr>
                     <c:forEach items="${listVitaminizations}" var="vitaminization">
                         <tr>
-                            <td>${vitaminization.id}</td>
                             <td>${vitaminization.object.object_name} (${vitaminization.object.object_count}) (${vitaminization.object.tank.tank_name})</td>
                             <td>${vitaminization.vitaminization_date}</td>
                             <td><c:forEach items="${vitaminization.drugs}" var="drug" >${drug.drug_name}<br></c:forEach></td>

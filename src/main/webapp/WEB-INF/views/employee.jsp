@@ -115,7 +115,6 @@
                 <c:if test="${!empty listEmployees}">
                     <table width="90%" align="center" class="tg">
                         <tr>
-                            <th width="80">ID</th>
                             <th width="120">Фамилия</th>
                             <th width="120">Имя</th>
                             <th width="120">Отчество</th>
@@ -126,7 +125,6 @@
                         </tr>
                         <c:forEach items="${listEmployees}" var="employee">
                             <tr>
-                                <td>${employee.id}</td>
                                 <td>${employee.employee_last_name}</td>
                                 <td>${employee.employee_first_name}</td>
                                 <td>${employee.employee_middle_name}</td>

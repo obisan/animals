@@ -209,7 +209,6 @@
                 <c:if test="${!empty listObjects}">
                     <table class="table">
                         <tr>
-                            <th width="50">ID</th>
                             <th width="120">Животное</th>
                             <th width="80">Количество</th>
                             <th width="80">Вес</th>
@@ -223,7 +222,6 @@
                         </tr>
                         <c:forEach items="${listObjects}" var="object">
                             <tr>
-                                <td>${object.id}</td>
                                 <td><a href="<c:url value='/object/info/${object.id}' />" target="_blank">${object.object_name}</a></td>
                                 <td>${object.object_count}</td>
                                 <td>${object.object_weight}</td>

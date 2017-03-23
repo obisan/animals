@@ -124,8 +124,6 @@
                             </tr>
                         </table>
                     </form:form>
-
-
                 </td>
             </tr>
         </table>
@@ -138,7 +136,6 @@
             <c:if test="${!empty listLabels}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Место поимки</th>
                         <th width="120">Дата поимки</th>
                         <th width="120">Инструмент поимки</th>
@@ -148,7 +145,6 @@
                     </tr>
                     <c:forEach items="${listLabels}" var="label">
                         <tr>
-                            <td>${label.id}</td>
                             <td>${label.place_catching}</td>
                             <td>${label.date_catching}</td>
                             <td>${label.tool_catching}</td>

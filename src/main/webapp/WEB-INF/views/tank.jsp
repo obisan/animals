@@ -150,7 +150,6 @@
                 <c:if test="${!empty listTanks}">
                     <table class="table">
                         <tr>
-                            <th width="80">ID</th>
                             <th width="120">Наименование танка</th>
                             <th width="120">Объем танка</th>
                             <th width="120">Температура</th>
@@ -164,7 +163,6 @@
                         </tr>
                         <c:forEach items="${listTanks}" var="tank">
                             <tr>
-                                <td>${tank.id}</td>
                                 <td><a href="<c:url value="/tank/info/${tank.id}" />" target="_blank" >${tank.tank_name}</a> </td>
                                 <td>${tank.tank_volume}</td>
                                 <td>${tank.tank_temperature}</td>

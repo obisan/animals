@@ -129,7 +129,6 @@
             <c:if test="${!empty listDeceaseds}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Дата отхода</th>
                         <th width="180">Количество убывших</th>
                         <th width="120">Примечание</th>
@@ -140,7 +139,6 @@
                     </tr>
                     <c:forEach items="${listDeceaseds}" var="deceased">
                         <tr>
-                            <td>${deceased.id}</td>
                             <td>${deceased.deceased_date}</td>
                             <td>${deceased.deceased_count}</td>
                             <td>${deceased.deceased_note}</td>

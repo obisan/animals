@@ -216,7 +216,6 @@ Table
             <c:if test="${!empty listMedications}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Животное</th>
                         <th width="120">Дата начала</th>
                         <th width="120">Дата окончания</th>
@@ -230,7 +229,6 @@ Table
                     </tr>
                     <c:forEach items="${listMedications}" var="medication">
                         <tr>
-                            <td>${medication.id}</td>
                             <td>${medication.object.object_name} (${medication.object.object_count}) (${medication.object.tank.tank_name})</td>
                             <td>${medication.medication_start_date}</td>
                             <td>${medication.medication_end_date}</td>

@@ -168,7 +168,6 @@
             <c:if test="${!empty listSpecies}">
                 <table class="tg">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Вид (лат.)</th>
                         <th width="120">Вид (рус.)</th>
                         <th width="80">Кровянные тельца</th>
@@ -180,7 +179,6 @@
                     <c:forEach items="${listSpecies}" var="specie">
                         <c:set var="count" value="0" scope="page" />
                         <tr>
-                            <td>${specie.id}</td>
                             <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.specie_author_bracket}</td>
                             <td>${specie.specie_name_ru}</td>
                             <td>${specie.specie_rbc}</td>
