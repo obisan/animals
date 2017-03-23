@@ -9,5 +9,7 @@ public interface DrugService {
     void        updateDrug(Drug drug);
     Drug        getDrugById(long id);
     List<Drug>  getDrugs();
+    List<Drug>  getVitamines();
+    List<Drug>  getMedicament();
     void        removeDrug(long id);
 }

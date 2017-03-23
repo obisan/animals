@@ -45,7 +45,7 @@ public class VitaminizationController {
 
         model.addAttribute("listVitaminizations",   this.vitaminizationService.getVitaminizations());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listDrugs",             this.drugService.getDrugs());
+        model.addAttribute("listDrugs",             this.drugService.getVitamines());
         model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "vitaminization";
@@ -74,7 +74,7 @@ public class VitaminizationController {
         model.addAttribute("vitaminization",        this.vitaminizationService.getVitaminizationExtendedById(id));
         model.addAttribute("listVitaminizations",   this.vitaminizationService.getVitaminizations());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listDrugs",             this.drugService.getDrugs());
+        model.addAttribute("listDrugs",             this.drugService.getVitamines());
         model.addAttribute("listTanks",             this.tankService.getTanks());
 
         return "vitaminization";

@@ -47,6 +47,24 @@ public class DrugDaoImpl implements DrugDao {
         return drugs;
     }
 
+    @SuppressWarnings("unchecked")
+    public List<Drug> getVitamines() {
+        Session session = sessionFactory.getCurrentSession();
+        return (List<Drug>) session.createSQLQuery(
+                "CALL getVitamines()")
+                .addEntity(Drug.class)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Drug> getMedicaments() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getMedicament()")
+                .addEntity(Drug.class)
+                .list();
+    }
+
     @Override
     public void removeDrug(long id) {
         Session session = sessionFactory.getCurrentSession();

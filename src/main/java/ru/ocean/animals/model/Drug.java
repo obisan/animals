@@ -24,6 +24,12 @@ public class Drug {
     @Column(name = "drug_annotation")
     private String drug_annotation;
 
+    @Column(name = "drug_vitamin")
+    private Boolean drug_vitamin;
+
+    @Column(name = "drug_medicament")
+    private Boolean drug_medicament;
+
     @OneToMany(
             targetEntity    = MedicationDrugs.class,
             mappedBy        = "drug",
@@ -34,6 +40,13 @@ public class Drug {
 
     @ManyToMany(mappedBy = "drugs")
     private Set<Vitaminization> vitaminizations;
+
+    public String getMessage() {
+        if(drug_medicament && drug_vitamin) return "Л В";
+        if(drug_medicament) return "Л";
+        if(drug_vitamin) return "В";
+        return "";
+    }
 
     public Long getId() {
         return id;
@@ -75,6 +88,22 @@ public class Drug {
         this.drug_annotation = drug_annotation;
     }
 
+    public Boolean getDrug_vitamin() {
+        return drug_vitamin;
+    }
+
+    public void setDrug_vitamin(Boolean drug_vitamin) {
+        this.drug_vitamin = drug_vitamin;
+    }
+
+    public Boolean getDrug_medicament() {
+        return drug_medicament;
+    }
+
+    public void setDrug_medicament(Boolean drug_medicament) {
+        this.drug_medicament = drug_medicament;
+    }
+
     public Set<MedicationDrugs> getMedicationDrugss() {
         return medicationDrugss;
     }
@@ -88,6 +117,11 @@ public class Drug {
         return "Drug{" +
                 "id=" + id +
                 ", drug_name='" + drug_name + '\'' +
+                ", drug_measuring=" + drug_measuring +
+                ", drug_dim='" + drug_dim + '\'' +
+                ", drug_annotation='" + drug_annotation + '\'' +
+                ", drug_vitamin=" + drug_vitamin +
+                ", drug_medicament=" + drug_medicament +
                 '}';
     }
 }

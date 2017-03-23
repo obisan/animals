@@ -41,7 +41,7 @@ public class MedicationController {
         model.addAttribute("drug4",             new Drug());
         model.addAttribute("listMedications",   this.medicationService.getMedications());
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listDrugs",         this.drugService.getDrugs());
+        model.addAttribute("listDrugs",         this.drugService.getMedicament());
 
         return "medication";
     }
@@ -53,7 +53,7 @@ public class MedicationController {
         if(bindingResult.hasErrors()) {
             model.addAttribute("listMedications",   this.medicationService.getMedications());
             model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
-            model.addAttribute("listDrugs",         this.drugService.getDrugs());
+            model.addAttribute("listDrugs",         this.drugService.getMedicament());
 
             return "medication";
         }
@@ -87,7 +87,7 @@ public class MedicationController {
         model.addAttribute("medication",        this.medicationService.getMedicationExtendedById(id));
         model.addAttribute("listMedications",   this.medicationService.getMedications());
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listDrugs",         this.drugService.getDrugs());
+        model.addAttribute("listDrugs",         this.drugService.getMedicament());
 
         return "medication";
     }

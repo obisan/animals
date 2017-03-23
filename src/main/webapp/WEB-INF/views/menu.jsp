@@ -53,7 +53,7 @@
                                 <li><a href="${contextPath}/labels"     >Список этикеточных данных</a></li>
                                 <li><a href="${contextPath}/certificates">Список сертификатов</a></li>
                                 <li class="divider"></li>
-                                <li><a href="${contextPath}/drugs"      >Список лекарств</a></li>
+                                <li><a href="${contextPath}/drugs"      >Список медикаментов</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

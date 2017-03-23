@@ -34,6 +34,16 @@ public class DrugServiceImpl implements DrugService {
         return this.drugDao.getDrugs();
     }
 
+    @Override
+    public List<Drug> getVitamines() {
+        return this.drugDao.getVitamines();
+    }
+
+    @Override
+    public List<Drug> getMedicament() {
+        return this.drugDao.getMedicaments();
+    }
+
     @Transactional("dubinets")
     public void removeDrug(long id) {
         this.drugDao.removeDrug(id);
