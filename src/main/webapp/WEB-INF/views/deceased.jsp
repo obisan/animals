@@ -58,6 +58,16 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <form:label path="deceased_count">
+                                        <spring:message text="Количество"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="deceased_count" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <form:label path="deceased_date">
                                         <spring:message text="Дата убытия"/>
                                     </form:label>
@@ -83,17 +93,6 @@
                                     <form:errors cssClass="error" path="deceased_date" />
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <form:label path="deceased_count">
-                                        <spring:message text="Количество"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:input path="deceased_count" />
-                                </td>
-                            </tr>
-
                             <tr>
                                 <td>
                                     <form:label path="deceased_note">
@@ -129,21 +128,21 @@
             <c:if test="${!empty listDeceaseds}">
                 <table class="table">
                     <tr>
-                        <th width="120">Дата отхода</th>
-                        <th width="180">Количество убывших</th>
-                        <th width="120">Примечание</th>
                         <th width="120">Животное</th>
+                        <th width="80">Количество убывших</th>
+                        <th width="120">Дата отхода</th>
                         <th width="120">Танк</th>
+                        <th width="120">Примечание</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listDeceaseds}" var="deceased">
                         <tr>
-                            <td>${deceased.deceased_date}</td>
-                            <td>${deceased.deceased_count}</td>
-                            <td>${deceased.deceased_note}</td>
                             <td><a href="<c:url value='/object/info/${deceased.object.id}' />" target="_blank">${deceased.object.object_name}</a></td>
-                            <td><a href="<c:url value='/tank/info/${deceased.tank.id}' />" target="_blank">${deceased.tank.tank_name}</a></td>
+                            <td>${deceased.deceased_count}</td>
+                            <td>${deceased.deceased_date}</td>
+                            <td><a href="<c:url value='/tank/info/${deceased.tank.id}' />" target="_blank">${deceased.tank.tank_name}</a> ${deceased.aquarium.nameBraked}</td>
+                            <td>${deceased.deceased_note}</td>
                             <td><a href="<c:url value='/deceased/edit/${deceased.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/deceased/remove/${deceased.id}' />" >Delete</a></td>
                         </tr>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Displacement;
 import ru.ocean.animals.model.Object;
+import ru.ocean.animals.service.AquariumService;
 import ru.ocean.animals.service.DisplacementService;
 import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.TankService;
@@ -28,6 +29,9 @@ public class DisplacementController {
     private TankService             tankService;
 
     @Autowired
+    private AquariumService         aquariumService;
+
+    @Autowired
     private DisplacementValidator   displacementValidator;
 
     @RequestMapping(value = "/displacements", method = RequestMethod.GET)
@@ -36,6 +40,7 @@ public class DisplacementController {
         model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listTanks",             this.tankService.getTanks());
+        model.addAttribute("listAquariums",         this.aquariumService.getAquariums());
 
         return "displacement";
     }
@@ -48,6 +53,7 @@ public class DisplacementController {
             model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
             model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
             model.addAttribute("listTanks",             this.tankService.getTanks());
+            model.addAttribute("listAquariums",         this.aquariumService.getAquariums());
 
             return "displacement";
         }
@@ -84,6 +90,7 @@ public class DisplacementController {
         model.addAttribute("listDisplacements",     this.displacementService.getDisplacements());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listTanks",             this.tankService.getTanks());
+        model.addAttribute("listAquariums",         this.aquariumService.getAquariums());
 
         return "displacement";
     }

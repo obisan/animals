@@ -228,7 +228,7 @@
                                 <td>${object.object_length}</td>
                                 <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
                                 <td><a href="<c:url value="/employee/info/${object.employee.id}"/>" target="_blank">${object.employee.fullShortName}</a> (<a href="<c:url value="/department/info/${object.employee.department.id}" />  ">${object.employee.department.department_name}</a>)</td>
-                                <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_name}</a></td>
+                                <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_name}</a> ${object.aquarium.nameBraked}</td>
                                 <td>${object.label.place_catching} / ${object.label.date_catching} / ${object.label.condition.condition_name}</td>
                                 <td><a href="<c:url value='/object/edit/${object.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/object/remove/${object.id}' />" >Delete</a></td>

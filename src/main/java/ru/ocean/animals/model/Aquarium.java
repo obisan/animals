@@ -30,6 +30,14 @@ public class Aquarium {
         this.aquarium_name = aquarium_name;
     }
 
+    public String getNameBraked() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("(акв. ");
+        sb.append(aquarium_name);
+        sb.append(")");
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
         return "Aquarium{" +
