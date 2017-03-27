@@ -230,6 +230,7 @@ Table
                 <table class="table">
                     <tr>
                         <th width="120">Животное</th>
+                        <th width="120">Танк</th>
                         <th width="120">Дата витаминизации</th>
                         <th width="120">Витамины</th>
                         <th width="60">Edit</th>
@@ -237,7 +238,8 @@ Table
                     </tr>
                     <c:forEach items="${listVitaminizations}" var="vitaminization">
                         <tr>
-                            <td>${vitaminization.object.object_name} (${vitaminization.object.object_count}) (${vitaminization.object.tank.tank_name} ${vitaminization.object.aquarium.nameBraked})</td>
+                            <td><a href="<c:url value="/object/info/${vitaminization.object.id}"/>" target="_blank">${vitaminization.object.object_name}</a> (${vitaminization.object.object_count})</td>
+                            <td>${vitaminization.tank.tank_name} ${vitaminization.aquarium.nameBraked}</td>
                             <td>${vitaminization.vitaminization_date}</td>
                             <td><c:forEach items="${vitaminization.drugs}" var="drug" >${drug.drug_name}<br></c:forEach></td>
                             <td><a href="<c:url value='/vitaminization/edit/${vitaminization.id}' />" >Edit</a></td>
