@@ -46,7 +46,7 @@
                                 <form:select class="combobox" path="vitaminization.object_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>

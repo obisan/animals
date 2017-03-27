@@ -41,7 +41,7 @@ public class Drug {
     @ManyToMany(mappedBy = "drugs")
     private Set<Vitaminization> vitaminizations;
 
-    public String getMessage() {
+    public String getType() {
         if(drug_medicament && drug_vitamin) return "Л В";
         if(drug_medicament) return "Л";
         if(drug_vitamin) return "В";

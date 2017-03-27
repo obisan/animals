@@ -156,8 +156,8 @@
                             <th width="120">Кислотность (ph)</th>
                             <th width="120">ОВП (ORP)</th>
                             <th width="120">Соленость</th>
-                            <th width="120">Сотрудник</th>
-                            <th width="120">Строение</th>
+                            <th width="140">Сотрудник</th>
+                            <th width="80">Строение</th>
                             <th width="60">Edit</th>
                             <th width="60">Delete</th>
                         </tr>
@@ -169,7 +169,7 @@
                                 <td>${tank.tank_ph}</td>
                                 <td>${tank.tank_orp}</td>
                                 <td>${tank.tank_salineness}</td>
-                                <td><a href="<c:url value="/employee/info/${tank.employee.id}"/>" target="_blank">${tank.employee.fullShortName}</a></td>
+                                <td><a href="<c:url value="/employee/info/${tank.employee.id}"/>" target="_blank">${tank.employee.fullShortName}</a> (<a href="<c:url value="/department/info/${tank.employee.department.id}"/>" target="_blank">${tank.employee.department.department_name}</a>)</td>
                                 <td>${tank.building.building_name}</td>
                                 <td><a href="<c:url value='/tank/edit/${tank.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/tank/remove/${tank.id}' />" >Delete</a></td>

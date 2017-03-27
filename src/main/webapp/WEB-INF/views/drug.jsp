@@ -125,7 +125,7 @@
                     <c:forEach items="${listDrugs}" var="drug">
                         <tr>
                             <td>${drug.drug_name}</td>
-                            <td>${drug.message}</td>
+                            <td>${drug.type}</td>
                             <td>${drug.drug_measuring} ${drug.drug_dim}</td>
                             <td>
                                 <button data-toggle="collapse" data-target="#drug_annotation${drug.id}">Развернуть</button>
