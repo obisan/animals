@@ -48,7 +48,7 @@
                                     <form:select class="combobox" path="object_id">
                                         <option></option>
                                         <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked} </form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -178,21 +178,21 @@
                 <c:if test="${!empty listDisplacements}">
                     <table class="table">
                         <tr>
+                            <th width="120">Имя объекта</th>
+                            <th width="120">Количество</th>
+                            <th width="120">Название танка</th>
                             <th width="120">Дата перевода (прибытие)</th>
                             <th width="120">Дата перевода (отбытие)</th>
-                            <th width="120">Количество</th>
-                            <th width="120">Название Танка</th>
-                            <th width="120">Имя объекта</th>
                             <th width="60">Edit</th>
                             <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listDisplacements}" var="displacement">
                             <tr>
+                                <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
+                                <td>${displacement.displacement_count}</td>
+                                <td><a href="<c:url value='/tank/info/${displacement.tank_id}'/>" target="_blank">${displacement.tank.tank_name}</a> ${displacement.aquarium.nameBraked}</td>
                                 <td>${displacement.date_arrival}</td>
                                 <td>${displacement.date_departure}</td>
-                                <td>${displacement.displacement_count}</td>
-                                <td><a href="<c:url value="/tank/info/${displacement.tank_id}"/>" target="_blank">${displacement.tank.tank_name}</a></td>
-                                <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
                                 <td><a href="<c:url value='/displacement/edit/${displacement.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/displacement/remove/${displacement.id}' />" >Delete</a></td>
                             </tr>

@@ -216,14 +216,14 @@ Table
             <c:if test="${!empty listMedications}">
                 <table class="table">
                     <tr>
-                        <th width="120">Животное</th>
-                        <th width="120">Дата начала</th>
-                        <th width="120">Дата окончания</th>
+                        <th width="80">Животное</th>
+                        <th width="70">Дата начала</th>
+                        <th width="70">Дата окончания</th>
                         <th width="120">Реакция</th>
                         <th width="120">Диагноз</th>
                         <th width="120">Ванна</th>
-                        <th width="120">Примечание</th>
-                        <th width="120">Лекарства</th>
+                        <th width="280">Примечание</th>
+                        <th width="180">Лекарства</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>

@@ -89,7 +89,7 @@
                                     </form:label>
                                 </td>
                                 <td>
-                                    <a href="<c:url value="/tank/info/${object.tank_id}" />" target="_blank" >${object.tank.tank_name}</a>
+                                    <a href="<c:url value="/tank/info/${object.tank_id}" />" target="_blank" >${object.tank.tank_name}</a> ${object.aquarium.nameBraked}
                                 </td>
                             </tr>
                             <tr>

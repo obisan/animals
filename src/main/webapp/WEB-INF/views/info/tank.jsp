@@ -96,6 +96,7 @@
                                 <th>Животное</th>
                                 <th>Количество</th>
                                 <th>Вид</th>
+                                <th>Аквариум</th>
                             </tr>
                             <c:forEach items="${listObjects}" var="object">
                                 <tr>
@@ -103,6 +104,7 @@
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>
                                     <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
+                                    <td>${object.aquarium.nameBraked}</td>
                                 </tr>
                             </c:forEach>
                         </table>
