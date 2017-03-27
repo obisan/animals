@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Drug;
 import ru.ocean.animals.model.VitaminizationExtended;
-import ru.ocean.animals.service.DrugService;
-import ru.ocean.animals.service.ObjectService;
-import ru.ocean.animals.service.TankService;
-import ru.ocean.animals.service.VitaminizationService;
+import ru.ocean.animals.service.*;
 
 @Controller
 public class VitaminizationController {
@@ -29,24 +26,23 @@ public class VitaminizationController {
     @Autowired
     private TankService             tankService;
 
+    @Autowired
+    private AquariumService         aquariumService;
+
     @RequestMapping(value = "/vitaminizations", method = RequestMethod.GET)
     public String getVitaminizations(Model model) {
         model.addAttribute("vitaminization",        new VitaminizationExtended());
-        model.addAttribute("drug1",     new Drug());
-        model.addAttribute("drug2",     new Drug());
-        model.addAttribute("drug3",     new Drug());
-        model.addAttribute("drug4",     new Drug());
-        model.addAttribute("drug5",     new Drug());
-        model.addAttribute("drug6",     new Drug());
-        model.addAttribute("drug7",     new Drug());
-        model.addAttribute("drug8",     new Drug());
-        model.addAttribute("drug9",     new Drug());
-        model.addAttribute("drug10",    new Drug());
+        model.addAttribute("drug1",     new Drug()); model.addAttribute("drug2",     new Drug());
+        model.addAttribute("drug3",     new Drug()); model.addAttribute("drug4",     new Drug());
+        model.addAttribute("drug5",     new Drug()); model.addAttribute("drug6",     new Drug());
+        model.addAttribute("drug7",     new Drug()); model.addAttribute("drug8",     new Drug());
+        model.addAttribute("drug9",     new Drug()); model.addAttribute("drug10",    new Drug());
 
         model.addAttribute("listVitaminizations",   this.vitaminizationService.getVitaminizations());
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",             this.drugService.getVitamines());
         model.addAttribute("listTanks",             this.tankService.getTanks());
+        model.addAttribute("listAquariums",         this.aquariumService.getAquariums());
 
         return "vitaminization";
     }
@@ -56,7 +52,7 @@ public class VitaminizationController {
         if(vitaminization.getVitaminization().getId() == null) {
             this.vitaminizationService.addVitaminization(vitaminization);
         } else {
-
+            this.vitaminizationService.updateVitaminization(vitaminization);
         }
 
         return "redirect:/vitaminizations";
@@ -76,6 +72,7 @@ public class VitaminizationController {
         model.addAttribute("listObjects",           this.objectService.getObjectsAliveWithoutParents());
         model.addAttribute("listDrugs",             this.drugService.getVitamines());
         model.addAttribute("listTanks",             this.tankService.getTanks());
+        model.addAttribute("listAquariums",         this.aquariumService.getAquariums());
 
         return "vitaminization";
     }

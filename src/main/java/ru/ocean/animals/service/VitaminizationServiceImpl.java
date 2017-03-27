@@ -3,9 +3,7 @@ package ru.ocean.animals.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ocean.animals.dao.DrugDao;
-import ru.ocean.animals.dao.TankDao;
-import ru.ocean.animals.dao.VitaminizationDao;
+import ru.ocean.animals.dao.*;
 import ru.ocean.animals.model.*;
 import ru.ocean.animals.model.Object;
 
@@ -18,10 +16,16 @@ public class VitaminizationServiceImpl implements VitaminizationService {
     private VitaminizationDao vitaminizationDao;
 
     @Autowired
+    private ObjectDao objectDao;
+
+    @Autowired
     private DrugDao drugDao;
 
     @Autowired
     private TankDao tankDao;
+
+    @Autowired
+    private AquariumDao aquariumDao;
 
     @Transactional("dubinets")
     public void addVitaminization(VitaminizationExtended vitaminization_ext) {
@@ -35,7 +39,21 @@ public class VitaminizationServiceImpl implements VitaminizationService {
         if(vitaminization_ext.getTank().getId() != null) {
             Tank tank = tankDao.getTankById(vitaminization_ext.getTank().getId());
 
-            Set<Object> objects = tank.getObjects();
+            List<Object> objects = new ArrayList<>();
+            if(vitaminization_ext.getAquariums() != null) {
+                List<Aquarium> aquariums = new ArrayList<>();
+                for(Long aquarium_id : vitaminization_ext.getAquariums()) {
+                    aquariums.add(aquariumDao.getAquariumById(aquarium_id));
+                }
+
+                for(Aquarium aquarium : aquariums) {
+                    objects.addAll(objectDao.getObjectsAliveWithoutParentsByTankAndAquarium(tank.getId(), aquarium.getId()));
+                }
+            } else {
+                objects.addAll(tank.getObjects());
+            }
+
+
             for(Object object : objects) {
                 Vitaminization vitaminization = new Vitaminization();
                 vitaminization.setVitaminization_date(vitaminization_ext.getVitaminization().getVitaminization_date());
@@ -49,7 +67,6 @@ public class VitaminizationServiceImpl implements VitaminizationService {
                 }
                 vitaminization.setDrugs(drugs_loaded);
                 this.vitaminizationDao.addVitaminization(vitaminization);
-
             }
 
         } else {
@@ -61,7 +78,6 @@ public class VitaminizationServiceImpl implements VitaminizationService {
             }
 
             vitaminization_ext.getVitaminization().setDrugs(drugs_loaded);
-
             this.vitaminizationDao.addVitaminization(vitaminization_ext.getVitaminization());
         }
     }
@@ -94,7 +110,7 @@ public class VitaminizationServiceImpl implements VitaminizationService {
         if(drugs.size() >= 3) {
             vitaminizationExtended.setDrug3(((Drug) drugs.toArray()[2]));
         }
-        if(drugs.size() == 4) {
+        if(drugs.size() >= 4) {
             vitaminizationExtended.setDrug4(((Drug) drugs.toArray()[3]));
         }
         if(drugs.size() >= 5) {
@@ -106,13 +122,13 @@ public class VitaminizationServiceImpl implements VitaminizationService {
         if(drugs.size() >= 7) {
             vitaminizationExtended.setDrug7(((Drug) drugs.toArray()[6]));
         }
-        if(drugs.size() == 8) {
+        if(drugs.size() >= 8) {
             vitaminizationExtended.setDrug8(((Drug) drugs.toArray()[7]));
         }
         if(drugs.size() >= 9) {
             vitaminizationExtended.setDrug9(((Drug) drugs.toArray()[8]));
         }
-        if(drugs.size() == 10) {
+        if(drugs.size() >= 10) {
             vitaminizationExtended.setDrug10(((Drug) drugs.toArray()[9]));
         }
 

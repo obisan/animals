@@ -78,6 +78,17 @@ public class ObjectDaoImpl implements ObjectDao {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByTankAndAquarium(long tank_id, long aquarium_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByTankAndAquarium(:tank_id, :aquarium_id)"
+                ).addEntity(Object.class)
+                .setParameter("tank_id", tank_id)
+                .setParameter("aquarium_id", aquarium_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Object> getObjectsAliveWithoutParentsByEmployee(long employee_id) {
         Session session = sessionFactory.getCurrentSession();
         return session.createSQLQuery(

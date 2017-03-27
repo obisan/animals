@@ -1,9 +1,12 @@
 package ru.ocean.animals.model;
 
+import java.util.List;
+
 public class VitaminizationExtended {
 
     private Vitaminization vitaminization;
     private Tank tank;
+    private List<Long> aquariums;
     private Drug drug1;
     private Drug drug2;
     private Drug drug3;
@@ -29,6 +32,14 @@ public class VitaminizationExtended {
 
     public void setTank(Tank tank) {
         this.tank = tank;
+    }
+
+    public List<Long> getAquariums() {
+        return aquariums;
+    }
+
+    public void setAquariums(List<Long> aquariums) {
+        this.aquariums = aquariums;
     }
 
     public Drug getDrug1() {

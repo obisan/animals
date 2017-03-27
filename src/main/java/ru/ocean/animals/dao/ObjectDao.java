@@ -11,6 +11,7 @@ public interface ObjectDao {
     List<Object>        getObjectsAliveWithoutParents();
     List<Object>        getObjectsAliveWithoutParentsBySpecie(long specie_id);
     List<Object>        getObjectsAliveWithoutParentsByTank(long tank_id);
+    List<Object>        getObjectsAliveWithoutParentsByTankAndAquarium(long tank_id, long aquarium_id);
     List<Object>        getObjectsAliveWithoutParentsByEmployee(long employee_id);
     List<Object>        getObjectsAliveWithoutParentsByDepartment(long department_id);
     List<Object>        getObjectsWithDeads();

@@ -37,31 +37,53 @@
                             </tr>
                         </c:if>
                         <tr>
-                            <td>
-                                <form:label path="vitaminization.object_id">
-                                    <spring:message text="Животное"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:select class="combobox" path="vitaminization.object_id">
-                                    <option></option>
-                                    <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
-                                    </c:forEach>
-                                </form:select>
-                            </td>
-                            <td align="right">
-                                <form:label path="tank.id">
-                                    <spring:message text="Танк"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:select class="combobox" path="tank.id">
-                                    <option></option>
-                                    <c:forEach items="${listTanks}" var="tank">
-                                        <form:option value="${tank.id}">${tank.tank_name}</form:option>
-                                    </c:forEach>
-                                </form:select>
+                            <td colspan="5">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <form:label path="vitaminization.object_id">
+                                                <spring:message text="Животное"/>
+                                            </form:label>
+                                        </td>
+                                        <td>
+                                            <form:select class="combobox" path="vitaminization.object_id">
+                                                <option></option>
+                                                <c:forEach items="${listObjects}" var="object">
+                                                    <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </td>
+                                        <td align="right">
+                                            <form:label path="tank.id">
+                                                <spring:message text="Танк"/>
+                                            </form:label>
+                                        </td>
+                                        <td>
+                                            <form:select class="combobox" path="tank.id">
+                                                <option></option>
+                                                <c:forEach items="${listTanks}" var="tank">
+                                                    <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </td>
+                                        <td>
+                                            <form:label path="aquariums">
+                                                <spring:message text="Аквариумы"/>
+                                            </form:label>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <c:set var="count2" value="0" scope="page" />
+                                                <c:forEach items="${listAquariums}" var="aquarium">
+                                                    <c:if test="${count2%16 == 0}"><tr></c:if>
+                                                    <c:set var="count2" value="${count2 + 1}" scope="page" />
+                                                    <td><form:checkbox class="tagbox" path="aquariums" value="${aquarium.id}" label="${aquarium.aquarium_name}" />  </td>
+                                                    <c:if test="${count2%16 == 0}"></tr></c:if>
+                                                </c:forEach>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
@@ -215,7 +237,7 @@ Table
                     </tr>
                     <c:forEach items="${listVitaminizations}" var="vitaminization">
                         <tr>
-                            <td>${vitaminization.object.object_name} (${vitaminization.object.object_count}) (${vitaminization.object.tank.tank_name})</td>
+                            <td>${vitaminization.object.object_name} (${vitaminization.object.object_count}) (${vitaminization.object.tank.tank_name} ${vitaminization.object.aquarium.nameBraked})</td>
                             <td>${vitaminization.vitaminization_date}</td>
                             <td><c:forEach items="${vitaminization.drugs}" var="drug" >${drug.drug_name}<br></c:forEach></td>
                             <td><a href="<c:url value='/vitaminization/edit/${vitaminization.id}' />" >Edit</a></td>
