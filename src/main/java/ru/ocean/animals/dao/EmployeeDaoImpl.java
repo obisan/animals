@@ -40,7 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @SuppressWarnings("unchecked")
     public List<Employee> getEmployees() {
         Session session = sessionFactory.getCurrentSession();
-        return (List<Employee>) session.createQuery("from Employee").list();
+        return (List<Employee>) session.createQuery("from Employee order by employee_last_name").list();
     }
 
     public void removeEmployee(long id) {

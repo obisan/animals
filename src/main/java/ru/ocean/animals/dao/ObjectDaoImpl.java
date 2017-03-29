@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.ocean.animals.model.Object;
+import ru.ocean.animals.model.ObjectExtended;
 
 import java.util.List;
 

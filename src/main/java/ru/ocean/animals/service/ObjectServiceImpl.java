@@ -3,13 +3,12 @@ package ru.ocean.animals.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.ocean.animals.dao.LabelDao;
 import ru.ocean.animals.dao.ObjectDao;
 import ru.ocean.animals.formatter.DateFormatter;
 import ru.ocean.animals.formatter.DateFormatterImpl;
-import ru.ocean.animals.model.Deceased;
-import ru.ocean.animals.model.Displacement;
+import ru.ocean.animals.model.*;
 import ru.ocean.animals.model.Object;
-import ru.ocean.animals.model.Quarantine;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +20,9 @@ public class ObjectServiceImpl implements ObjectService {
     @Autowired
     private ObjectDao objectDao;
 
+    @Autowired
+    private LabelDao labelDao;
+
     private DateFormatter formatter = DateFormatterImpl.getInstance();
 
     @Transactional("dubinets")
@@ -29,8 +31,20 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
     @Transactional("dubinets")
+    public void addObjectExtended(ObjectExtended object) {
+        this.objectDao.addObject(object.getObject());
+        this.labelDao.addLabel(object.getLabel());
+    }
+
+    @Transactional("dubinets")
     public void updateObject(Object object) {
         this.objectDao.updateObject(object);
+    }
+
+    @Transactional("dubinets")
+    public void updateObjectExtended(ObjectExtended object) {
+        this.objectDao.updateObject(object.getObject());
+        this.labelDao.updateLabel(object.getLabel());
     }
 
     @Transactional("dubinets")

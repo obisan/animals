@@ -25,7 +25,7 @@
                     <c:url var="addAction" value="/object/add"></c:url>
                     <form:form action="${addAction}" commandName="object">
                         <table>
-                            <c:if test="${!empty object.object_name}">
+                            <c:if test="${!empty object.object.object_name}">
                                 <tr>
                                     <td>
                                         <form:label path="id">
@@ -40,58 +40,139 @@
                             </c:if>
                             <tr>
                                 <td>
-                                    <form:label path="object_name">
+                                    <form:label path="object.object_name">
                                         <spring:message text="Имя животного"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="object_name" />
+                                    <form:input path="object.object_name" />
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="object_name" />
+                                    <form:errors cssClass="error" path="object.object_name" />
+                                </td>
+                                <td rowspan="9" align="center" bgcolor="#faebd7">
+                                    <h4>Этикеточные данные</h4>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.place_catching">
+                                                    <spring:message text="Место поимки" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:input path="label.place_catching" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.date_catching">
+                                                    <spring:message text="Дата поимки" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <div class="input-group date" id="date_catching">
+                                                    <form:input path="label.date_catching" />
+                                                    <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" /></span>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    $(function () {
+                                                        $('#date_catching').datetimepicker({
+                                                            language: 'ru',
+                                                            format: "YYYY-MM-DD HH:mm:ss"
+                                                        });
+                                                    });
+                                                </script>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.weight">
+                                                    <spring:message text="Вес (исходный)" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:input path="label.weight" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.length">
+                                                    <spring:message text="Длина (исходный)" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:input path="label.length" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.tool_catching">
+                                                    <spring:message text="Средство поимки" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:input path="label.tool_catching" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form:label path="label.condition_id">
+                                                    <spring:message text="Условие поступления" />
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:select path="label.condition_id">
+                                                    <c:forEach items="${listConditions}" var="icondition">
+                                                        <form:option value="${icondition.id}">${icondition.condition_name}</form:option>
+                                                    </c:forEach>
+                                                </form:select>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object_count">
+                                    <form:label path="object.object_count">
                                         <spring:message text="Количество"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="object_count"  />
+                                    <form:input path="object.object_count"  />
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="object_count" />
+                                    <form:errors cssClass="error" path="object.object_count" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object_weight">
+                                    <form:label path="object.object_weight">
                                         <spring:message text="Вес"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="object_weight" />
+                                    <form:input path="object.object_weight" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object_length">
+                                    <form:label path="object.object_length">
                                         <spring:message text="Длина"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="object_length" />
+                                    <form:input path="object.object_length" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="specie_id">
+                                    <form:label path="object.specie_id">
                                         <spring:message text="Вид"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="specie_id">
+                                    <form:select class="combobox" path="object.specie_id">
                                         <option></option>
                                         <c:forEach items="${listSpecies}" var="specie">
                                             <form:option value="${specie.id}">${specie.specieFullName}</form:option>
@@ -99,17 +180,17 @@
                                     </form:select>
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="specie_id" />
+                                    <form:errors cssClass="error" path="object.specie_id" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="employee_id">
+                                    <form:label path="object.employee_id">
                                         <spring:message text="Сотрудник"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="employee_id">
+                                    <form:select class="combobox" path="object.employee_id">
                                         <option></option>
                                         <c:forEach items="${listEmployees}" var="employee">
                                             <form:option value="${employee.id}">${employee.fullShortNameAndDepartment}</form:option>
@@ -117,17 +198,17 @@
                                     </form:select>
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="employee_id" />
+                                    <form:errors cssClass="error" path="object.employee_id" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="tank_id">
+                                    <form:label path="object.tank_id">
                                         <spring:message text="Танк"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="tank_id">
+                                    <form:select class="combobox" path="object.tank_id">
                                         <option></option>
                                         <c:forEach items="${listTanks}" var="tank">
                                             <form:option value="${tank.id}">${tank.tank_name}</form:option>
@@ -135,17 +216,17 @@
                                     </form:select>
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="tank_id" />
+                                    <form:errors cssClass="error" path="object.tank_id" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="aquarium_id">
+                                    <form:label path="object.aquarium_id">
                                         <spring:message text="Аквариум"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="aquarium_id">
+                                    <form:select class="combobox" path="object.aquarium_id">
                                         <option></option>
                                         <c:forEach items="${listAquariums}" var="aquarium">
                                             <form:option value="${aquarium.id}">${aquarium.aquarium_name}</form:option>
@@ -155,12 +236,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="label_id">
+                                    <form:label path="object.label_id">
                                         <spring:message text="Этикетка"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="label_id">
+                                    <form:select class="combobox" path="object.label_id">
                                         <option value=""></option>
                                         <c:forEach items="${listLabels}" var="label">
                                             <form:option value="${label.id}">${label.labelInfo}</form:option>
@@ -170,11 +251,11 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <c:if test="${!empty object.object_name}">
+                                    <c:if test="${!empty object.object.object_name}">
                                         <input type="submit"
                                                value="<spring:message text="Сохранить"/>" />
                                     </c:if>
-                                    <c:if test="${empty object.object_name}">
+                                    <c:if test="${empty object.object.object_name}">
                                         <input type="submit"
                                                value="<spring:message text="Добавить"/>" />
                                     </c:if>

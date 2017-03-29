@@ -67,11 +67,22 @@ public class Specie {
     }
 
     public String getSpecieFullName() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(specie_name_lat);
-        stringBuilder.append(" / ");
-        stringBuilder.append(specie_name_ru);
-        return stringBuilder.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(specie_name_ru);
+        sb.append(" / ");
+        sb.append(specie_name_lat);
+        return sb.toString();
+    }
+
+    public String getMessage() {
+        if(!specie_author.equals("")) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+            sb.append(specie_author);
+            sb.append(")");
+            return sb.toString();
+        }
+        return "";
     }
 
     public Long getId() {
@@ -116,13 +127,6 @@ public class Specie {
 
     public String getSpecie_author() {
         return specie_author;
-    }
-
-    public String getSpecie_author_bracket() {
-        if(specie_author != null) {
-            return specie_author;
-        }
-        return null;
     }
 
     public void setSpecie_author(String specie_author) {
