@@ -50,7 +50,7 @@
                                 <td>
                                     <form:errors cssClass="error" path="object.object_name" />
                                 </td>
-                                <td rowspan="9" align="center" bgcolor="#faebd7">
+                                <td rowspan="9" align="center" bgcolor="#f0f8ff">
                                     <h4>Этикеточные данные</h4>
                                     <table>
                                         <tr>
@@ -230,21 +230,6 @@
                                         <option></option>
                                         <c:forEach items="${listAquariums}" var="aquarium">
                                             <form:option value="${aquarium.id}">${aquarium.aquarium_name}</form:option>
-                                        </c:forEach>
-                                    </form:select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <form:label path="object.label_id">
-                                        <spring:message text="Этикетка"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="object.label_id">
-                                        <option value=""></option>
-                                        <c:forEach items="${listLabels}" var="label">
-                                            <form:option value="${label.id}">${label.labelInfo}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
