@@ -45,6 +45,9 @@
                                 <td>
                                     <form:input path="employee_last_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_last_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -55,6 +58,9 @@
                                 <td>
                                     <form:input path="employee_first_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_first_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -64,6 +70,9 @@
                                 </td>
                                 <td>
                                     <form:input path="employee_middle_name" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_middle_name" />
                                 </td>
                             </tr>
                             <tr>

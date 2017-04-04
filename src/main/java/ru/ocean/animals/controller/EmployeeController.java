@@ -3,6 +3,7 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import ru.ocean.animals.model.Employee;
 import ru.ocean.animals.service.DepartmentService;
 import ru.ocean.animals.service.EmployeeService;
 import ru.ocean.animals.service.ObjectService;
+import ru.ocean.animals.validator.EmployeeValidator;
 
 @Controller
 public class EmployeeController {
@@ -24,6 +26,9 @@ public class EmployeeController {
     @Autowired
     private DepartmentService   departmentService;
 
+    @Autowired
+    private EmployeeValidator   employeeValidator;
+
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String getEmployees(Model model) {
         model.addAttribute("employee", new Employee());
@@ -34,7 +39,16 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employee/add")
-    public String addEmployee(@ModelAttribute("employee") Employee employee) {
+    public String addEmployee(@ModelAttribute("employee") Employee employee, BindingResult bindingResult, Model model) {
+        employeeValidator.validate(employee, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listEmployees",     this.employeeService.getEmployees());
+            model.addAttribute("listDepartments",   this.departmentService.getDepartments());
+
+            return "employee";
+        }
+
         if(employee.getId() == null) {
             this.employeeService.addEmployee(employee);
         } else {

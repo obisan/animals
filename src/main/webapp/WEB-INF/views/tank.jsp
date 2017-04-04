@@ -45,6 +45,9 @@
                                 <td>
                                     <form:input path="tank_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="tank_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -96,6 +99,7 @@
                                     <form:input path="tank_salineness" />
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>
                                     <form:label path="employee_id">
@@ -137,6 +141,7 @@
                                     </c:if>
                                 </td>
                             </tr>
+
                         </table>
                     </form:form>
                 </td>
@@ -180,6 +185,7 @@
             </td>
         </tr>
     </table>
+
 
 </body>
 </html>
