@@ -123,6 +123,7 @@
                                             </td>
                                             <td>
                                                 <form:select path="label.condition_id">
+                                                    <option></option>
                                                     <c:forEach items="${listConditions}" var="icondition">
                                                         <form:option value="${icondition.id}">${icondition.condition_name}</form:option>
                                                     </c:forEach>

@@ -32,9 +32,12 @@ public class ObjectServiceImpl implements ObjectService {
 
     @Transactional("dubinets")
     public void addObjectExtended(ObjectExtended object) {
-        this.labelDao.addLabel(object.getLabel());
-        object.getObject().setLabel_id(object.getLabel().getId());
-
+        if(     object.getLabel().getPlace_catching() != null ||
+                object.getLabel().getDate_catching() != null ||
+                object.getLabel().getCondition_id() != null) {
+            this.labelDao.addLabel(object.getLabel());
+            object.getObject().setLabel_id(object.getLabel().getId());
+        }
         this.objectDao.addObject(object.getObject());
     }
 

@@ -68,22 +68,22 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="weight">
-                                        <spring:message text="Вес (исходный)"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:input path="weight" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <form:label path="length">
-                                        <spring:message text="Длина (исходный)"/>
+                                        <spring:message text="Длина (исходный)"/>, м.
                                     </form:label>
                                 </td>
                                 <td>
                                     <form:input path="length" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="weight">
+                                        <spring:message text="Вес (исходный)"/>, кг.
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="weight" />
                                 </td>
                             </tr>
                             <tr>
@@ -138,6 +138,8 @@
                     <tr>
                         <th width="120">Место поимки</th>
                         <th width="120">Дата поимки</th>
+                        <th width="120">Длина (исх.)</th>
+                        <th width="120">Вес (исх.)</th>
                         <th width="120">Инструмент поимки</th>
                         <th width="120">Условие поступления</th>
                         <th width="60">Edit</th>
@@ -147,6 +149,8 @@
                         <tr>
                             <td>${label.place_catching}</td>
                             <td>${label.date_catching}</td>
+                            <td>${label.length}</td>
+                            <td>${label.weight}</td>
                             <td>${label.tool_catching}</td>
                             <td>${label.condition.condition_name}</td>
                             <td><a href="<c:url value='/label/edit/${label.id}' />" >Edit</a></td>
