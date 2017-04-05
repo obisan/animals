@@ -52,7 +52,7 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_volume">
-                                        <spring:message text="Объем танка"/> (м<sup>3</sup>)
+                                        <spring:message text="Объем танка"/>, м<sup>3</sup>
                                     </form:label>
                                 </td>
                                 <td>
@@ -65,7 +65,7 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_temperature">
-                                        <spring:message text="Температура"/>
+                                        <spring:message text="Температура"/>, <sup>o</sup>C
                                     </form:label>
                                 </td>
                                 <td>
@@ -95,11 +95,15 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_salineness">
-                                        <spring:message text="Соленость"/>
+                                        <spring:message text="Соленость"/>, PPM
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="tank_salineness" />
+                                    <form:select path="tank_salineness">
+                                        <form:option value=">30">&gt;30</form:option>
+                                        <form:option value="12-15">12-15</form:option>
+                                        <form:option value="<5">&lt;5</form:option>
+                                    </form:select>
                                 </td>
                             </tr>
 
@@ -159,11 +163,11 @@
                     <table class="table">
                         <tr>
                             <th width="120">Номер</th>
-                            <th width="120">Объем танка</th>
-                            <th width="120">Температура</th>
+                            <th width="120">Объем, м<sup>3</sup></th>
+                            <th width="120">Температура, <sup>o</sup>C</th>
                             <th width="120">pH (-lg [H<sup>+</sup>])</th>
                             <th width="120">ORP</th>
-                            <th width="120">Соленость</th>
+                            <th width="120">Соленость, PPM</th>
                             <th width="140">Сотрудник</th>
                             <th width="80">Корпус</th>
                             <th width="60">Edit</th>

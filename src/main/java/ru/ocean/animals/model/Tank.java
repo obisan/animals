@@ -28,7 +28,7 @@ public class Tank {
     private Float tank_orp;
 
     @Column(name = "tank_salineness")
-    private Float tank_salineness;
+    private String tank_salineness;
 
     @Column(name = "employee_id")
     private Long employee_id;
@@ -118,11 +118,11 @@ public class Tank {
         this.tank_orp = tank_orp;
     }
 
-    public Float getTank_salineness() {
+    public String getTank_salineness() {
         return tank_salineness;
     }
 
-    public void setTank_salineness(Float tank_salineness) {
+    public void setTank_salineness(String tank_salineness) {
         this.tank_salineness = tank_salineness;
     }
 
