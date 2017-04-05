@@ -9,14 +9,14 @@
 
 <html>
 <head>
-    <title>Сертификаты</title>
+    <title>Список сертификатов</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить сертификат</h4>
+        <h4>Список сертификатов</h4>
         <table>
             <tr>
                 <td>
@@ -81,7 +81,7 @@
                                     <form:select class="combobox" path="object_id">
                                         <option></option>
                                         <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -108,11 +108,9 @@
     <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список сертификатов</h4>
             <c:if test="${!empty listCertificates}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Номер сертификата</th>
                         <th width="120">Дата сертификата</th>
                         <th width="120">Имя объекта</th>
@@ -121,7 +119,6 @@
                     </tr>
                     <c:forEach items="${listCertificates}" var="certificate">
                         <tr>
-                            <td>${certificate.id}</td>
                             <td>${certificate.certificate_number}</td>
                             <td>${certificate.certificate_date}</td>
                             <td><a href="<c:url value="/object/info/${certificate.object.id}" />" target="_blank">${certificate.object.object_name}</a></td>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.ocean.animals.model.Object;
+import ru.ocean.animals.model.ObjectExtended;
 import ru.ocean.animals.service.ObjectService;
 
 @Component
@@ -20,26 +21,26 @@ public class ObjectValidator implements Validator {
 
     @Override
     public void validate(java.lang.Object o, Errors errors) {
-        Object object = (Object) o;
+        ObjectExtended object = (ObjectExtended) o;
 
-        if(object.getObject_name() == null) {
-            errors.rejectValue("object_name", "Null.value");
+        if(object.getObject().getObject_name().equals("")) {
+            errors.rejectValue("object.object_name", "Null.value");
         }
 
-        if(object.getObject_count() == null) {
-            errors.rejectValue("object_count", "Null.value");
+        if(object.getObject().getObject_count() == null) {
+            errors.rejectValue("object.object_count", "Null.value");
         }
 
-        if(object.getSpecie_id() == null) {
-            errors.rejectValue( "specie_id", "Null.value");
+        if(object.getObject().getSpecie_id() == null) {
+            errors.rejectValue( "object.specie_id", "Null.value");
         }
 
-        if(object.getEmployee_id() == null) {
-            errors.rejectValue("employee_id", "Null.value");
+        if(object.getObject().getEmployee_id() == null) {
+            errors.rejectValue("object.employee_id", "Null.value");
         }
 
-        if(object.getTank_id() == null) {
-            errors.rejectValue("tank_id", "Null.value");
+        if(object.getObject().getTank_id() == null) {
+            errors.rejectValue("object.tank_id", "Null.value");
         }
     }
 }

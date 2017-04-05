@@ -3,16 +3,12 @@ package ru.ocean.animals.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ocean.animals.dao.DeceasedDao;
-import ru.ocean.animals.dao.DisplacementDao;
+import ru.ocean.animals.dao.LabelDao;
 import ru.ocean.animals.dao.ObjectDao;
-import ru.ocean.animals.dao.QuarantineDao;
 import ru.ocean.animals.formatter.DateFormatter;
 import ru.ocean.animals.formatter.DateFormatterImpl;
-import ru.ocean.animals.model.Deceased;
-import ru.ocean.animals.model.Displacement;
+import ru.ocean.animals.model.*;
 import ru.ocean.animals.model.Object;
-import ru.ocean.animals.model.Quarantine;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,13 +21,7 @@ public class ObjectServiceImpl implements ObjectService {
     private ObjectDao objectDao;
 
     @Autowired
-    private DisplacementDao displacementDao;
-
-    @Autowired
-    private QuarantineDao quarantineDao;
-
-    @Autowired
-    private DeceasedDao deceasedDao;
+    private LabelDao labelDao;
 
     private DateFormatter formatter = DateFormatterImpl.getInstance();
 
@@ -41,8 +31,32 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
     @Transactional("dubinets")
+    public void addObjectExtended(ObjectExtended object) {
+        if(     object.getLabel().getPlace_catching() != null ||
+                object.getLabel().getDate_catching() != null ||
+                object.getLabel().getCondition_id() != null) {
+            this.labelDao.addLabel(object.getLabel());
+            object.getObject().setLabel_id(object.getLabel().getId());
+        }
+        this.objectDao.addObject(object.getObject());
+    }
+
+    @Transactional("dubinets")
     public void updateObject(Object object) {
         this.objectDao.updateObject(object);
+    }
+
+    @Transactional("dubinets")
+    public void updateObjectExtended(ObjectExtended object) {
+        if(object.getLabel().getId() != null) {
+            this.labelDao.updateLabel(object.getLabel());
+            this.objectDao.updateObject(object.getObject());
+        } else {
+            this.labelDao.addLabel(object.getLabel());
+            object.getObject().setLabel_id(object.getLabel().getId());
+
+            this.objectDao.updateObject(object.getObject());
+        }
     }
 
     @Transactional("dubinets")
@@ -87,6 +101,26 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public List<Object> getObjectsAliveWithoutParents() {
         return this.objectDao.getObjectsAliveWithoutParents();
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsBySpecie(specie_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByTank(long tank_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByTank(tank_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByEmployee(long employee_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByEmployee(employee_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsByDepartment(long department_id) {
+        return this.objectDao.getObjectsAliveWithoutParentsByDepartment(department_id);
     }
 
     @Transactional("dubinets")

@@ -7,17 +7,18 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <jsp:useBean id="now" class="java.util.Date" />
+<jsp:useBean id="drug" scope="request" type="ru.ocean.animals.model.Drug"/>
 
 <html>
 <head>
-    <title>Список лекарств</title>
+    <title>Список медикаментов</title>
 </head>
 <body>
 
 <jsp:include page="menu.jsp" />
 
 <div class="container">
-    <h4>Добавить лекарство</h4>
+    <h4>Список медикаментов</h4>
     <table>
         <tr>
             <td>
@@ -40,12 +41,53 @@
                         </c:if>
                         <tr>
                             <td>
+                                <form:label path="drug_medicament">
+                                    <spring:message text="Тип"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:checkbox path="drug_medicament" label="Лекарство"/>
+                                <form:checkbox path="drug_vitamin" label="Витамин"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <form:label path="drug_name">
-                                    <spring:message text="Лекарство"/>
+                                    <spring:message text="Наименование"/>
                                 </form:label>
                             </td>
                             <td>
                                 <form:input path="drug_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="drug_measuring">
+                                    <spring:message text="Дозировка"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_measuring" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="drug_dim">
+                                    <spring:message text="Размерность"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_dim" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="drug_annotation">
+                                    <spring:message text="Аннотация"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="drug_annotation"/>
                             </td>
                         </tr>
                         <tr>
@@ -70,21 +112,27 @@
 <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список лекарств</h4>
             <c:if test="${!empty listDrugs}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
-                        <th width="120">Лекарство</th>
+                        <th width="100">Лекарство</th>
+                        <th width="60">Тип</th>
+                        <th width="120">Дозировка</th>
+                        <td width="60%">Аннотация</td>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listDrugs}" var="drug">
                         <tr>
-                            <td>${drug.id}</td>
                             <td>${drug.drug_name}</td>
+                            <td>${drug.type}</td>
+                            <td>${drug.drug_measuring} ${drug.drug_dim}</td>
+                            <td>
+                                <button data-toggle="collapse" data-target="#drug_annotation${drug.id}">Развернуть</button>
+                                <div id="drug_annotation${drug.id}" class="collapse">${drug.drug_annotation}</div>
+                            </td>
                             <td><a href="<c:url value='/drug/edit/${drug.id}' />" >Edit</a></td>
-                            <td><a href="<c:url value='/drug/remove/${drug.drug_name}' />" >Delete</a></td>
+                            <td><a href="<c:url value='/drug/remove/${drug.id}' />" >Delete</a></td>
                         </tr>
                     </c:forEach>
                 </table>

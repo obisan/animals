@@ -3,6 +3,7 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,15 @@ import ru.ocean.animals.model.Allowance;
 import ru.ocean.animals.model.Tank;
 import ru.ocean.animals.service.BuildingService;
 import ru.ocean.animals.service.EmployeeService;
+import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.TankService;
+import ru.ocean.animals.validator.TankValidator;
 
 @Controller
 public class TankController {
+
+    @Autowired
+    private ObjectService       objectService;
 
     @Autowired
     private TankService         tankService;
@@ -24,6 +30,9 @@ public class TankController {
 
     @Autowired
     private EmployeeService     employeeService;
+
+    @Autowired
+    private TankValidator       tankValidator;
 
     @RequestMapping(value = "/tanks", method = RequestMethod.GET)
     public String getTanks(Model model) {
@@ -36,7 +45,17 @@ public class TankController {
     }
 
     @RequestMapping(value = "/tank/add", method = RequestMethod.POST)
-    public String addTank(@ModelAttribute("tank") Tank tank) {
+    public String addTank(@ModelAttribute("tank") Tank tank, BindingResult bindingResult, Model model) {
+        tankValidator.validate(tank, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listTanks",         this.tankService.getTanks());
+            model.addAttribute("listEmployees",     this.employeeService.getEmployees());
+            model.addAttribute("listBuildings",     this.buildingService.getBuildings());
+
+            return "tank";
+        }
+
         if(tank.getId() == null) {
             this.tankService.addTank(tank);
         } else {
@@ -65,8 +84,9 @@ public class TankController {
 
     @RequestMapping(value = "/tank/info/{id}")
     public String infoTank(@PathVariable("id") long id, Model model) {
-        model.addAttribute("tank",      this.tankService.getTankById(id));
-        model.addAttribute("allowance", new Allowance());
+        model.addAttribute("tank",              this.tankService.getTankById(id));
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParentsByTank(id));
+        model.addAttribute("allowance",         new Allowance());
 
         return "info/tank";
     }

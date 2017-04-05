@@ -43,10 +43,26 @@ public class DrugDaoImpl implements DrugDao {
     public List<Drug> getDrugs() {
         Session session = sessionFactory.getCurrentSession();
         List<Drug> drugs = session.createQuery("from Drug").list();
-        for(Drug drug : drugs) {
-            logger.info("Drug successfully loaded. Drug details: " + drug);
-        }
+        logger.info("Drug list successfully loaded. Drug details: " + drugs);
         return drugs;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Drug> getVitamines() {
+        Session session = sessionFactory.getCurrentSession();
+        return (List<Drug>) session.createSQLQuery(
+                "CALL getVitamines()")
+                .addEntity(Drug.class)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Drug> getMedicaments() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getMedicament()")
+                .addEntity(Drug.class)
+                .list();
     }
 
     @Override

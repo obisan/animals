@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.ocean.animals.model.Object;
+import ru.ocean.animals.model.ObjectExtended;
 
 import java.util.List;
 
@@ -42,9 +43,7 @@ public class ObjectDaoImpl implements ObjectDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Object> objects = session.createQuery("from Object where object_count > 0").list();
-        for(Object object : objects) {
-            logger.info("Object successfully loaded. Object details: " + object);
-        }
+        logger.info("Object list alive successfully loaded. Object details: " + objects);
         return objects;
     }
 
@@ -52,11 +51,62 @@ public class ObjectDaoImpl implements ObjectDao {
     public List<Object> getObjectsAliveWithoutParents() {
         Session session = sessionFactory.getCurrentSession();
 
-        List objects = session.createSQLQuery(
+        return session.createSQLQuery(
                 "CALL getObjectsAliveWithoutParents()")
-                .addEntity(Object.class).list();
+                .addEntity(Object.class)
+                .list();
+    }
 
-        return objects;
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsBySpecie(:specie_id)")
+                .addEntity(Object.class)
+                .setParameter("specie_id", specie_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByTank(long tank_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByTank(:tank_id)")
+                .addEntity(Object.class)
+                .setParameter("tank_id", tank_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByTankAndAquarium(long tank_id, long aquarium_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByTankAndAquarium(:tank_id, :aquarium_id)"
+                ).addEntity(Object.class)
+                .setParameter("tank_id", tank_id)
+                .setParameter("aquarium_id", aquarium_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByEmployee(long employee_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByEmployee(:employee_id)")
+                .addEntity(Object.class)
+                .setParameter("employee_id", employee_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsByDepartment(long department_id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsByDepartment(:department_id)")
+                .addEntity(Object.class)
+                .setParameter("department_id", department_id)
+                .list();
     }
 
     @SuppressWarnings("unchecked")
@@ -64,9 +114,7 @@ public class ObjectDaoImpl implements ObjectDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Object> objects = session.createQuery("from Object").list();
-        for(Object object : objects) {
-            logger.info("Object successfully loaded. Object details: " + object);
-        }
+        logger.info("Object list with deads successfully loaded. Object details: " + objects);
         return objects;
     }
 
@@ -74,12 +122,11 @@ public class ObjectDaoImpl implements ObjectDao {
     public List<Object> getObjectsFilteredBySpecieId(long specie_id) {
         Session session = sessionFactory.getCurrentSession();
 
-        List<Object> objects = session.createSQLQuery(
+        return (List<Object>) session.createSQLQuery(
                 "CALL getObjectsFilteredBySpecieId(:specie_id)")
                 .addEntity(Object.class)
-                .setParameter("specie_id", specie_id).list();
-
-        return objects;
+                .setParameter("specie_id", specie_id)
+                .list();
     }
 
     public void removeObject(long id) {

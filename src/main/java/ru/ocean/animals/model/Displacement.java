@@ -28,6 +28,9 @@ public class Displacement {
     @Column(name = "tank_id")
     private Long tank_id;
 
+    @Column(name = "aquarium_id")
+    private Long aquarium_id;
+
     @Column(name = "object_id")
     private Long object_id;
 
@@ -39,6 +42,15 @@ public class Displacement {
             updatable = false
     )
     private Tank tank;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "aquarium_id",
+            foreignKey = @ForeignKey(name = "FK_DIsplacement_Aquarium"),
+            insertable = false,
+            updatable = false
+    )
+    private Aquarium aquarium;
 
     @ManyToOne
     @JoinColumn(
@@ -89,6 +101,14 @@ public class Displacement {
         this.tank_id = tank_id;
     }
 
+    public Long getAquarium_id() {
+        return aquarium_id;
+    }
+
+    public void setAquarium_id(Long aquarium_id) {
+        this.aquarium_id = aquarium_id;
+    }
+
     public Long getObject_id() {
         return object_id;
     }
@@ -103,6 +123,14 @@ public class Displacement {
 
     public void setTank(Tank tank) {
         this.tank = tank;
+    }
+
+    public Aquarium getAquarium() {
+        return aquarium;
+    }
+
+    public void setAquarium(Aquarium aquarium) {
+        this.aquarium = aquarium;
     }
 
     public Object getObject() {

@@ -12,8 +12,8 @@ public class Tank {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "tank_name")
-    private String tank_name;
+    @Column(name = "tank_number")
+    private String tank_number;
 
     @Column(name = "tank_volume")
     private String tank_volume;
@@ -28,7 +28,7 @@ public class Tank {
     private Float tank_orp;
 
     @Column(name = "tank_salineness")
-    private Float tank_salineness;
+    private String tank_salineness;
 
     @Column(name = "employee_id")
     private Long employee_id;
@@ -78,12 +78,12 @@ public class Tank {
         this.id = id;
     }
 
-    public String getTank_name() {
-        return tank_name;
+    public String getTank_number() {
+        return tank_number;
     }
 
-    public void setTank_name(String tank_name) {
-        this.tank_name = tank_name;
+    public void setTank_number(String tank_number) {
+        this.tank_number = tank_number;
     }
 
     public String getTank_volume() {
@@ -118,11 +118,11 @@ public class Tank {
         this.tank_orp = tank_orp;
     }
 
-    public Float getTank_salineness() {
+    public String getTank_salineness() {
         return tank_salineness;
     }
 
-    public void setTank_salineness(Float tank_salineness) {
+    public void setTank_salineness(String tank_salineness) {
         this.tank_salineness = tank_salineness;
     }
 
@@ -197,7 +197,7 @@ public class Tank {
     public String toString() {
         return "Tank{" +
                 "id=" + id +
-                ", tank_name='" + tank_name + '\'' +
+                ", tank_name='" + tank_number + '\'' +
                 ", tank_volume='" + tank_volume + '\'' +
                 ", employee_id=" + employee_id +
                 ", building_id=" + building_id +

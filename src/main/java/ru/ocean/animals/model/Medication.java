@@ -5,6 +5,8 @@ import ru.ocean.animals.formatter.DateFormatterImpl;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Medication")
@@ -37,18 +39,6 @@ public class Medication {
     @Column(name = "object_id")
     private Long object_id;
 
-    @Column(name = "drug_id")
-    private Long drug_id;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "drug_id",
-            foreignKey = @ForeignKey(name = "FK_Medication_Drug"),
-            insertable = false,
-            updatable = false
-    )
-    private Drug drug;
-
     @ManyToOne
     @JoinColumn(
             name = "object_id",
@@ -57,6 +47,14 @@ public class Medication {
             updatable = false
     )
     private Object object;
+
+    @OneToMany(
+            targetEntity    = MedicationDrugs.class,
+            mappedBy        = "medication",
+            cascade         = CascadeType.ALL,
+            fetch           = FetchType.LAZY
+    )
+    private Set<MedicationDrugs> medicationDrugss = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -122,28 +120,20 @@ public class Medication {
         this.object_id = object_id;
     }
 
-    public Long getDrug_id() {
-        return drug_id;
-    }
-
-    public void setDrug_id(Long drug_id) {
-        this.drug_id = drug_id;
-    }
-
-    public Drug getDrug() {
-        return drug;
-    }
-
-    public void setDrug(Drug drug) {
-        this.drug = drug;
-    }
-
     public Object getObject() {
         return object;
     }
 
     public void setObject(Object object) {
         this.object = object;
+    }
+
+    public Set<MedicationDrugs> getMedicationDrugss() {
+        return medicationDrugss;
+    }
+
+    public void setMedicationDrugss(Set<MedicationDrugs> medicationDrugss) {
+        this.medicationDrugss = medicationDrugss;
     }
 
     @Override

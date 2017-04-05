@@ -19,10 +19,10 @@ public class Object {
     private Integer object_count;
 
     @Column(name = "object_length")
-    private float object_length;
+    private Float object_length;
 
     @Column(name = "object_weight")
-    private float object_weight;
+    private Float object_weight;
 
     @Column(name = "specie_id")
     private Long specie_id;
@@ -35,6 +35,9 @@ public class Object {
 
     @Column(name = "tank_id")
     private Long tank_id;
+
+    @Column(name = "aquarium_id")
+    private Long aquarium_id;
 
     @Column(name = "parent_id")
     private Long parent_id;
@@ -74,6 +77,15 @@ public class Object {
             updatable = false
     )
     private Tank tank;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "aquarium_id",
+            foreignKey = @ForeignKey(name = "FK_Object_Aquarium"),
+            insertable = false,
+            updatable = false
+    )
+    private Aquarium aquarium;
 
     @ManyToOne
     @JoinColumn(
@@ -124,10 +136,6 @@ public class Object {
     )
     private Set<JournalAllowance> journalAllowances = new HashSet<>();
 
-    public Object() {
-        this.object_count = 1;
-    }
-
     public void increase(int n) {
         this.object_count += n;
     }
@@ -152,14 +160,6 @@ public class Object {
         this.object_name = object_name;
     }
 
-    public float getObject_length() {
-        return object_length;
-    }
-
-    public void setObject_length(float object_length) {
-        this.object_length = object_length;
-    }
-
     public Integer getObject_count() {
         return object_count;
     }
@@ -168,11 +168,19 @@ public class Object {
         this.object_count = object_count;
     }
 
-    public float getObject_weight() {
+    public Float getObject_length() {
+        return object_length;
+    }
+
+    public void setObject_length(Float object_length) {
+        this.object_length = object_length;
+    }
+
+    public Float getObject_weight() {
         return object_weight;
     }
 
-    public void setObject_weight(float object_weight) {
+    public void setObject_weight(Float object_weight) {
         this.object_weight = object_weight;
     }
 
@@ -216,6 +224,14 @@ public class Object {
         this.parent_id = parent_id;
     }
 
+    public Long getAquarium_id() {
+        return aquarium_id;
+    }
+
+    public void setAquarium_id(Long aquarium_id) {
+        this.aquarium_id = aquarium_id;
+    }
+
     public Specie getSpecie() {
         return specie;
     }
@@ -246,6 +262,14 @@ public class Object {
 
     public void setTank(Tank tank) {
         this.tank = tank;
+    }
+
+    public Aquarium getAquarium() {
+        return aquarium;
+    }
+
+    public void setAquarium(Aquarium aquarium) {
+        this.aquarium = aquarium;
     }
 
     public Object getParent() {

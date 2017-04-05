@@ -72,16 +72,6 @@
                                 <spring:message text="${specie.specie_nucleus}" />
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <form:label path="tag_id">
-                                    <spring:message text="Ядра"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <spring:message text="${specie.specie_nucleus}" />
-                            </td>
-                        </tr>
                     </table>
                 </form:form>
             </td>
@@ -106,7 +96,7 @@
             <div id="collapseOne" class="panel-collapse collapse">
                 <!-- Содержимое 1 панели -->
                 <div class="panel-body">
-                    <c:if test="${!empty specie.objects}">
+                    <c:if test="${!empty listObjects}">
                         <table class="table">
                             <tr>
                                 <th>ID</th>
@@ -114,12 +104,12 @@
                                 <th>Количество</th>
                                 <th>Танк</th>
                             </tr>
-                            <c:forEach items="${specie.objects}" var="object">
+                            <c:forEach items="${listObjects}" var="object">
                                 <tr>
                                     <td>${object.id}</td>
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>
                                     <td>${object.object_count}</td>
-                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank" >${object.tank.tank_name}</a></td>
+                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank" >${object.tank.tank_number}</a> ${object.aquarium.naneBraked}</td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -129,6 +119,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

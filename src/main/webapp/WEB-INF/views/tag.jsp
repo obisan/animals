@@ -10,14 +10,14 @@
 
 <html>
 <head>
-    <title>Метки</title>
+    <title>Список меток</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-    <h4>Добавить метку</h4>
+    <h4>Список меток</h4>
 
     <c:url var="addAction" value="/tag/add" ></c:url>
 
@@ -65,18 +65,15 @@
     <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h3>Список меток</h3>
             <c:if test="${!empty listTags}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Метка</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listTags}" var="tag">
                         <tr>
-                            <td>${tag.id}</td>
                             <td>${tag.tag_name}</td>
                             <td><a href="<c:url value='/tag/edit/${tag.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/tag/remove/${tag.id}' />" >Delete</a></td>

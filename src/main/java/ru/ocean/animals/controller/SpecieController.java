@@ -3,13 +3,15 @@ package ru.ocean.animals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ocean.animals.model.Photo;
 import ru.ocean.animals.model.Specie;
-import ru.ocean.animals.service.GenusService;
+import ru.ocean.animals.service.ObjectService;
 import ru.ocean.animals.service.SpecieService;
 import ru.ocean.animals.service.TagService;
+import ru.ocean.animals.validator.SpecieValidator;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -21,19 +23,21 @@ import java.io.IOException;
 public class SpecieController {
 
     @Autowired
+    private ObjectService   objectService;
+
+    @Autowired
     private SpecieService   specieService;
 
     @Autowired
-    private GenusService    genusService;
+    private TagService      tagService;
 
     @Autowired
-    private TagService      tagService;
+    private SpecieValidator specieValidator;
 
     @RequestMapping(value = "/species", method = RequestMethod.GET)
     public String getSpecie(Model model) {
         model.addAttribute("specie",        new Specie());
         model.addAttribute("listSpecies",   this.specieService.getSpecies());
-        model.addAttribute("listGenera",    this.genusService.getGenuses());
         model.addAttribute("listTags",      this.tagService.getTags());
 
         return "specie";
@@ -44,7 +48,17 @@ public class SpecieController {
             @RequestParam("file1") MultipartFile file1,
             @RequestParam("file2") MultipartFile file2,
             @RequestParam("file3") MultipartFile file3,
-            @ModelAttribute("specie") Specie specie) {
+            @ModelAttribute("specie") Specie specie,
+            BindingResult bindingResult,
+            Model model) {
+        specieValidator.validate(specie, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("listSpecies",   this.specieService.getSpecies());
+            model.addAttribute("listTags",      this.tagService.getTags());
+            return "specie";
+        }
+
         if(specie.getId() == null) {
             this.specieService.addSpecie(specie);
 
@@ -74,17 +88,18 @@ public class SpecieController {
 
     @RequestMapping(value = "/specie/edit/{id}")
     public String editSpecie(@PathVariable("id") long id, Model model) {
-        model.addAttribute("specie",        this.specieService.getSpecieById(id));
-        model.addAttribute("listSpecies",   this.specieService.getSpecies());
-        model.addAttribute("listGenera",    this.genusService.getGenuses());
-        model.addAttribute("listTags",      this.tagService.getTags());
+        model.addAttribute("specie",            this.specieService.getSpecieById(id));
+        model.addAttribute("listSpecies",       this.specieService.getSpecies());
+        model.addAttribute("listCheckedTags",   this.specieService.getSpecieById(id).getTags());
+        model.addAttribute("listTags",          this.tagService.getTags());
 
         return "specie";
     }
 
     @RequestMapping(value = "/specie/info/{id}")
     public String infoSpecie(@PathVariable("id") long id, Model model) {
-        model.addAttribute("specie", this.specieService.getSpecieById(id));
+        model.addAttribute("specie",        this.specieService.getSpecieById(id));
+        model.addAttribute("listObjects",   this.objectService.getObjectsAliveWithoutParentsBySpecie(id));
 
         return "/info/specie";
     }

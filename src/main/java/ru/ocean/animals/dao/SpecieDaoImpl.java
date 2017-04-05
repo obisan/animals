@@ -42,11 +42,8 @@ public class SpecieDaoImpl implements SpecieDao {
     public List<Specie> getSpecies() {
         Session session = sessionFactory.getCurrentSession();
 
-        List<Specie> species = session.createQuery("from Specie").list();
-
-        for(Specie specie : species) {
-            logger.info("Specie successfully loaded. Specie details: " + specie);
-        }
+        List<Specie> species = session.createQuery("from Specie order by specie_name_ru").list();
+        logger.info("Specie list successfully loaded. Specie details: " + species);
         return species;
     }
 

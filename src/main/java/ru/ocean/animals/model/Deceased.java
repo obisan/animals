@@ -31,6 +31,9 @@ public class Deceased {
     @Column(name = "tank_id")
     private Long tank_id;
 
+    @Column(name = "aquarium_id")
+    private Long aquarium_id;
+
     @ManyToOne
     @JoinColumn(
             name = "object_id",
@@ -48,6 +51,15 @@ public class Deceased {
             updatable = false
     )
     private Tank tank;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "aquarium_id",
+            foreignKey = @ForeignKey(name = "FK_Deceased_Tank"),
+            insertable = false,
+            updatable = false
+    )
+    private Aquarium aquarium;
 
     public Long getId() {
         return id;
@@ -97,6 +109,14 @@ public class Deceased {
         this.tank_id = tank_id;
     }
 
+    public Long getAquarium_id() {
+        return aquarium_id;
+    }
+
+    public void setAquarium_id(Long aquarium_id) {
+        this.aquarium_id = aquarium_id;
+    }
+
     public Object getObject() {
         return object;
     }
@@ -111,6 +131,14 @@ public class Deceased {
 
     public void setTank(Tank tank) {
         this.tank = tank;
+    }
+
+    public Aquarium getAquarium() {
+        return aquarium;
+    }
+
+    public void setAquarium(Aquarium aquarium) {
+        this.aquarium = aquarium;
     }
 
     public Deceased clone() throws CloneNotSupportedException {

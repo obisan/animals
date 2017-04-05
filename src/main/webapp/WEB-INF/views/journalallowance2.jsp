@@ -14,7 +14,7 @@
 <jsp:include page="menu.jsp" />
 
 <div class="container">
-    <h4>Назначить корм</h4>
+    <h4>Назначить основной рацион</h4>
     <table>
         <tr>
             <td>
@@ -176,12 +176,9 @@
 <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список назначений</h4>
-
             <c:if test="${!empty listJournalAllowances}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Животное</th>
                         <th width="120">Корм</th>
                         <th width="120">Вес (г.)</th>
@@ -190,7 +187,6 @@
                     </tr>
                     <c:forEach items="${listJournalAllowances}" var="journalallowance">
                         <tr>
-                            <td>${journalallowance.id}</td>
                             <td><a href="<c:url value="/object/info/${journalallowance.object_id}"/>" target="_blank">${journalallowance.object.object_name}</a> (${journalallowance.object.object_count}) <a href="<c:url value="/tank/info/${journalallowance.object.tank.id}"/>" target="_blank">(${journalallowance.object.tank.tank_name})</a></td>
                             <td>${journalallowance.allowance.allowance_name}</td>
                             <td>${journalallowance.weight}</td>

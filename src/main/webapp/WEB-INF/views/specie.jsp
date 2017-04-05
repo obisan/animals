@@ -8,14 +8,14 @@
 
 <html>
 <head>
-    <title>Вид</title>
+    <title>Список видов</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить вид</h4>
+        <h4>Список видов</h4>
         <table>
             <tr>
                 <td>
@@ -45,6 +45,9 @@
                                 <td>
                                     <form:input path="specie_name_lat" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="specie_name_lat" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -54,6 +57,9 @@
                                 </td>
                                 <td>
                                     <form:input path="specie_name_ru" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="specie_name_ru" />
                                 </td>
                             </tr>
                             <tr>
@@ -88,17 +94,45 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="tag_id">
-                                        <spring:message text="Метка"/>
+                                    <form:label path="tags2">
+                                        <spring:message text="Метки" />
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="tag_id">
-                                        <option></option>
+                                    <table>
+                                        <c:set var="count2" value="0" scope="page" />
                                         <c:forEach items="${listTags}" var="tag">
-                                            <form:option value="${tag.id}">${tag.tag_name}</form:option>
+                                            <c:if test="${count2%4 == 0}"><tr title="ss"></c:if>
+                                            <c:set var="count2" value="${count2 + 1}" scope="page" />
+                                            <td><form:checkbox class="tagbox" path="tags2" value="${tag.id}" label="${tag.tag_name}" /></td>
+                                            <c:if test="${count2%4 == 0}"></tr></c:if>
                                         </c:forEach>
-                                    </form:select>
+                                    </table>
+                                    <script type="text/javascript">
+                                        var tagArr = [], tagObj;
+                                        <c:forEach items="${listCheckedTags}" var="tag">
+                                            tagObj = { id: '${tag.id}' };
+                                            tagArr.push(tagObj);
+                                        </c:forEach>
+
+                                        //Populate the corresponding javascript object.
+                                        var data = {
+                                            tags: tagArr
+                                        };
+
+                                        var all = document.getElementsByClassName("tagbox")
+                                        for (var i=0; i < all.length; i++) {
+                                            if (all[i].type == 'checkbox') {
+                                                for(var j=0; j < data.tags.length; j++) {
+                                                    if(data.tags[j].id == all[i].value) {
+                                                        all[i].checked = true;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    </script>
                                 </td>
                             </tr>
                             <tr>
@@ -131,28 +165,25 @@
     <table width="70%" align="center">
     <tr>
         <td>
-            <h4>Список видов</h4>
-
             <c:if test="${!empty listSpecies}">
                 <table class="tg">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Вид (лат.)</th>
                         <th width="120">Вид (рус.)</th>
-                        <th width="80">Кровянные тельца</th>
-                        <th width="80">Ядра</th>
+                        <!--<th width="80">Кровянные тельца</th> -->
+                        <!--<th width="80">Ядра</th> -->
                         <th width="80">Метка</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listSpecies}" var="specie">
+                        <c:set var="count" value="0" scope="page" />
                         <tr>
-                            <td>${specie.id}</td>
-                            <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.specie_author_bracket}</td>
+                            <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.message}</td>
                             <td>${specie.specie_name_ru}</td>
-                            <td>${specie.specie_rbc}</td>
-                            <td>${specie.specie_nucleus}</td>
-                            <td>${specie.tag.tag_name}</td>
+                            <!-- <td>${specie.specie_rbc}</td> -->
+                            <!-- <td>${specie.specie_nucleus}</td> -->
+                            <td><c:forEach items="${specie.tags}" var="tag"><c:set var="count" value="${count + 1}" scope="page" />${tag.tag_name}   <c:if test="${count%4 == 0}"><br /></c:if></c:forEach></td>
                             <td><a href="<c:url value='/specie/edit/${specie.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/specie/remove/${specie.id}' />" >Delete</a></td>
                         </tr>

@@ -8,14 +8,14 @@
 
 <html>
 <head>
-    <title>Сотрудники</title>
+    <title>Список сотрудников</title>
 </head>
 <body>
 
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить сотрудника</h4>
+        <h4>Список сотрудников</h4>
         <table>
             <tr>
                 <td>
@@ -45,6 +45,9 @@
                                 <td>
                                     <form:input path="employee_last_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_last_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -55,6 +58,9 @@
                                 <td>
                                     <form:input path="employee_first_name" />
                                 </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_first_name" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -64,6 +70,9 @@
                                 </td>
                                 <td>
                                     <form:input path="employee_middle_name" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="employee_middle_name" />
                                 </td>
                             </tr>
                             <tr>
@@ -112,11 +121,9 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h4>Список департаментов</h4>
                 <c:if test="${!empty listEmployees}">
                     <table width="90%" align="center" class="tg">
                         <tr>
-                            <th width="80">ID</th>
                             <th width="120">Фамилия</th>
                             <th width="120">Имя</th>
                             <th width="120">Отчество</th>
@@ -127,7 +134,6 @@
                         </tr>
                         <c:forEach items="${listEmployees}" var="employee">
                             <tr>
-                                <td>${employee.id}</td>
                                 <td>${employee.employee_last_name}</td>
                                 <td>${employee.employee_first_name}</td>
                                 <td>${employee.employee_middle_name}</td>

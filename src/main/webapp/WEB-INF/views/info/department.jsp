@@ -107,7 +107,7 @@
             <div id="collapseTwo" class="panel-collapse collapse">
                 <!-- Содержимое 2 панели -->
                 <div class="panel-body">
-                    <c:if test="${!empty department.objects}">
+                    <c:if test="${!empty listObjects}">
                         <table class="tg" width="100%">
                             <tr>
                                 <th>Животное</th>
@@ -116,12 +116,12 @@
                                 <th>Танк</th>
                                 <th>Сотрудник</th>
                             </tr>
-                            <c:forEach items="${department.objects}" var="object">
+                            <c:forEach items="${listObjects}" var="object">
                                 <tr>
                                     <td><a href="<c:url value="/object/info/${object.id}"/>" target="_blank">${object.object_name}</a></td>
                                     <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/specie/info/${object.specie.id}"/>" target="_blank">${object.specie.specieFullName}</a></td>
-                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_name}</a></td>
+                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_number}</a> ${object.aquarium.nameBraked}</td>
                                     <td>${object.employee.fullShortNameAndTitle}</td>
                                 </tr>
                             </c:forEach>

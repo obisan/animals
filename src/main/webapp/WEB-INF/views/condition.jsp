@@ -65,14 +65,12 @@
 <c:if test="${!empty listConditions}">
     <table class="tg">
         <tr>
-            <th width="80">ID</th>
             <th width="120">Условие поимки</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listConditions}" var="condition">
             <tr>
-                <td>${condition.id}</td>
                 <td>${condition.condition_name}</td>
                 <td><a href="<c:url value='/condition/edit/${condition.id}' />" >Edit</a></td>
                 <td><a href="<c:url value='/condition/remove/${condition.id}' />" >Delete</a></td>

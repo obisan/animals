@@ -8,13 +8,12 @@
 
 <html>
 <head>
-    <title>Кормы</title>
+    <title>Список рационов</title>
 </head>
 <body>
 <jsp:include page="menu.jsp" />
 
 <div class="container">
-    <h4>Добавить корм</h4>
     <table>
         <tr>
             <td>
@@ -67,19 +66,15 @@
 <table width="70%" align="center">
     <tr>
         <td class="tg">
-            <h4>Список кормов</h4>
-
             <c:if test="${!empty listAllowances}">
                 <table class="table">
                     <tr>
-                        <th width="80">ID</th>
                         <th width="120">Наименование корма</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
                     </tr>
                     <c:forEach items="${listAllowances}" var="allowance">
                         <tr>
-                            <td>${allowance.id}</td>
                             <td>${allowance.allowance_name}</td>
                             <td><a href="<c:url value='/allowance/edit/${allowance.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/allowance/remove/${allowance.id}' />" >Delete</a></td>

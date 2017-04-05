@@ -40,13 +40,7 @@ public class MedicationDaoImpl implements MedicationDao {
     @SuppressWarnings("unchecked")
     public List<Medication> getMedications() {
         Session session = sessionFactory.getCurrentSession();
-
-        List<Medication> medications = session.createQuery("from Medication").list();
-        for(Medication medication : medications) {
-            logger.info("Medication successfully loaded. Medication details: " + medication);
-        }
-
-        return medications;
+        return (List<Medication>) session.createQuery("from Medication").list();
     }
 
     public void removeMedication(long id) {

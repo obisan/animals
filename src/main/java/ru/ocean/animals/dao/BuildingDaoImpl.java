@@ -42,9 +42,7 @@ public class BuildingDaoImpl implements BuildingDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Building> buildings = session.createQuery("from Building").list();
-        for(Building building : buildings) {
-            logger.info("Building successfully added. Building details: " + building);
-        }
+        logger.info("Building list successfully added. Building details: " + buildings);
         return buildings;
     }
 

@@ -34,12 +34,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="tank_name">
+                                <form:label path="tank_number">
                                     <spring:message text="Танк"/>
                                 </form:label>
                             </td>
                             <td>
-                                <spring:message text="${tank.tank_name}" />
+                                <spring:message text="${tank.tank_number}" />
                             </td>
                         </tr>
                         <tr>
@@ -89,20 +89,22 @@
             <div id="collapseOne" class="panel-collapse collapse">
                 <!-- Содержимое 1 панели -->
                 <div class="panel-body">
-                    <c:if test="${!empty tank.objects}">
+                    <c:if test="${!empty listObjects}">
                         <table class="table">
                             <tr>
                                 <th>ID</th>
                                 <th>Животное</th>
                                 <th>Количество</th>
                                 <th>Вид</th>
+                                <th>Аквариум</th>
                             </tr>
-                            <c:forEach items="${tank.objects}" var="object">
+                            <c:forEach items="${listObjects}" var="object">
                                 <tr>
                                     <td>${object.id}</td>
                                     <td><a href="<c:url value="/object/info/${object.id}" />" target="_blank" >${object.object_name}</a></td>
                                     <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
+                                    <td>${object.aquarium.nameBraked}</td>
                                 </tr>
                             </c:forEach>
                         </table>

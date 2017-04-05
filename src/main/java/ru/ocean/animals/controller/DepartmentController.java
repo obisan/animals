@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ocean.animals.model.Department;
 import ru.ocean.animals.service.DepartmentService;
+import ru.ocean.animals.service.ObjectService;
 
 @Controller
 public class DepartmentController {
+
+    @Autowired
+    private ObjectService objectService;
 
     @Autowired
     private DepartmentService departmentService;
@@ -52,7 +56,8 @@ public class DepartmentController {
 
     @RequestMapping(value = "/department/info/{id}")
     public String infoDepartment(@PathVariable("id") long id, Model model) {
-        model.addAttribute("department",    this.departmentService.getDepartmentById(id));
+        model.addAttribute("department",        this.departmentService.getDepartmentById(id));
+        model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParentsByDepartment(id));
 
         return "info/department";
     }

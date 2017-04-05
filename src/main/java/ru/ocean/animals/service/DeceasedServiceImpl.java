@@ -28,6 +28,7 @@ public class DeceasedServiceImpl implements DeceasedService {
 
         // Установить номер танка где умерла рыба
         deceased.setTank_id(object.getTank_id());
+        deceased.setAquarium_id(object.getAquarium_id());
         this.deceasedDao.addDeceased(deceased);
     }
 

@@ -17,7 +17,7 @@
     <jsp:include page="menu.jsp" />
 
     <div class="container">
-        <h4>Добавить перемещение</h4>
+        <h4>Журнал перемещений</h4>
         <table>
             <tr>
                 <td>
@@ -38,6 +38,37 @@
                                     </td>
                                 </tr>
                             </c:if>
+                            <tr>
+                                <td>
+                                    <form:label path="object_id">
+                                        <spring:message text="Животное"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="object_id">
+                                        <option></option>
+                                        <c:forEach items="${listObjects}" var="object">
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked} </form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="object_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="displacement_count">
+                                        <spring:message text="Количество"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="displacement_count" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="displacement_count" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <form:label path="date_arrival">
@@ -91,37 +122,6 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object_id">
-                                        <spring:message text="Животное"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select class="combobox" path="object_id">
-                                        <option></option>
-                                        <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
-                                        </c:forEach>
-                                    </form:select>
-                                </td>
-                                <td>
-                                    <form:errors cssClass="error" path="object_id" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <form:label path="displacement_count">
-                                        <spring:message text="Количество"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:input path="displacement_count" />
-                                </td>
-                                <td>
-                                    <form:errors cssClass="error" path="displacement_count" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <form:label path="tank_id">
                                         <spring:message text="Танк"/>
                                     </form:label>
@@ -130,12 +130,27 @@
                                     <form:select class="combobox" path="tank_id">
                                         <option></option>
                                         <c:forEach items="${listTanks}" var="tank">
-                                            <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                            <form:option value="${tank.id}">${tank.tank_number}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
                                 <td>
                                     <form:errors cssClass="error" path="tank_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="aquarium_id">
+                                        <spring:message text="Аквариум"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:select class="combobox" path="aquarium_id">
+                                        <option></option>
+                                        <c:forEach items="${listAquariums}" var="aquarium">
+                                            <form:option value="${aquarium.id}">${aquarium.aquarium_name}</form:option>
+                                        </c:forEach>
+                                    </form:select>
                                 </td>
                             </tr>
                             <tr>
@@ -160,27 +175,24 @@
     <table width="70%" align="center">
         <tr>
             <td class="tg">
-                <h4>Список перемещений</h4>
                 <c:if test="${!empty listDisplacements}">
                     <table class="table">
                         <tr>
-                            <th width="80">ID</th>
+                            <th width="120">Имя объекта</th>
+                            <th width="120">Количество</th>
+                            <th width="120">Название танка</th>
                             <th width="120">Дата перевода (прибытие)</th>
                             <th width="120">Дата перевода (отбытие)</th>
-                            <th width="120">Количество</th>
-                            <th width="120">Название Танка</th>
-                            <th width="120">Имя объекта</th>
                             <th width="60">Edit</th>
                             <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listDisplacements}" var="displacement">
                             <tr>
-                                <td>${displacement.id}</td>
+                                <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
+                                <td>${displacement.displacement_count}</td>
+                                <td><a href="<c:url value='/tank/info/${displacement.tank_id}'/>" target="_blank">${displacement.tank.tank_number}</a> ${displacement.aquarium.nameBraked}</td>
                                 <td>${displacement.date_arrival}</td>
                                 <td>${displacement.date_departure}</td>
-                                <td>${displacement.displacement_count}</td>
-                                <td><a href="<c:url value="/tank/info/${displacement.tank_id}"/>" target="_blank">${displacement.tank.tank_name}</a></td>
-                                <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
                                 <td><a href="<c:url value='/displacement/edit/${displacement.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/displacement/remove/${displacement.id}' />" >Delete</a></td>
                             </tr>

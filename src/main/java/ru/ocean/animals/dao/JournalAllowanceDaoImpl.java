@@ -42,11 +42,7 @@ public class JournalAllowanceDaoImpl implements JournalAllowanceDao {
     @SuppressWarnings("unchecked")
     public List<JournalAllowance> getJournalAllowances() {
         Session session = sessionFactory.getCurrentSession();
-        List<JournalAllowance> journalAllowances = session.createQuery("from JournalAllowance").list();
-        for(JournalAllowance journalAllowance : journalAllowances) {
-            logger.info("JournalAllowance successfully loaded. JournalAllowance details: " + journalAllowance);
-        }
-        return journalAllowances;
+        return (List<JournalAllowance>) session.createQuery("from JournalAllowance").list();
     }
 
     @Override

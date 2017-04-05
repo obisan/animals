@@ -42,9 +42,7 @@ public class ConditionDaoImpl implements ConditionDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Condition> conditions = session.createQuery("from Condition").list();
-        for (Condition condition : conditions) {
-            logger.info("Condition successfully loaded. Condition details: " + condition);
-        }
+        logger.info("Condition list successfully loaded. Condition details: " + conditions);
         return conditions;
     }
 

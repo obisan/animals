@@ -43,10 +43,7 @@ public class AllowanceDaoImpl implements AllowanceDao {
     public List<Allowance> getAllowances() {
         Session session = sessionFactory.getCurrentSession();
         List<Allowance> allowances = session.createQuery("from Allowance").list();
-        for(Allowance allowance : allowances) {
-            logger.info("Allowance successfully loaded. Allowance details: " + allowance);
-        }
-
+        logger.info("Allowance list successfully loaded. Allowance details: " + allowances);
         return allowances;
     }
 

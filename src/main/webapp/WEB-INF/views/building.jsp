@@ -65,14 +65,12 @@
 <c:if test="${!empty listBuildings}">
     <table class="tg">
         <tr>
-            <th width="80">ID</th>
             <th width="120">Строение</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listBuildings}" var="building">
             <tr>
-                <td>${building.id}</td>
                 <td>${building.building_name}</td>
                 <td><a href="<c:url value='/building/edit/${building.id}' />" >Edit</a></td>
                 <td><a href="<c:url value='/building/remove/${building.id}' />" >Delete</a></td>

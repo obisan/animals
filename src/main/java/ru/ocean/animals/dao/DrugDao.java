@@ -9,5 +9,7 @@ public interface DrugDao {
     void        updateDrug(Drug drug);
     Drug        getDrugById(long id);
     List<Drug>  getDrugs();
+    List<Drug>  getVitamines();
+    List<Drug>  getMedicaments();
     void        removeDrug(long id);
 }

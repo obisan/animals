@@ -43,9 +43,7 @@ public class QuarantineDaoImpl implements QuarantineDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Quarantine> quarantines = session.createQuery("from Quarantine").list();
-        for(Quarantine quarantine : quarantines) {
-            logger.info("Quarantine successfully loaded. Quarantine details: " + quarantine);
-        }
+        logger.info("Quarantine list successfully loaded. Quarantine details: " + quarantines);
         return quarantines;
     }
 

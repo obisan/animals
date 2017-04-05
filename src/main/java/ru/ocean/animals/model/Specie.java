@@ -1,12 +1,16 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "Specie")
 public class Specie {
+    private static final long serialVersionUID = 5754104541168320730L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,25 +23,13 @@ public class Specie {
     private String specie_name_lat;
 
     @Column(name = "specie_rbc")
-    private float specie_rbc;
+    private Float specie_rbc;
 
     @Column(name = "specie_nucleus")
-    private float specie_nucleus;
+    private Float specie_nucleus;
 
     @Column(name = "specie_author")
     private String specie_author;
-
-    @Column(name = "tag_id")
-    private Long tag_id;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "tag_id",
-            foreignKey = @ForeignKey(name = "FK_Specie_Tag"),
-            insertable = false,
-            updatable = false
-    )
-    private Tag tag;
 
     @OneToMany(
             targetEntity = Object.class,
@@ -55,12 +47,42 @@ public class Specie {
     )
     private Set<Photo> photos = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "specie_tags",
+            joinColumns = @JoinColumn(name = "specie_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
+
+    @Transient
+    private List<String> tags2 = new ArrayList<>();
+
+    public List<String> getTags2() {
+        return tags2;
+    }
+
+    public void setTags2(List<String> tags2) {
+        this.tags2 = tags2;
+    }
+
     public String getSpecieFullName() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(specie_name_lat);
-        stringBuilder.append(" / ");
-        stringBuilder.append(specie_name_ru);
-        return stringBuilder.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(specie_name_ru);
+        sb.append(" / ");
+        sb.append(specie_name_lat);
+        return sb.toString();
+    }
+
+    public String getMessage() {
+        if(!specie_author.equals("")) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+            sb.append(specie_author);
+            sb.append(")");
+            return sb.toString();
+        }
+        return "";
     }
 
     public Long getId() {
@@ -87,20 +109,16 @@ public class Specie {
         this.specie_name_lat = specie_name_lat;
     }
 
-    public float getSpecie_rbc() {
+    public Float getSpecie_rbc() {
         return specie_rbc;
     }
 
-    public void setSpecie_rbc(float specie_rbc) {
+    public void setSpecie_rbc(Float specie_rbc) {
         this.specie_rbc = specie_rbc;
     }
 
-    public float getSpecie_nucleus() {
+    public Float getSpecie_nucleus() {
         return specie_nucleus;
-    }
-
-    public void setSpecie_nucleus(float specie_nucleus) {
-        this.specie_nucleus = specie_nucleus;
     }
 
     public void setSpecie_nucleus(Float specie_nucleus) {
@@ -111,30 +129,8 @@ public class Specie {
         return specie_author;
     }
 
-    public String getSpecie_author_bracket() {
-        if(specie_author != null)
-            return specie_author;
-        return null;
-    }
-
     public void setSpecie_author(String specie_author) {
         this.specie_author = specie_author;
-    }
-
-    public Long getTag_id() {
-        return tag_id;
-    }
-
-    public void setTag_id(Long tag_id) {
-        this.tag_id = tag_id;
-    }
-
-    public Tag getTag() {
-        return tag;
-    }
-
-    public void setTag(Tag tag) {
-        this.tag = tag;
     }
 
     public Set<Object> getObjects() {
@@ -153,6 +149,14 @@ public class Specie {
         this.photos = photos;
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return "Specie{" +
@@ -162,7 +166,6 @@ public class Specie {
                 ", specie_rbc=" + specie_rbc +
                 ", specie_nucleus=" + specie_nucleus +
                 ", specie_author='" + specie_author + '\'' +
-                ", tag_id=" + tag_id +
                 '}';
     }
 }

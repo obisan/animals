@@ -20,7 +20,7 @@ public class DisplacementDaoImpl implements DisplacementDao {
     public void addDisplacement(Displacement displacement) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(displacement);
-        logger.info("Displacement successfully added. Genus details: " + displacement);
+        logger.info("Displacement successfully added. Displacement details: " + displacement);
     }
 
     public void updateDisplacement(Displacement displacement) {
@@ -40,23 +40,15 @@ public class DisplacementDaoImpl implements DisplacementDao {
     @SuppressWarnings("unchecked")
     public List<Displacement> getDisplacementOfObject(long animal_id) {
         Session session = sessionFactory.getCurrentSession();
-        List<Displacement> displacements =
-                session.createQuery("from Displacement where animal_id = :animal_id order by date_arrival")
-                        .setParameter("animal_id", animal_id)
-                        .list();
-
-        return displacements;
+        return (List<Displacement>) session.createQuery("from Displacement where animal_id = :animal_id order by date_arrival")
+                .setParameter("animal_id", animal_id)
+                .list();
     }
 
     @SuppressWarnings("unchecked")
     public List<Displacement> getDisplacements() {
         Session session = sessionFactory.getCurrentSession();
-        List<Displacement> displacements = session.createQuery("from Displacement").list();
-
-        for (Displacement displacement : displacements) {
-            logger.info("Displacement successfully loaded. Displacement details: " + displacement);
-        }
-        return displacements;
+        return (List<Displacement>) session.createQuery("from Displacement").list();
     }
 
     public void removeDisplacement(long id) {

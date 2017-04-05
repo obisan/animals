@@ -43,10 +43,7 @@ public class PhotoDaoImpl implements PhotoDao {
         Session session = sessionFactory.getCurrentSession();
 
         List<Photo> photos = session.createQuery("from Photo").list();
-        for(Photo photo : photos) {
-            logger.info("Photo successfully loaded. Photo details: " + photo);
-        }
-
+        logger.info("Photo list successfully loaded. Photo details: " + photos);
         return photos;
     }
 

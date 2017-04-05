@@ -40,12 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @SuppressWarnings("unchecked")
     public List<Employee> getEmployees() {
         Session session = sessionFactory.getCurrentSession();
-
-        List<Employee> employees = session.createQuery("from Employee").list();
-        for (Employee employee : employees) {
-            logger.info("Employee successfully updated. Employee details: " + employee);
-        }
-        return employees;
+        return (List<Employee>) session.createQuery("from Employee order by employee_last_name").list();
     }
 
     public void removeEmployee(long id) {
