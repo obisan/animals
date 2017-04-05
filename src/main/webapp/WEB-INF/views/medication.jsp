@@ -219,7 +219,7 @@ Table
                         <th width="80">Животное</th>
                         <th width="70">Дата начала</th>
                         <th width="70">Дата окончания</th>
-                        <th width="120">Реакция</th>
+                        <!-- <th width="120">Реакция</th> -->
                         <th width="120">Диагноз</th>
                         <th width="120">Ванна</th>
                         <th width="280">Примечание</th>
@@ -232,7 +232,7 @@ Table
                             <td>${medication.object.object_name} (${medication.object.object_count}) (${medication.object.tank.tank_number})</td>
                             <td>${medication.medication_start_date}</td>
                             <td>${medication.medication_end_date}</td>
-                            <td>${medication.medication_reaction}</td>
+                            <!-- <td>${medication.medication_reaction}</td> -->
                             <td>${medication.medication_diagnostic}</td>
                             <td>${medication.medication_bath}</td>
                             <td>${medication.medication_note}</td>

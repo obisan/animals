@@ -170,8 +170,8 @@
                     <tr>
                         <th width="120">Вид (лат.)</th>
                         <th width="120">Вид (рус.)</th>
-                        <th width="80">Кровянные тельца</th>
-                        <th width="80">Ядра</th>
+                        <!--<th width="80">Кровянные тельца</th> -->
+                        <!--<th width="80">Ядра</th> -->
                         <th width="80">Метка</th>
                         <th width="60">Edit</th>
                         <th width="60">Delete</th>
@@ -181,8 +181,8 @@
                         <tr>
                             <td><a href="<c:url value="/specie/info/${specie.id}"/>" target="_blank">${specie.specie_name_lat}</a> ${specie.message}</td>
                             <td>${specie.specie_name_ru}</td>
-                            <td>${specie.specie_rbc}</td>
-                            <td>${specie.specie_nucleus}</td>
+                            <!-- <td>${specie.specie_rbc}</td> -->
+                            <!-- <td>${specie.specie_nucleus}</td> -->
                             <td><c:forEach items="${specie.tags}" var="tag"><c:set var="count" value="${count + 1}" scope="page" />${tag.tag_name}   <c:if test="${count%4 == 0}"><br /></c:if></c:forEach></td>
                             <td><a href="<c:url value='/specie/edit/${specie.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/specie/remove/${specie.id}' />" >Delete</a></td>

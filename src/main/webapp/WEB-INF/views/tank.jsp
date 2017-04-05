@@ -100,6 +100,7 @@
                                 </td>
                                 <td>
                                     <form:select path="tank_salineness">
+                                        <form:option value=""></form:option>
                                         <form:option value=">30">&gt;30</form:option>
                                         <form:option value="12-15">12-15</form:option>
                                         <form:option value="<5">&lt;5</form:option>
