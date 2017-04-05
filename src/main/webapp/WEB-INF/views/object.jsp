@@ -135,7 +135,7 @@
                             <tr>
                                 <td>
                                     <form:label path="object.object_count">
-                                        <spring:message text="Количество"/>
+                                        <spring:message text="Количество (экз.)"/>
                                     </form:label>
                                 </td>
                                 <td>
@@ -148,7 +148,7 @@
                             <tr>
                                 <td>
                                     <form:label path="object.object_weight">
-                                        <spring:message text="Вес"/>
+                                        <spring:message text="Вес"/> (кг.)
                                     </form:label>
                                 </td>
                                 <td>
@@ -158,7 +158,7 @@
                             <tr>
                                 <td>
                                     <form:label path="object.object_length">
-                                        <spring:message text="Длина"/>
+                                        <spring:message text="Длина"/> (м.)
                                     </form:label>
                                 </td>
                                 <td>
@@ -211,7 +211,7 @@
                                     <form:select class="combobox" path="object.tank_id">
                                         <option></option>
                                         <c:forEach items="${listTanks}" var="tank">
-                                            <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                            <form:option value="${tank.id}">${tank.tank_number}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -294,7 +294,7 @@
                                 <td>${object.object_length}</td>
                                 <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
                                 <td><a href="<c:url value="/employee/info/${object.employee.id}"/>" target="_blank">${object.employee.fullShortName}</a> (<a href="<c:url value="/department/info/${object.employee.department.id}" />  ">${object.employee.department.department_name}</a>)</td>
-                                <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_name}</a> ${object.aquarium.nameBraked}</td>
+                                <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_number}</a> ${object.aquarium.nameBraked}</td>
                                 <td>${object.label.place_catching} / ${object.label.date_catching} / ${object.label.condition.condition_name}</td>
                                 <td><a href="<c:url value='/object/edit/${object.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/object/remove/${object.id}' />" >Delete</a></td>

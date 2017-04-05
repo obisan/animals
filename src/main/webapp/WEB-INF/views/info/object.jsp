@@ -89,7 +89,7 @@
                                     </form:label>
                                 </td>
                                 <td>
-                                    <a href="<c:url value="/tank/info/${object.tank_id}" />" target="_blank" >${object.tank.tank_name}</a> ${object.aquarium.nameBraked}
+                                    <a href="<c:url value="/tank/info/${object.tank_id}" />" target="_blank" >${object.tank.tank_number}</a> ${object.aquarium.nameBraked}
                                 </td>
                             </tr>
                             <tr>
@@ -150,7 +150,7 @@
                                         <td>${displacement.id}</td>
                                         <td>${displacement.date_arrival}</td>
                                         <td>${displacement.date_departure}</td>
-                                        <td>${displacement.tank.tank_name}</td>
+                                        <td>${displacement.tank.tank_number}</td>
                                     </tr>
                                 </c:forEach>
                             </table>
@@ -217,7 +217,7 @@
                                         <td>${deceased.id}</td>
                                         <td>${deceased.deceased_date}</td>
                                         <td>${deceased.deceased_count}</td>
-                                        <td><a href="<c:url value="/tank/info/${deceased.tank.id}"/>" target="_blank">${deceased.tank.tank_name}</a></td>
+                                        <td><a href="<c:url value="/tank/info/${deceased.tank.id}"/>" target="_blank">${deceased.tank.tank_number}</a></td>
                                         <td>${deceased.deceased_note}</td>
                                     </tr>
                                 </c:forEach>

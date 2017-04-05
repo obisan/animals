@@ -48,7 +48,7 @@
                                     <form:select class="combobox" path="object_id">
                                         <option></option>
                                         <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked} </form:option>
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked} </form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -130,7 +130,7 @@
                                     <form:select class="combobox" path="tank_id">
                                         <option></option>
                                         <c:forEach items="${listTanks}" var="tank">
-                                            <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                            <form:option value="${tank.id}">${tank.tank_number}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -190,7 +190,7 @@
                             <tr>
                                 <td><a href="<c:url value="/object/info/${displacement.object.id}"/>" target="_blank">${displacement.object.object_name}</a></td>
                                 <td>${displacement.displacement_count}</td>
-                                <td><a href="<c:url value='/tank/info/${displacement.tank_id}'/>" target="_blank">${displacement.tank.tank_name}</a> ${displacement.aquarium.nameBraked}</td>
+                                <td><a href="<c:url value='/tank/info/${displacement.tank_id}'/>" target="_blank">${displacement.tank.tank_number}</a> ${displacement.aquarium.nameBraked}</td>
                                 <td>${displacement.date_arrival}</td>
                                 <td>${displacement.date_departure}</td>
                                 <td><a href="<c:url value='/displacement/edit/${displacement.id}' />" >Edit</a></td>

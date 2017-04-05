@@ -34,12 +34,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="tank_name">
+                                <form:label path="tank_number">
                                     <spring:message text="Танк"/>
                                 </form:label>
                             </td>
                             <td>
-                                <spring:message text="${tank.tank_name}" />
+                                <spring:message text="${tank.tank_number}" />
                             </td>
                         </tr>
                         <tr>

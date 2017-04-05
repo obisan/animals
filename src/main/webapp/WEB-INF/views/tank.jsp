@@ -23,7 +23,7 @@
 
                     <form:form action="${addAction}" commandName="tank">
                         <table>
-                            <c:if test="${!empty tank.tank_name}">
+                            <c:if test="${!empty tank.tank_number}">
                                 <tr>
                                     <td>
                                         <form:label path="id">
@@ -38,25 +38,28 @@
                             </c:if>
                             <tr>
                                 <td>
-                                    <form:label path="tank_name">
-                                        <spring:message text="Наименование танка"/>
+                                    <form:label path="tank_number">
+                                        <spring:message text="Номер"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="tank_name" />
+                                    <form:input path="tank_number" />
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="tank_name" />
+                                    <form:errors cssClass="error" path="tank_number" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <form:label path="tank_volume">
-                                        <spring:message text="Объем танка"/>
+                                        <spring:message text="Объем танка"/> (м<sup>3</sup>)
                                     </form:label>
                                 </td>
                                 <td>
                                     <form:input path="tank_volume" />
+                                </td>
+                                <td>
+                                    <form:errors cssClass="error" path="tank_volume"/>
                                 </td>
                             </tr>
                             <tr>
@@ -72,7 +75,7 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_ph">
-                                        <spring:message text="Кислотность (ph) воды"/>
+                                        <spring:message text="pH"/> (-lg [H<sup>+</sup>])
                                     </form:label>
                                 </td>
                                 <td>
@@ -82,7 +85,7 @@
                             <tr>
                                 <td>
                                     <form:label path="tank_orp">
-                                        <spring:message text="ОВП (ORP)"/>
+                                        <spring:message text="ORP"/>
                                     </form:label>
                                 </td>
                                 <td>
@@ -118,7 +121,7 @@
                             <tr>
                                 <td>
                                     <form:label path="building_id">
-                                        <spring:message text="Строение"/>
+                                        <spring:message text="Корпус"/>
                                     </form:label>
                                 </td>
                                 <td>
@@ -131,11 +134,11 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <c:if test="${!empty tank.tank_name}">
+                                    <c:if test="${!empty tank.tank_number}">
                                         <input type="submit"
                                                value="<spring:message text="Сохранить"/>" />
                                     </c:if>
-                                    <c:if test="${empty tank.tank_name}">
+                                    <c:if test="${empty tank.tank_number}">
                                         <input type="submit"
                                                value="<spring:message text="Добавить"/>" />
                                     </c:if>
@@ -155,20 +158,20 @@
                 <c:if test="${!empty listTanks}">
                     <table class="table">
                         <tr>
-                            <th width="120">Наименование танка</th>
+                            <th width="120">Номер</th>
                             <th width="120">Объем танка</th>
                             <th width="120">Температура</th>
-                            <th width="120">Кислотность (ph)</th>
-                            <th width="120">ОВП (ORP)</th>
+                            <th width="120">pH (-lg [H<sup>+</sup>])</th>
+                            <th width="120">ORP</th>
                             <th width="120">Соленость</th>
                             <th width="140">Сотрудник</th>
-                            <th width="80">Строение</th>
+                            <th width="80">Корпус</th>
                             <th width="60">Edit</th>
                             <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listTanks}" var="tank">
                             <tr>
-                                <td><a href="<c:url value="/tank/info/${tank.id}" />" target="_blank" >${tank.tank_name}</a> </td>
+                                <td><a href="<c:url value="/tank/info/${tank.id}" />" target="_blank" >${tank.tank_number}</a> </td>
                                 <td>${tank.tank_volume}</td>
                                 <td>${tank.tank_temperature}</td>
                                 <td>${tank.tank_ph}</td>

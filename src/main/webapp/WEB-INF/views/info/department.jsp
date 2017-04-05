@@ -121,7 +121,7 @@
                                     <td><a href="<c:url value="/object/info/${object.id}"/>" target="_blank">${object.object_name}</a></td>
                                     <td>${object.object_count}</td>
                                     <td><a href="<c:url value="/specie/info/${object.specie.id}"/>" target="_blank">${object.specie.specieFullName}</a></td>
-                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_name}</a> ${object.aquarium.nameBraked}</td>
+                                    <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_number}</a> ${object.aquarium.nameBraked}</td>
                                     <td>${object.employee.fullShortNameAndTitle}</td>
                                 </tr>
                             </c:forEach>

@@ -7,6 +7,9 @@ import org.springframework.validation.Validator;
 import ru.ocean.animals.model.Tank;
 import ru.ocean.animals.service.TankService;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Component
 public class TankValidator implements Validator {
 
@@ -22,8 +25,21 @@ public class TankValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Tank tank = (Tank) o;
 
-        if(tank.getTank_name().equals("")) {
-            errors.rejectValue("tank_name", "Null.value");
+        if(tank.getTank_number().equals("")) {
+            errors.rejectValue("tank_number", "Null.value");
+        } else {
+            Pattern pattern = Pattern.compile(
+                    "[а-яА-ЯёЁ]+"
+            );
+            Matcher matcher = pattern.matcher(tank.getTank_number());
+
+            if(matcher.matches()) {
+                errors.rejectValue("tank_number", "Russian.value");
+            }
+        }
+
+        if(tank.getTank_volume() == null) {
+            errors.rejectValue("tank_volume", "Null.value");
         }
 
     }

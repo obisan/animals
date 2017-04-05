@@ -48,7 +48,7 @@
                                     <form:select class="combobox" path="object_id">
                                         <option></option>
                                         <c:forEach items="${listObjects}" var="object">
-                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
+                                            <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
@@ -141,7 +141,7 @@
                             <td><a href="<c:url value='/object/info/${deceased.object.id}' />" target="_blank">${deceased.object.object_name}</a></td>
                             <td>${deceased.deceased_count}</td>
                             <td>${deceased.deceased_date}</td>
-                            <td><a href="<c:url value='/tank/info/${deceased.tank.id}' />" target="_blank">${deceased.tank.tank_name}</a> ${deceased.aquarium.nameBraked}</td>
+                            <td><a href="<c:url value='/tank/info/${deceased.tank.id}' />" target="_blank">${deceased.tank.tank_number}</a> ${deceased.aquarium.nameBraked}</td>
                             <td>${deceased.deceased_note}</td>
                             <td><a href="<c:url value='/deceased/edit/${deceased.id}' />" >Edit</a></td>
                             <td><a href="<c:url value='/deceased/remove/${deceased.id}' />" >Delete</a></td>

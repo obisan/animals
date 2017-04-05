@@ -40,7 +40,7 @@
                         </li>
                         <li class="dropdown">
                             <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Справочники
+                                Списки
                                 <span class="caret" />
                             </a>
                             <ul class="dropdown-menu">

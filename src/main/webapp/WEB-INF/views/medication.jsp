@@ -49,7 +49,7 @@
                                 <form:select class="combobox" path="medication.object_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked}</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -229,7 +229,7 @@ Table
                     </tr>
                     <c:forEach items="${listMedications}" var="medication">
                         <tr>
-                            <td>${medication.object.object_name} (${medication.object.object_count}) (${medication.object.tank.tank_name})</td>
+                            <td>${medication.object.object_name} (${medication.object.object_count}) (${medication.object.tank.tank_number})</td>
                             <td>${medication.medication_start_date}</td>
                             <td>${medication.medication_end_date}</td>
                             <td>${medication.medication_reaction}</td>

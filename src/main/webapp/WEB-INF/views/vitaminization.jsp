@@ -49,7 +49,7 @@
                                             <form:select class="combobox" path="vitaminization.object_id">
                                                 <option></option>
                                                 <c:forEach items="${listObjects}" var="object">
-                                                    <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name}) ${object.aquarium.nameBraked}</form:option>
+                                                    <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked}</form:option>
                                                 </c:forEach>
                                             </form:select>
                                         </td>
@@ -62,7 +62,7 @@
                                             <form:select class="combobox" path="tank.id">
                                                 <option></option>
                                                 <c:forEach items="${listTanks}" var="tank">
-                                                    <form:option value="${tank.id}">${tank.tank_name}</form:option>
+                                                    <form:option value="${tank.id}">${tank.tank_number}</form:option>
                                                 </c:forEach>
                                             </form:select>
                                         </td>
@@ -239,7 +239,7 @@ Table
                     <c:forEach items="${listVitaminizations}" var="vitaminization">
                         <tr>
                             <td><a href="<c:url value="/object/info/${vitaminization.object.id}"/>" target="_blank">${vitaminization.object.object_name}</a> (${vitaminization.object.object_count})</td>
-                            <td>${vitaminization.tank.tank_name} ${vitaminization.aquarium.nameBraked}</td>
+                            <td>${vitaminization.tank.tank_number} ${vitaminization.aquarium.nameBraked}</td>
                             <td>${vitaminization.vitaminization_date}</td>
                             <td><c:forEach items="${vitaminization.drugs}" var="drug" >${drug.drug_name}<br></c:forEach></td>
                             <td><a href="<c:url value='/vitaminization/edit/${vitaminization.id}' />" >Edit</a></td>
