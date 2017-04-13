@@ -1,8 +1,6 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Employee")
@@ -34,14 +32,6 @@ public class Employee {
             insertable = false,
             updatable = false)
     private Department department;
-
-    @OneToMany(
-            targetEntity = Object.class,
-            mappedBy = "employee",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private Set<Object> objects = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -97,14 +87,6 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public Set<Object> getObjects() {
-        return objects;
-    }
-
-    public void setObjects(Set<Object> objects) {
-        this.objects = objects;
     }
 
     public String   getFullName() {

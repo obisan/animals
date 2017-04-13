@@ -186,20 +186,20 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="object.employee_id">
-                                        <spring:message text="Сотрудник"/>
+                                    <form:label path="object.department_id">
+                                        <spring:message text="Отдел"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select class="combobox" path="object.employee_id">
+                                    <form:select class="combobox" path="object.department_id">
                                         <option></option>
-                                        <c:forEach items="${listEmployees}" var="employee">
-                                            <form:option value="${employee.id}">${employee.fullShortNameAndDepartment}</form:option>
+                                        <c:forEach items="${listDepartments}" var="department">
+                                            <form:option value="${department.id}">${department.department_name}</form:option>
                                         </c:forEach>
                                     </form:select>
                                 </td>
                                 <td>
-                                    <form:errors cssClass="error" path="object.employee_id" />
+                                    <form:errors cssClass="error" path="object.department_id" />
                                 </td>
                             </tr>
                             <tr>
@@ -281,7 +281,7 @@
                             <th width="80">Вес</th>
                             <th width="80">Длина</th>
                             <th width="120">Вид</th>
-                            <th width="120">Сотрудник</th>
+                            <th width="120">Отдел</th>
                             <th width="60">Танк</th>
                             <th width="120">Этикетка</th>
                             <th width="60">Edit</th>
@@ -294,7 +294,7 @@
                                 <td>${object.object_weight}</td>
                                 <td>${object.object_length}</td>
                                 <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
-                                <td><a href="<c:url value="/employee/info/${object.employee.id}"/>" target="_blank">${object.employee.fullShortName}</a> (<a href="<c:url value="/department/info/${object.employee.department.id}" />  ">${object.employee.department.department_name}</a>)</td>
+                                <td><a href="<c:url value="/department/info/${object.department.id}" />" target="_blank" >${object.department.department_name}</a></td>
                                 <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_number}</a> ${object.aquarium.nameBraked}</td>
                                 <td>${object.label.place_catching} / ${object.label.date_catching} / ${object.label.condition.condition_name}</td>
                                 <td><a href="<c:url value='/object/edit/${object.id}' />" >Edit</a></td>

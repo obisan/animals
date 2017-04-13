@@ -17,7 +17,7 @@ public class ObjectController {
     private ObjectService       objectService;
 
     @Autowired
-    private EmployeeService     employeeService;
+    private DepartmentService   departmentService;
 
     @Autowired
     private LabelService        labelService;
@@ -52,7 +52,7 @@ public class ObjectController {
             model.addAttribute("listObjects",   this.objectService.getObjectsFilteredBySpecieId(Long.parseLong(specie)));
         }
 
-        model.addAttribute("listEmployees",     this.employeeService.getEmployees());
+        model.addAttribute("listDepartments",   this.departmentService.getDepartments());
         model.addAttribute("listLabels",        this.labelService.getLabels());
         model.addAttribute("listTags",          this.tagService.getTags());
         model.addAttribute("listSpecies",       this.specieService.getSpecies());
@@ -70,7 +70,7 @@ public class ObjectController {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
-            model.addAttribute("listEmployees",     this.employeeService.getEmployees());
+            model.addAttribute("listDepartments",   this.departmentService.getDepartments());
             model.addAttribute("listLabels",        this.labelService.getLabels());
             model.addAttribute("listTags",          this.tagService.getTags());
             model.addAttribute("listSpecies",       this.specieService.getSpecies());
@@ -101,7 +101,7 @@ public class ObjectController {
     public String editObject(@PathVariable("id") long id, Model model) {
         model.addAttribute("object",            this.objectService.getObjectById(id));
         model.addAttribute("listObjects",       this.objectService.getObjectsAliveWithoutParents());
-        model.addAttribute("listEmployees",     this.employeeService.getEmployees());
+        model.addAttribute("listDepartments",   this.departmentService.getDepartments());
         model.addAttribute("listLabels",        this.labelService.getLabels());
         model.addAttribute("listTags",          this.tagService.getTags());
         model.addAttribute("listSpecies",       this.specieService.getSpecies());

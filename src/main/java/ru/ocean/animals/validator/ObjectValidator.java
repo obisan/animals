@@ -35,8 +35,8 @@ public class ObjectValidator implements Validator {
             errors.rejectValue( "object.specie_id", "Null.value");
         }
 
-        if(object.getObject().getEmployee_id() == null) {
-            errors.rejectValue("object.employee_id", "Null.value");
+        if(object.getObject().getDepartment_id() == null) {
+            errors.rejectValue("object.department_id", "Null.value");
         }
 
         if(object.getObject().getTank_id() == null) {

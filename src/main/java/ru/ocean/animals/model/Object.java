@@ -27,8 +27,8 @@ public class Object {
     @Column(name = "specie_id")
     private Long specie_id;
 
-    @Column(name = "employee_id")
-    private Long employee_id;
+    @Column(name = "department_id")
+    private Long department_id;
 
     @Column(name = "label_id")
     private Long label_id;
@@ -53,12 +53,12 @@ public class Object {
 
     @ManyToOne
     @JoinColumn(
-            name = "employee_id",
-            foreignKey = @ForeignKey(name = "FK_Object_Employee"),
+            name = "department_id",
+            foreignKey = @ForeignKey(name = "FK_Object_Department"),
             insertable = false,
             updatable = false
     )
-    private Employee employee;
+    private Department department;
 
     @ManyToOne
     @JoinColumn(
@@ -192,12 +192,12 @@ public class Object {
         this.specie_id = specie_id;
     }
 
-    public Long getEmployee_id() {
-        return employee_id;
+    public Long getDepartment_id() {
+        return department_id;
     }
 
-    public void setEmployee_id(Long employee_id) {
-        this.employee_id = employee_id;
+    public void setDepartment_id(Long department_id) {
+        this.department_id = department_id;
     }
 
     public Long getLabel_id() {
@@ -240,12 +240,12 @@ public class Object {
         this.specie = specie;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Label getLabel() {
@@ -327,8 +327,8 @@ public class Object {
         object.setObject_length(    this.object_length);
         object.setObject_count(     this.object_count);
         object.setObject_weight(    this.object_weight);
+        object.setDepartment_id(    this.department_id);
         object.setSpecie_id(        this.specie_id);
-        object.setEmployee_id(      this.employee_id);
         object.setLabel_id(         this.label_id);
         object.setTank_id(          this.tank_id);
         return object;
@@ -343,7 +343,7 @@ public class Object {
                 ", object_count=" + object_count +
                 ", object_weight=" + object_weight +
                 ", specie_id=" + specie_id +
-                ", employee_id=" + employee_id +
+                ", department_id=" + department_id +
                 ", label_id=" + label_id +
                 ", tank_id=" + tank_id +
                 ", parent_id= " + parent_id +

@@ -50,9 +50,9 @@ public class Department {
     public Set<Object> getObjects() {
         Set<Object> objects = new HashSet<>();
 
-        for(Employee employee : employees) {
-            objects.addAll(employee.getObjects());
-        }
+//        for(Employee employee : employees) {
+//            objects.addAll(employee.getObjects());
+//        }
 
         return objects;
     }
