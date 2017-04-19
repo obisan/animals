@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
@@ -28,13 +29,13 @@
                             <c:if test="${!empty object.object.object_name}">
                                 <tr>
                                     <td>
-                                        <form:label path="id">
+                                        <form:label path="object.id">
                                             <spring:message text="ID"/>
                                         </form:label>
                                     </td>
                                     <td>
-                                        <form:input path="id" readonly="true" size="8"  disabled="true" />
-                                        <form:hidden path="id" />
+                                        <form:input path="object.id" readonly="true" size="8"  disabled="true" />
+                                        <form:hidden path="object.id" />
                                     </td>
                                 </tr>
                             </c:if>
@@ -146,6 +147,7 @@
                                     <form:errors cssClass="error" path="object.object_count" />
                                 </td>
                             </tr>
+                            <!--
                             <tr>
                                 <td>
                                     <form:label path="object.object_weight">
@@ -166,6 +168,7 @@
                                     <form:input path="object.object_length" />
                                 </td>
                             </tr>
+                            -->
                             <tr>
                                 <td>
                                     <form:label path="object.specie_id">
@@ -278,8 +281,10 @@
                         <tr>
                             <th width="120">Животное</th>
                             <th width="80">Количество</th>
+                            <!--
                             <th width="80">Вес</th>
                             <th width="80">Длина</th>
+                            -->
                             <th width="120">Вид</th>
                             <th width="120">Отдел</th>
                             <th width="60">Танк</th>
@@ -291,12 +296,14 @@
                             <tr>
                                 <td><a href="<c:url value='/object/info/${object.id}' />" target="_blank">${object.object_name}</a></td>
                                 <td>${object.object_count}</td>
+                                <!--
                                 <td>${object.object_weight}</td>
                                 <td>${object.object_length}</td>
+                                -->
                                 <td><a href="<c:url value="/specie/info/${object.specie.id}" />" target="_blank" >${object.specie.specie_name_lat}</a></td>
                                 <td><a href="<c:url value="/department/info/${object.department.id}" />" target="_blank" >${object.department.department_name}</a></td>
                                 <td><a href="<c:url value="/tank/info/${object.tank.id}" />" target="_blank">${object.tank.tank_number}</a> ${object.aquarium.nameBraked}</td>
-                                <td>${object.label.place_catching} / ${object.label.date_catching} / ${object.label.condition.condition_name}</td>
+                                <td><c:if test="${!empty object.label_id}">${object.label.place_catching} / ${object.label.date_catching} / ${object.label.condition.condition_name}</c:if></td>
                                 <td><a href="<c:url value='/object/edit/${object.id}' />" >Edit</a></td>
                                 <td><a href="<c:url value='/object/remove/${object.id}' />" >Delete</a></td>
                             </tr>

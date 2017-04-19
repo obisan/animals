@@ -22,6 +22,9 @@ public class Specie {
     @Column(name = "specie_name_lat")
     private String specie_name_lat;
 
+    @Column(name = "specie_weight_adult")
+    private Float specie_weight_adult;
+
     @Column(name = "specie_rbc")
     private Float specie_rbc;
 
@@ -105,6 +108,14 @@ public class Specie {
         return specie_name_lat;
     }
 
+    public Float getSpecie_weight_adult() {
+        return specie_weight_adult;
+    }
+
+    public void setSpecie_weight_adult(Float specie_weight_adult) {
+        this.specie_weight_adult = specie_weight_adult;
+    }
+
     public void setSpecie_name_lat(String specie_name_lat) {
         this.specie_name_lat = specie_name_lat;
     }
@@ -163,6 +174,7 @@ public class Specie {
                 "id=" + id +
                 ", specie_name_ru='" + specie_name_ru + '\'' +
                 ", specie_name_lat='" + specie_name_lat + '\'' +
+                ", specie_weight_adult=" + specie_weight_adult +
                 ", specie_rbc=" + specie_rbc +
                 ", specie_nucleus=" + specie_nucleus +
                 ", specie_author='" + specie_author + '\'' +

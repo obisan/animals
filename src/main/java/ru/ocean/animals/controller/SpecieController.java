@@ -70,6 +70,14 @@ public class SpecieController {
             specie.getPhotos().add(photo2);
             specie.getPhotos().add(photo3);
         } else {
+            Photo photo1 = save_file(file1, specie.getId(), 1);
+            Photo photo2 = save_file(file2, specie.getId(), 2);
+            Photo photo3 = save_file(file3, specie.getId(), 3);
+
+            if(photo1 != null) specie.getPhotos().add(photo1);
+            if(photo2 != null) specie.getPhotos().add(photo2);
+            if(photo3 != null) specie.getPhotos().add(photo3);
+
             this.specieService.updateSpecie(specie);
         }
 

@@ -12,6 +12,7 @@ public interface ObjectService {
     void                updateObjectExtended(ObjectExtended object);
     List<Object>        splitObject2(Object parent, int count, long tank_target);
     Object              getObjectById(long id);
+    ObjectExtended      getObjectExtendedById(long id);
     List<Object>        getObjectsAlive();
     List<Object>        getObjectsAliveWithoutParents();
     List<Object>        getObjectsAliveWithoutParentsBySpecie(long specie_id);

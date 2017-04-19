@@ -32,8 +32,8 @@ public class ObjectServiceImpl implements ObjectService {
 
     @Transactional("dubinets")
     public void addObjectExtended(ObjectExtended object) {
-        if(     object.getLabel().getPlace_catching() != null ||
-                object.getLabel().getDate_catching() != null ||
+        if(     object.getLabel().getPlace_catching().equals("") ||
+                object.getLabel().getDate_catching().equals("") ||
                 object.getLabel().getCondition_id() != null) {
             this.labelDao.addLabel(object.getLabel());
             object.getObject().setLabel_id(object.getLabel().getId());
@@ -91,6 +91,14 @@ public class ObjectServiceImpl implements ObjectService {
     @Transactional("dubinets")
     public Object getObjectById(long id) {
         return this.objectDao.getObjectById(id);
+    }
+
+    @Transactional("dubinets")
+    public ObjectExtended getObjectExtendedById(long id) {
+        ObjectExtended object = new ObjectExtended();
+        object.setObject(objectDao.getObjectById(id));
+        object.setLabel(labelDao.getLabelById(object.getObject().getLabel_id()));
+        return object;
     }
 
     @Transactional("dubinets")
