@@ -10,7 +10,9 @@ public interface ObjectDao {
     Object              getObjectById(long id);
     List<Object>        getObjectsAlive();
     List<Object>        getObjectsAliveWithoutParents();
+    List<Object>        getObjectsAliveWithoutParents2LoginUser(long department_id);
     List<Object>        getObjectsAliveWithoutParentsBySpecie(long specie_id);
+    List<Object>        getObjectsAliveWithoutParentsBySpecie2LoginUser(long specie_id, long department_id);
     List<Object>        getObjectsAliveWithoutParentsByTank(long tank_id);
     List<Object>        getObjectsAliveWithoutParentsByTankAndAquarium(long tank_id, long aquarium_id);
     List<Object>        getObjectsAliveWithoutParentsByEmployee(long employee_id);

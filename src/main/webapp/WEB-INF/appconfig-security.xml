@@ -11,33 +11,33 @@
         <csrf disabled="true" />
         <access-denied-handler ref="my403"/>
 
-        <intercept-url pattern="/"                  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/index"             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/"                  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/index"             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
         <intercept-url pattern="/admin"             access="hasRole('ROLE_ADMIN')"/>
         <!--<intercept-url pattern="/registration"      access="hasRole('ROLE_ADMIN')"/>-->
 
-        <intercept-url pattern="/species"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/tags"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/species"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/tags"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
         <intercept-url pattern="/departments"       access="hasAnyRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/employees"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/employees"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
         <intercept-url pattern="/buildings"         access="hasAnyRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/allowances"        access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/displacements"     access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/objects"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/quarantines"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/deceaseds"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/certificates"      access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/allowances"        access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/displacements"     access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/objects"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/quarantines"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/deceaseds"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/certificates"      access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
         <intercept-url pattern="/conditions"        access="hasAnyRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/labels"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/tanks"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/drugs"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/medications"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/journalallowance"  access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/labels"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/tanks"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/drugs"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/medications"       access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/journalallowance"  access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
 
-        <intercept-url pattern="/report"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/report"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
 
-        <intercept-url pattern="/load"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
-        <intercept-url pattern="/upload"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM')"/>
+        <intercept-url pattern="/load"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/upload"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
 
         <form-login login-page="/login"
                     default-target-url="/index"

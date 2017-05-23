@@ -229,7 +229,7 @@ Table
                     </tr>
                     <c:forEach items="${listMedications}" var="medication">
                         <tr>
-                            <td>${medication.object.object_name} (${medication.object.object_count}) (${medication.object.tank.tank_number})</td>
+                            <td>${medication.object.object_name} (${medication.object.object_count}) (<a href="<c:url value='/tank/info/${medication.object.tank.id}' />">${medication.object.tank.tank_number}</a>)</td>
                             <td>${medication.medication_start_date}</td>
                             <td>${medication.medication_end_date}</td>
                             <!-- <td>${medication.medication_reaction}</td> -->

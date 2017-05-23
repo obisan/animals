@@ -3,6 +3,7 @@ package ru.ocean.animals.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.ocean.animals.config.RoleBasedReqesting;
 import ru.ocean.animals.dao.LabelDao;
 import ru.ocean.animals.dao.ObjectDao;
 import ru.ocean.animals.formatter.DateFormatter;
@@ -10,9 +11,7 @@ import ru.ocean.animals.formatter.DateFormatterImpl;
 import ru.ocean.animals.model.*;
 import ru.ocean.animals.model.Object;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ObjectServiceImpl implements ObjectService {
@@ -22,6 +21,9 @@ public class ObjectServiceImpl implements ObjectService {
 
     @Autowired
     private LabelDao labelDao;
+
+    @Autowired
+    private UserService userService;
 
     private DateFormatter formatter = DateFormatterImpl.getInstance();
 
@@ -112,8 +114,28 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
     @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParents2LoginUser() {
+        List<String> userroles = this.userService.getUserRoles();
+
+        if(RoleBasedReqesting.isFull(userroles))
+            return this.objectDao.getObjectsAliveWithoutParents();
+        else
+            return this.objectDao.getObjectsAliveWithoutParents2LoginUser(RoleBasedReqesting.getMainRole(userroles));
+    }
+
+    @Transactional("dubinets")
     public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
         return this.objectDao.getObjectsAliveWithoutParentsBySpecie(specie_id);
+    }
+
+    @Transactional("dubinets")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie2LoginUser(long specie_id) {
+        List<String> userroles = this.userService.getUserRoles();
+
+        if(RoleBasedReqesting.isFull(userroles))
+            return this.objectDao.getObjectsAliveWithoutParents();
+        else
+            return this.objectDao.getObjectsAliveWithoutParentsBySpecie2LoginUser(specie_id, RoleBasedReqesting.getMainRole(userroles));
     }
 
     @Transactional("dubinets")

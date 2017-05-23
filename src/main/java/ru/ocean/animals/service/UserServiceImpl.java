@@ -1,16 +1,18 @@
 package ru.ocean.animals.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import ru.ocean.animals.dao.RoleDao;
 import ru.ocean.animals.dao.UserDao;
 import ru.ocean.animals.model.Role;
 import ru.ocean.animals.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -41,5 +43,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Role> getRoles() {
         return this.roleDao.findAll();
+    }
+
+    @Override
+    public List<String> getUserRoles() {
+        return SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+                .map(r -> r.getAuthority()).collect(Collectors.toList());
     }
 }

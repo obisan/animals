@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.ocean.animals.model.Object;
-import ru.ocean.animals.model.ObjectExtended;
 
 import java.util.List;
 
@@ -58,6 +57,17 @@ public class ObjectDaoImpl implements ObjectDao {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParents2LoginUser(long department_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParents2LoginUser(:department_id)")
+                .addEntity(Object.class)
+                .setParameter("department_id", department_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Object> getObjectsAliveWithoutParentsBySpecie(long specie_id) {
         Session session = sessionFactory.getCurrentSession();
 
@@ -65,6 +75,18 @@ public class ObjectDaoImpl implements ObjectDao {
                 "CALL getObjectsAliveWithoutParentsBySpecie(:specie_id)")
                 .addEntity(Object.class)
                 .setParameter("specie_id", specie_id)
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Object> getObjectsAliveWithoutParentsBySpecie2LoginUser(long specie_id, long department_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createSQLQuery(
+                "CALL getObjectsAliveWithoutParentsBySpecie(:specie_id, :department_id)")
+                .addEntity(Object.class)
+                .setParameter("specie_id", specie_id)
+                .setParameter("department_id", department_id)
                 .list();
     }
 
