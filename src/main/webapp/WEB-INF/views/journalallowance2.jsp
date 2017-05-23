@@ -31,7 +31,7 @@
                                 <form:select class="combobox" path="object1_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -64,7 +64,7 @@
                                 <form:select class="combobox" path="object2_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -88,7 +88,7 @@
                                 <form:select class="combobox" path="object3_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -112,7 +112,7 @@
                                 <form:select class="combobox" path="object4_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -136,7 +136,7 @@
                                 <form:select class="combobox" path="object5_id">
                                     <option></option>
                                     <c:forEach items="${listObjects}" var="object">
-                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_name})</form:option>
+                                        <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number})</form:option>
                                     </c:forEach>
                                 </form:select>
                             </td>
@@ -173,6 +173,7 @@
     </table>
 </div>
 
+
 <table width="70%" align="center">
     <tr>
         <td class="tg">
@@ -187,7 +188,7 @@
                     </tr>
                     <c:forEach items="${listJournalAllowances}" var="journalallowance">
                         <tr>
-                            <td><a href="<c:url value="/object/info/${journalallowance.object_id}"/>" target="_blank">${journalallowance.object.object_name}</a> (${journalallowance.object.object_count}) <a href="<c:url value="/tank/info/${journalallowance.object.tank.id}"/>" target="_blank">(${journalallowance.object.tank.tank_name})</a></td>
+                            <td><a href="<c:url value="/object/info/${journalallowance.object_id}"/>" target="_blank">${journalallowance.object.object_name}</a> (${journalallowance.object.object_count}) <a href="<c:url value="/tank/info/${journalallowance.object.tank.id}"/>" target="_blank">(${journalallowance.object.tank.tank_number})</a></td>
                             <td>${journalallowance.allowance.allowance_name}</td>
                             <td>${journalallowance.weight}</td>
                             <td><a href="<c:url value='/journalallowance/edit/${journalallowance.id}' />" >Edit</a></td>

@@ -99,7 +99,8 @@ public class ObjectServiceImpl implements ObjectService {
     public ObjectExtended getObjectExtendedById(long id) {
         ObjectExtended object = new ObjectExtended();
         object.setObject(objectDao.getObjectById(id));
-        object.setLabel(labelDao.getLabelById(object.getObject().getLabel_id()));
+        if(object.getLabel() != null)
+            object.setLabel(labelDao.getLabelById(object.getObject().getLabel_id()));
         return object;
     }
 
