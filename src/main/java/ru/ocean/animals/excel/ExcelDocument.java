@@ -21,7 +21,7 @@ public class ExcelDocument extends AbstractExcelView {
         Date date = new Date();
 
         //Excel file name change
-        String ss = "excelDocument" + date.
+        //String ss = "excelDocument" + date.
 
         response.setHeader("Content-Disposition", "attachment; filename=excelDocument.xls");
 
