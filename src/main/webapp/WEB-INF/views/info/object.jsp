@@ -94,17 +94,6 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="employee_id">
-                                        <spring:message text="Сотрудник"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <a href="<c:url value="/employee/info/${object.employee.id}"/>" target="_blank">${object.employee.fullShortName}</a>
-                                    <a href="<c:url value="/department/info/${object.employee.department.id}"/>" target="_blank">(${object.employee.department.department_name})</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <form:label path="label_id">
                                         <spring:message text="Этикетка"/>
                                     </form:label>
@@ -226,6 +215,38 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 4 панель -->
+            <div class="panel panel-default">
+                <!-- Заголовок 4 панели -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Список кормов</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <!-- Содержимое 4 панели -->
+                    <div class="panel-body">
+                        <c:if test="${!empty object.journalAllowances}">
+                            <table class="tg" width="100%">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Корм</th>
+                                    <th>Вес</th>
+                                </tr>
+                                <c:forEach items="${object.journalAllowances}" var="journalAllowances">
+                                    <tr>
+                                        <td>${journalAllowances.id}</td>
+                                        <td>${journalAllowances.allowance.allowance_name}</td>
+                                        <td>${journalAllowances.weight}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

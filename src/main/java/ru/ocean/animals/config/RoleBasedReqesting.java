@@ -24,9 +24,10 @@ public class RoleBasedReqesting {
 
     public static Boolean isFull(List<String> roles) {
         for(String role : roles) {
-            if(map.get(role) == 11L) return true;
-            else if(map.get(role) == 1L) return true;
-            else if(map.get(role) == 3L) return true;
+            if(map.get(role) == 11L) return true;       // Админ
+            else if(map.get(role) == 1L) return true;   // Ихтиопатология
+            else if(map.get(role) == 3L) return true;   // Администрация
+            else if(map.get(role) == 2L) return true;   // Кормокухня
         }
         return false;
     }

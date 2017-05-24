@@ -7,18 +7,33 @@ public class JournalAllowanceExtended {
     private Long object3_id;
     private Long object4_id;
     private Long object5_id;
+    private Long object6_id;
+    private Long object7_id;
+    private Long object8_id;
+    private Long object9_id;
+    private Long object10_id;
 
     private Long allowance1_id;
     private Long allowance2_id;
     private Long allowance3_id;
     private Long allowance4_id;
     private Long allowance5_id;
+    private Long allowance6_id;
+    private Long allowance7_id;
+    private Long allowance8_id;
+    private Long allowance9_id;
+    private Long allowance10_id;
 
     private float weight1;
     private float weight2;
     private float weight3;
     private float weight4;
     private float weight5;
+    private float weight6;
+    private float weight7;
+    private float weight8;
+    private float weight9;
+    private float weight10;
 
     public Long getObject1_id() {
         return object1_id;
@@ -58,6 +73,46 @@ public class JournalAllowanceExtended {
 
     public void setObject5_id(Long object5_id) {
         this.object5_id = object5_id;
+    }
+
+    public Long getObject6_id() {
+        return object6_id;
+    }
+
+    public void setObject6_id(Long object6_id) {
+        this.object6_id = object6_id;
+    }
+
+    public Long getObject7_id() {
+        return object7_id;
+    }
+
+    public void setObject7_id(Long object7_id) {
+        this.object7_id = object7_id;
+    }
+
+    public Long getObject8_id() {
+        return object8_id;
+    }
+
+    public void setObject8_id(Long object8_id) {
+        this.object8_id = object8_id;
+    }
+
+    public Long getObject9_id() {
+        return object9_id;
+    }
+
+    public void setObject9_id(Long object9_id) {
+        this.object9_id = object9_id;
+    }
+
+    public Long getObject10_id() {
+        return object10_id;
+    }
+
+    public void setObject10_id(Long object10_id) {
+        this.object10_id = object10_id;
     }
 
     public Long getAllowance1_id() {
@@ -100,6 +155,46 @@ public class JournalAllowanceExtended {
         this.allowance5_id = allowance5_id;
     }
 
+    public Long getAllowance6_id() {
+        return allowance6_id;
+    }
+
+    public void setAllowance6_id(Long allowance6_id) {
+        this.allowance6_id = allowance6_id;
+    }
+
+    public Long getAllowance7_id() {
+        return allowance7_id;
+    }
+
+    public void setAllowance7_id(Long allowance7_id) {
+        this.allowance7_id = allowance7_id;
+    }
+
+    public Long getAllowance8_id() {
+        return allowance8_id;
+    }
+
+    public void setAllowance8_id(Long allowance8_id) {
+        this.allowance8_id = allowance8_id;
+    }
+
+    public Long getAllowance9_id() {
+        return allowance9_id;
+    }
+
+    public void setAllowance9_id(Long allowance9_id) {
+        this.allowance9_id = allowance9_id;
+    }
+
+    public Long getAllowance10_id() {
+        return allowance10_id;
+    }
+
+    public void setAllowance10_id(Long allowance10_id) {
+        this.allowance10_id = allowance10_id;
+    }
+
     public float getWeight1() {
         return weight1;
     }
@@ -138,5 +233,45 @@ public class JournalAllowanceExtended {
 
     public void setWeight5(float weight5) {
         this.weight5 = weight5;
+    }
+
+    public float getWeight6() {
+        return weight6;
+    }
+
+    public void setWeight6(float weight6) {
+        this.weight6 = weight6;
+    }
+
+    public float getWeight7() {
+        return weight7;
+    }
+
+    public void setWeight7(float weight7) {
+        this.weight7 = weight7;
+    }
+
+    public float getWeight8() {
+        return weight8;
+    }
+
+    public void setWeight8(float weight8) {
+        this.weight8 = weight8;
+    }
+
+    public float getWeight9() {
+        return weight9;
+    }
+
+    public void setWeight9(float weight9) {
+        this.weight9 = weight9;
+    }
+
+    public float getWeight10() {
+        return weight10;
+    }
+
+    public void setWeight10(float weight10) {
+        this.weight10 = weight10;
     }
 }

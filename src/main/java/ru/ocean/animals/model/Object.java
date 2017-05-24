@@ -13,7 +13,7 @@ public class Object {
     private Long id;
 
     @Column(name = "object_name")
-    private String  object_name;
+    private String object_name;
 
     @Column(name = "object_count")
     private Integer object_count;

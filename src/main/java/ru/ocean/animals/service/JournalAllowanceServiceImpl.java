@@ -35,6 +35,7 @@ public class JournalAllowanceServiceImpl implements JournalAllowanceService {
     public void addJournalAllowanceGroup(JournalAllowanceExtended journalAllowanceExtended) {
 
         List<Object> objects = new ArrayList<>();
+
         if(journalAllowanceExtended.getObject1_id() != null)
             objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject1_id()));
         if(journalAllowanceExtended.getObject2_id() != null)
@@ -45,6 +46,16 @@ public class JournalAllowanceServiceImpl implements JournalAllowanceService {
             objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject4_id()));
         if(journalAllowanceExtended.getObject5_id() != null)
             objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject5_id()));
+        if(journalAllowanceExtended.getObject6_id() != null)
+            objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject6_id()));
+        if(journalAllowanceExtended.getObject7_id() != null)
+            objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject7_id()));
+        if(journalAllowanceExtended.getObject8_id() != null)
+            objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject8_id()));
+        if(journalAllowanceExtended.getObject9_id() != null)
+            objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject9_id()));
+        if(journalAllowanceExtended.getObject10_id() != null)
+            objects.add(objectDao.getObjectById(journalAllowanceExtended.getObject10_id()));
 
         List<Pair<Allowance, Float>> allowances = new ArrayList<>();
         if(journalAllowanceExtended.getAllowance1_id() != null)
@@ -83,6 +94,46 @@ public class JournalAllowanceServiceImpl implements JournalAllowanceService {
             allowances.add(
                     new Pair<>(
                             allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance5_id()),
+                            journalAllowanceExtended.getWeight5()
+                    )
+            );
+
+        if(journalAllowanceExtended.getAllowance6_id() != null)
+            allowances.add(
+                    new Pair<>(
+                            allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance6_id()),
+                            journalAllowanceExtended.getWeight5()
+                    )
+            );
+
+        if(journalAllowanceExtended.getAllowance7_id() != null)
+            allowances.add(
+                    new Pair<>(
+                            allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance7_id()),
+                            journalAllowanceExtended.getWeight5()
+                    )
+            );
+
+        if(journalAllowanceExtended.getAllowance8_id() != null)
+            allowances.add(
+                    new Pair<>(
+                            allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance8_id()),
+                            journalAllowanceExtended.getWeight5()
+                    )
+            );
+
+        if(journalAllowanceExtended.getAllowance9_id() != null)
+            allowances.add(
+                    new Pair<>(
+                            allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance9_id()),
+                            journalAllowanceExtended.getWeight5()
+                    )
+            );
+
+        if(journalAllowanceExtended.getAllowance10_id() != null)
+            allowances.add(
+                    new Pair<>(
+                            allowanceDao.getAllowanceById(journalAllowanceExtended.getAllowance10_id()),
                             journalAllowanceExtended.getWeight5()
                     )
             );
