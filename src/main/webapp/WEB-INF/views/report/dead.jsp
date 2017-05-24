@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -93,6 +94,7 @@
     </form:form>
 
     <h4>Список погибших животных</h4>
+    <a href="<c:url value='/download/report/excel/deads'/>">Excel</a>
     <c:if test="${!empty listDeceaseds}">
         <table class="tg">
             <tr>
@@ -102,7 +104,7 @@
                 <th width="80">Дата</th>
                 <th width="80">Примечание</th>
                 <th width="120">Вид</th>
-                <th width="120">Сотрудник</th>
+                <th width="120">Место</th>
             </tr>
             <c:forEach items="${listDeceaseds}" var="deceased">
                 <tr>
@@ -112,7 +114,7 @@
                     <td>${deceased.deceased_date}</td>
                     <td>${deceased.deceased_note}</td>
                     <td><a href="<c:url value='/specie/info/${deceased.object.specie.id}'/>" target="_blank">${deceased.object.specie.specieFullName}</a></td>
-                    <td>${deceased.object.employee.fullShortName} (${object.employee.department.department_name})</td>
+                    <td><a href="<c:url value='/tank/info/${deceased.tank.id}'/>">${deceased.tank.tank_number}</a></td>
                 </tr>
             </c:forEach>
         </table>
