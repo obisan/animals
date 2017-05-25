@@ -7,4 +7,7 @@ public interface DateFormatter {
 
     String format(Timestamp timestamp);
     String format2db(Timestamp timestamp);
+
+    String format2excel(Timestamp timestamp);
+    String format2excelshort(String datetime);
 }

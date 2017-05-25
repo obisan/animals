@@ -42,7 +42,9 @@ public class ReportController {
 
     @RequestMapping(value = "/download/report/excel/deads", method = RequestMethod.GET)
     public ModelAndView excel(@ModelAttribute("deceasedCriteria") DeceasedCriteria deceasedCriteria) {
-        return new ModelAndView("excelViewReportDeads", "deadData", deceasedList);
+        ModelAndView model = new ModelAndView("excelViewReportDeads", "deadsData", deceasedList);
+        //model.addObject("ss", 1);
+        return model;
     }
 
 }
