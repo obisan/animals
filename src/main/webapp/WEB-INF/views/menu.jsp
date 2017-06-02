@@ -75,6 +75,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="${contextPath}/allowances"         >Список кормов</a></li>
+                                <li><a href="${contextPath}/groupallowances"    >Группы кормов</a></li>
                                 <li><a href="${contextPath}/journalallowances"  >Назначение кормов</a></li>
                             </ul>
                         </li>

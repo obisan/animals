@@ -58,6 +58,7 @@ public class VitaminizationServiceImpl implements VitaminizationService {
                 Vitaminization vitaminization = new Vitaminization();
                 vitaminization.setVitaminization_date(vitaminization_ext.getVitaminization().getVitaminization_date());
                 vitaminization.setObject_id(object.getId());
+                vitaminization.setTank_id(object.getTank_id());
 
                 Set<Drug> drugs_loaded = new HashSet<>();
                 for(Drug drug : drugs) {
@@ -70,6 +71,9 @@ public class VitaminizationServiceImpl implements VitaminizationService {
             }
 
         } else {
+            Object  object_trg  = this.objectDao.getObjectById(vitaminization_ext.getObject().getId());
+            Tank    tank_trg    = this.tankDao.getTankById(object_trg.getId());
+
             Set<Drug> drugs_loaded = new HashSet<>();
             for(Drug drug : drugs) {
                 if(drug.getId() != null) {
@@ -77,6 +81,8 @@ public class VitaminizationServiceImpl implements VitaminizationService {
                 }
             }
 
+            vitaminization_ext.getVitaminization().setObject_id(tank_trg.getId());
+            vitaminization_ext.getVitaminization().setTank_id(tank_trg.getId());
             vitaminization_ext.getVitaminization().setDrugs(drugs_loaded);
             this.vitaminizationDao.addVitaminization(vitaminization_ext.getVitaminization());
         }

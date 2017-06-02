@@ -16,8 +16,14 @@
         <intercept-url pattern="/admin"             access="hasRole('ROLE_ADMIN')"/>
         <!--<intercept-url pattern="/registration"      access="hasRole('ROLE_ADMIN')"/>-->
 
-        <intercept-url pattern="/species"           access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
-        <intercept-url pattern="/tags"              access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/species"                   access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/species/edit/*"            access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/species/delete/*"          access="hasAnyRole('ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+
+        <intercept-url pattern="/tags"                      access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/tags/edit/*"               access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+        <intercept-url pattern="/tags/delete/*"             access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
+
         <intercept-url pattern="/departments"       access="hasAnyRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/employees"         access="hasAnyRole('ROLE_ADMIN', 'ROLE_IHTI', 'ROLE_KORM', 'ROLE_TROPIC_SEA', 'ROLE_TROPIC_SOFT', 'ROLE_FAREAST_SEA', 'ROLE_ADMINISTRATION')"/>
         <intercept-url pattern="/buildings"         access="hasAnyRole('ROLE_ADMIN')"/>

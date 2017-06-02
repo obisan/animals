@@ -41,12 +41,12 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <form:label path="vitaminization.object_id">
+                                            <form:label path="object.id">
                                                 <spring:message text="Животное"/>
                                             </form:label>
                                         </td>
                                         <td>
-                                            <form:select class="combobox" path="vitaminization.object_id">
+                                            <form:select class="combobox" path="object.id">
                                                 <option></option>
                                                 <c:forEach items="${listObjects}" var="object">
                                                     <form:option value="${object.id}">${object.object_name} (${object.object_count}) (${object.tank.tank_number}) ${object.aquarium.nameBraked}</form:option>

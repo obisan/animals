@@ -50,6 +50,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         if(employee != null) {
             session.delete(employee);
         }
-        logger.info("Employee successfully updated. Employee details: " + employee);
+        logger.info("Employee successfully removed. Employee details: " + employee);
     }
 }

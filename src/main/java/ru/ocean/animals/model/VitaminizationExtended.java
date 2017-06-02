@@ -5,6 +5,7 @@ import java.util.List;
 public class VitaminizationExtended {
 
     private Vitaminization vitaminization;
+    private Object object;
     private Tank tank;
     private List<Long> aquariums;
     private Drug drug1;
@@ -24,6 +25,14 @@ public class VitaminizationExtended {
 
     public void setVitaminization(Vitaminization vitaminization) {
         this.vitaminization = vitaminization;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 
     public Tank getTank() {

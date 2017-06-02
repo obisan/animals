@@ -1,6 +1,7 @@
 package ru.ocean.animals.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Allowance")
@@ -13,6 +14,9 @@ public class Allowance {
 
     @Column(name = "allowance_name")
     private String allowance_name;
+
+    @ManyToMany(mappedBy = "allowances")
+    private Set<GroupAllowance> groupAllowances;
 
     public Long getId() {
         return id;
@@ -28,6 +32,14 @@ public class Allowance {
 
     public void setAllowance_name(String allowance_name) {
         this.allowance_name = allowance_name;
+    }
+
+    public Set<GroupAllowance> getGroupAllowances() {
+        return groupAllowances;
+    }
+
+    public void setGroupAllowances(Set<GroupAllowance> groupAllowances) {
+        this.groupAllowances = groupAllowances;
     }
 
     @Override

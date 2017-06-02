@@ -67,6 +67,7 @@
                 <value>ru.ocean.animals.model.Drug</value>
                 <value>ru.ocean.animals.model.Medication</value>
                 <value>ru.ocean.animals.model.Allowance</value>
+                <value>ru.ocean.animals.model.GroupAllowance</value>
                 <value>ru.ocean.animals.model.JournalAllowance</value>
                 <value>ru.ocean.animals.model.MedicationDrugs</value>
                 <value>ru.ocean.animals.model.Vitaminization</value>
